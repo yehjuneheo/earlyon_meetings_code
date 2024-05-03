@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content=
+        "width=device-width, initial-scale=1.0">
+    
+    <title>
+        Cancel Meeting - EarlyOn Meetings
+    </title>
+    <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
+
+
+    <link rel="stylesheet" href="{% static 'styleguide.css' %}">
+    <link rel="stylesheet" href="{% static 'my_meetings.css' %}">
+    <link rel="stylesheet" href="{% static 'register_teacher.css' %}">
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-33Y8RZDE69"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-33Y8RZDE69');
+</script>
+<body>
+    <div class="mentor-profile screen">
+        <div class="frame-6">
+            <div class="logo-container2">
+                <a href="{% url 'home' %}">
+                    <img src="{% static 'earlyon_color_logo.png' %}" alt="Logo" class="logo2"/>
+                </a>
+            </div>
+        </div>
+        <div class="student_meetings">
+            <header>
+                <h1>Cancel Meeting</h1>
+            </header>
+            
+            <main>
+                <section class="frame-1">
+                    <h1 class="send-request">Are you sure you want to cancel this meeting with</h1>
+                    <div class="frame-139">
+                        <p class="st-name">{{ receiver.user.first_name }} {{ receiver.user.last_name }}</p>
+                    </div>
+                    <p class="st-name-2">@{{ receiver.user.username }}</p>
+                    <!-- Display the selected date and time -->
+                    <p class="date-time">{{ my_meeting.datetime }} ~ {{ my_meeting.endtime|date:"f a" }} on {{ my_meeting.timezone }}</p>
+                    <p class="make-sure">You cannot undo this action</p>
+                    <input type="submit" class="frame-140" value = "Go Back" onclick="location.href='{% url 'my_meetings' user.id %}'" />
+                    <input type="submit" action='reject_for_sure' class="login" value = "Cancel Meeting" onclick="location.href='{% url 'my_cancel_for_sure' user.id my_meeting.id %}'" />
+        
+                </section>
+            </main>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+{% load static %}
+{% load university_images %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content=
+        "width=device-width, initial-scale=1.0">
+    
+    <title>
+        Mentor Profile - EarlyOn Meetings
+    </title>
+    <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
+
+
+    <link rel="stylesheet" href="{% static 'styleguide.css' %}">
+    <link rel="stylesheet" href="{% static 'selection.css' %}">
+
+    <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-33Y8RZDE69"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-33Y8RZDE69');
+</script>
+<body>
+    <div class="profile_screen screen">
+      {% csrf_token %}
+      <input type="hidden" id="csrfToken" value="{{ csrf_token }}"/>
+      {% include 'header.html' %}
+      <div class="display_frame">
+        <div class="div">
+          <div class="div-2">
+            <div class="div-wrapper">
+              <div class="div-3">
+                <img class="element-f" src="{{ profile.profile_image.url }}"/>
+                <div class="div-4">
+                  <div class="text-wrapper-2">{{profile.user.first_name}} {{profile.user.last_name}}</div>
+                  <div class="div-5">
+                    <div class="text-wrapper-3">{{profile.education_level}}</div>
+                    {% if profile.grade_level %}
+                    <div class="text-wrapper-3">/ {{profile.grade_level}}</div>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+              <div class="text-wrapper">$30.00/hour</div>
+            </div>
+          </div>
+          <div class="div-6">
+            <div class="frame-wrapper">
+              <div class="div-7">
+                <img class="element-university-of" src="{% university_image_url profile.university %}" alt="{{ profile.university }}"/>
+                <div class="div-8">
+                  <p class="p">{{profile.university|title}}</p>
+                  <div class="text-wrapper-4">
+                    {% for major in profile.major.all %}
+                        {{ major.name|title }}{% if not forloop.last %}, {% endif %}
+                    {% endfor %}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="speedily-say-has-wrapper">
+              <p class="speedily-say-has">
+                {{profile.brief_introduction}}
+              </p>
+            </div>
+          </div>
+          <div class="div-9">
+            <div class="div-10 {% if not profile.additional_information %}horizontal-layout{% endif %}">
+              {% if profile.resume %}
+              <a class="frame-wrapper-2 enabled" href="{{ profile.resume.url }}" target="_blank">
+                <div class="div-11">
+                  <img class="resume" src="https://c.animaapp.com/Ms3Z4kpD/img/resume-7-1.svg" />
+                  <div class="text-wrapper-5">View Resume</div>
+                </div>
+              </a>
+              {% else %}
+              <div class="frame-wrapper-2 disabled" style="opacity: 0.5; cursor: default;">
+                <div class="div-11">
+                  <img class="resume" src="https://c.animaapp.com/Ms3Z4kpD/img/resume-7-1.svg" />
+                  <div class="text-wrapper-5">No Resume Provided</div>
+                </div>
+              </div>
+              {% endif %}
+              {% if profile.linkedin %}
+              <a class="frame-wrapper-3 enabled" href="{{ profile.linkedin }}" target="_blank">
+                <div class="div-12">
+                  <img class="linkedin-logo" src="https://c.animaapp.com/Ms3Z4kpD/img/linkedin-logo-initials-1@2x.png" />
+                  <div class="text-wrapper-5">View LinkedIn</div>
+                </div>
+              </a>
+              {% else %}
+              <div class="frame-wrapper-3 disabled" style="opacity: 0.5; cursor: default;">
+                <div class="div-12">
+                  <img class="linkedin-logo" src="https://c.animaapp.com/Ms3Z4kpD/img/linkedin-logo-initials-1@2x.png" style="opacity: 0.5;" />
+                  <div class="text-wrapper-5">No LinkedIn Profile</div>
+                </div>
+              </div>
+              {% endif %}
+            </div>
+            <div class="div-13">
+              <div class="fluent-in-english-wrapper">
+                <p class="fluent-in-english">
+                  <span class="span">Fluent in </span>
+                  <span class="text-wrapper-6">
+                    {% for language in profile.languages.all %}
+                        {{ language.name }}{% if not forloop.last %}, {% endif %}
+                    {% endfor %}
+                  </span>
+                </p>
+              </div>
+              {% if profile.additional_information %}
+              <div class="speedily-say-has-wrapper-2">
+                <p class="speedily-say-has-2">
+                  {{profile.additional_information}}
+                </p>
+              </div>
+              {% else %}
+              <div class="speedily-say-has-wrapper-2"  style="opacity: 0.5; cursor: default;">
+                <p  class="speedily-say-has-2">
+                  {{profile.additional_information}}
+                      No Additional Information
+                </p>
+              </div>
+              {% endif %}
+            </div>
+          </div>
+          <div class="frame-wrapper-4">
+            <div class="div-14">
+              <div class="text-wrapper-7">Reservations</div>
+              {% if profile.is_working %}
+              <div class="div-15">
+                <div class="frame-wrapper-7">
+                  <form method="GET">
+                    <div class="div-16">
+                      <input type="text" class="text-field" id="datepicker" name="search_date" placeholder="Select Date"/>
+                      <button class="div-wrapper-2" id="search-button" type="submit"><div class="text-wrapper-9">Search</div></button>
+                    </div>
+                  </form>
+                </div>
+                <div class="frame-wrapper-6">
+                  <div class="text-wrapper-10"></div>
+                  <div class="text-wrapper-123">Mentor Timezone: {{ profile.timezone}}</div>
+                </div>
+                <div class="div-18">
+                  {% for slot in available_slots %}
+                  <button class="div-wrapper-3">
+                      <div class="text-wrapper-11" data-time="{{ slot }}">
+                        {{ slot }}
+                      </div>
+                  </button>  
+                  {% endfor %}
+                </div>
+              </div>
+              {% else %}
+              <div class="frame-wrapper-6">
+                <div class="no-slots-message">This mentor is not currently accepting reservations. Please check back later.</div>
+              </div>
+              {% endif %}
+            </div>
+          </div>
+          <div class="frame-wrapper-5">
+            <div class="div-19">
+              <div class="text-wrapper-7">Reviews</div>
+              <div class="div-19">
+                {% if past_meetings %}
+                {% for past_meeting in past_meetings %}
+                <div class="div-20">
+                  <div class="div-21">
+                    <div class="div-30">
+                      <div class="div-22">
+                        <div class="div-23">
+                          <div class="text-wrapper-12">{{ past_meeting.receiver_profile.user.get_full_name }}</div>
+                          <div class="text-wrapper-13">
+                            <div class="text-wrapper-14">{{ past_meeting.receiver }}</div>
+                          </div>
+                        </div>
+                        <div class="profile_star_rating">
+                          {% if past_meeting.stars >= 1 %}
+                          <span class="profile_rate">★</span>
+                          {% else %}
+                          <span class="profile_rate">☆</span>
+                          {% endif %}
+                          {% if past_meeting.stars >= 2 %}
+                          <span class="profile_rate">★</span>
+                          {% else %}
+                          <span class="profile_rate">☆</span>
+                          {% endif %}
+                          {% if past_meeting.stars >= 3 %}
+                          <span class="profile_rate">★</span>
+                          {% else %}
+                          <span class="profile_rate">☆</span>
+                          {% endif %}
+                          {% if past_meeting.stars >= 4 %}
+                          <span class="profile_rate">★</span>
+                          {% else %}
+                          <span class="profile_rate">☆</span>
+                          {% endif %}
+                          {% if past_meeting.stars >= 5 %}
+                          <span class="profile_rate">★</span>
+                          {% else %}
+                          <span class="profile_rate">☆</span>
+                          {% endif %}
+                        </div>
+                      </div>
+                    </div>
+                    <div class="speedily-say-has-wrapper-3">
+                      <p class="speedily-say-has-3">
+                        {{ past_meeting.feedback }}
+                      </p>
+                    </div>
+                  </div>
+                  <img class="line" src="https://c.animaapp.com/Ms3Z4kpD/img/line-4.svg" />
+                </div>
+                {% endfor %}
+                {% else %}
+                <div class="div-200">
+                  <div class="text-wrapper-12">No Reviews Yet</div>
+                </div>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="frame-162">
+          <div class="frame-160">
+            <div class="other-suggestions">Other Suggestions</div>
+          </div>
+          {% for giver in givers %}
+          <a class="profile_frame" href="/profile/{{ giver.id }}">
+            <div class="profile_div">
+              <div class="profile_div-2">
+                <img class="profile_ellipse" src="{{ giver.profile_image.url }}" />
+                <div class="profile_div-3">
+                  <div class="profile_div-4">
+                    <div class="profile_div-9">
+                      <div class="profile_text-wrapper">{{ giver.user.first_name }} {{ giver.user.last_name }}</div>
+                      <div class="profile_div-5">
+                        <div class="profile_text-wrapper-2">{{ giver.education_level }} /</div>
+                        <div class="profile_text-wrapper-2">{{ giver.grade_level }}</div>
+                      </div>
+                    </div>
+                    <div class="profile_div-wrapper"><div class="profile_text-wrapper-3">View Profile</div></div>
+                  </div>
+                  <div class="profile_div-6">
+                    <img class="profile_element-university-of" src="{% university_image_url giver.university %}" alt="{{ giver.university }}"/>
+                    <div class="profile_div-7">
+                      <p class="profile_p">{{ giver.university|title }}</p>
+                      <div class="profile_text-wrapper-4">
+                        {% for major in giver.major.all %}
+                          {{ major.name|title }}{% if not forloop.last %}, {% endif %}
+                        {% endfor %}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="profile_div-8">
+                <p class="profile_text-wrapper-5">
+                  {{ giver.brief_introduction }}
+                </p>
+                <p class="profile_jinjun-oh-is-fluent">
+                  <span class="profile_span">{{ giver.user.first_name }} is fluent in </span>
+                  <span class="profile_text-wrapper-6">
+                    {% for language in giver.languages.all %}
+                      {{ language.name }}{% if not forloop.last %}, {% endif %}
+                    {% endfor %}
+                  </span>
+                </p>
+              </div>
+            </div>
+          </a>
+          {% endfor %}
+        </div>
+      </div>
+      {% include 'footer.html' %}
+    </div>
+    <script>
+      
+      function addSlotButtonClickListeners() {
+          document.querySelectorAll('.div-wrapper-3').forEach(slotButtonWrapper => {
+              slotButtonWrapper.addEventListener('click', function() {
+                  const selectedDate = document.getElementById('datepicker').value;
+                  const selectedTime = this.querySelector('.text-wrapper-11').getAttribute('data-time');
+                  const baseUrl = '{% url "confirm_reservation" profile.id %}';
+                  const confirmReservationUrl = `${baseUrl}?date=${encodeURIComponent(selectedDate)}&time=${encodeURIComponent(selectedTime)}`;
+                  window.location.href = confirmReservationUrl;
+              });
+          });
+      }document.addEventListener('DOMContentLoaded', function() {
+        var tomorrow = new Date();
+        tomorrow.setDate(tomorrow.getDate() + 1); // Add one day to get tomorrow's date
+      
+        flatpickr("#datepicker", {
+          altInput: true,
+          altFormat: "l, F j, Y", // e.g., "Monday, March 3, 2024"
+          dateFormat: "Y-m-d",
+          defaultDate: tomorrow, // Set defaultDate to tomorrow
+        });
+      });
+          document.addEventListener('DOMContentLoaded', function() {
+            // Set the default datepicker value to today's date
+            var tomorrow = new Date(new Date().getTime() + 24 * 60 * 60 * 1000);
+            var dd = String(tomorrow.getDate()).padStart(2, '0');
+            var mm = String(tomorrow.getMonth() + 1).padStart(2, '0'); //January is 0!
+            var yyyy = tomorrow.getFullYear();
+            tomorrow = yyyy + '-' + mm + '-' + dd;
+            document.getElementById('datepicker').value = tomorrow;
+            var baseUrl = '{% url "confirm_reservation" profile.id %}';
+            // Trigger the date selection behavior to load available slots for today
+            document.getElementById('search-button').click();
+
+        });
+        
+          document.getElementById('search-button').addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+            var datepickerValue = document.getElementById('datepicker').value;
+            
+            // Make sure the user has selected a date
+            if (datepickerValue) {
+              // Adjust for timezone offset to prevent the date from showing one day behind
+              var date = new Date(datepickerValue);
+              var userTimezoneOffset = date.getTimezoneOffset() * 60000; // Convert offset to milliseconds
+              var correctedDate = new Date(date.getTime() + userTimezoneOffset);
+          
+              // Update the displayed date
+              var dateDisplay = document.querySelector('.text-wrapper-10');
+              dateDisplay.textContent = correctedDate.toLocaleDateString('en-US', {
+                weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+              });
+          
+              // Send an AJAX request to your Django view
+              var xhr = new XMLHttpRequest();
+              var pk = {{ profile.id }};
+              xhr.open('GET', '/ajax/search_slots/?date=' + datepickerValue + '&pk=' + pk, true);
+              xhr.onload = function () {
+                if (this.status == 200) {
+                  var response = JSON.parse(this.responseText);
+                  var slotsDiv = document.querySelector('.div-18');
+                  slotsDiv.innerHTML = '';
+                  addSlotButtonClickListeners(); // Ensure this is called after the buttons are created
+          
+                  if (response.slots.length > 0) {
+                    response.slots.forEach(function(slot) {
+                        var slotDiv = document.createElement('button');
+                        slotDiv.className = 'div-wrapper-3';
+                        
+                        var slotButton = document.createElement('div');
+                        slotButton.className = 'text-wrapper-11';
+                        slotButton.dataset.time = slot;
+                        slotButton.textContent = slot;
+                        
+                        slotDiv.appendChild(slotButton);
+                        slotsDiv.appendChild(slotDiv);
+                    });
+                } else {
+                    // Handle case with no available slots
+                    // Inside the AJAX onload function, when handling the no available slots case
+                    var messageDiv = document.createElement('div');
+                    messageDiv.className = 'no-slots-message'; // Apply the CSS class for styling the message
+
+                    // Separate the date from the message to apply bold styling
+                    if (response.next_available_date) {
+                        var messageContent = response.message + ' Next available date: ';
+                        var boldDateSpan = document.createElement('span');
+                        boldDateSpan.className = 'bold-date'; // Apply the CSS class to make the date bold
+                        boldDateSpan.textContent = response.next_available_date;
+
+                        // Append the message and the bold date to the messageDiv
+                        messageDiv.textContent = messageContent;
+                        messageDiv.appendChild(boldDateSpan);
+
+                        slotsDiv.appendChild(messageDiv);
+                    }
+                    else{
+                        var messageContent = response.message;
+                        messageDiv.textContent = messageContent;
+                        slotsDiv.appendChild(messageDiv);
+                    }
+                }
+                }
+                
+              addSlotButtonClickListeners();
+              };
+              xhr.send();
+            }
+          });
+          
+    </script>
+</body>
+</html>

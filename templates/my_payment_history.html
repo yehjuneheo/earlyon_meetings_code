@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content=
+        "width=device-width, initial-scale=1.0">
+    
+    <title>
+        My Payment History - EarlyOn Meetings
+    </title>
+    <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
+
+    <link rel="stylesheet" href="{% static 'styleguide.css' %}">
+    <link rel="stylesheet" href="{% static 'my_meetings.css' %}">
+    <link rel="stylesheet" href="{% static 'register_teacher.css' %}">
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-33Y8RZDE69"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-33Y8RZDE69');
+</script>
+<body>
+    <div class="mentor-profile screen">
+        <div class="frame-6">
+            <div class="logo-container2">
+                <a href="{% url 'home' %}">
+                    <img src="{% static 'earlyon_color_logo.png' %}" alt="Logo" class="logo2"/>
+                </a>
+            </div>
+        </div>
+        <div class="student_meetings">
+            <header>
+                <h1>My Payment History</h1>
+            </header>
+            {% if payments %}
+                <ul class="payment-list">
+                    {% for payment in payments %}
+                    <li class="payment-item">
+                        <div class="payment-detail">
+                            <span class="payment-date">Payment Date: {{ payment.date|date:"N j, Y, P" }}</span>
+                            <span class="payment-amount">Amount: ${{ payment.amount }}</span>
+                            <span class="payment-status">Status: {{ payment.status|capfirst }}</span>
+                            <span class="payment-giver">Meeting Date: {{ payment.meeting.datetime }}</span>
+                            <span class="payment-giver">Customer: {{ payment.receiver.user.first_name }} {{ payment.receiver.user.last_name }} (@{{ payment.receiver.user.username }})</span>
+                            <span class="payment-transaction">Transaction ID: {{ payment.transaction_id }}</span>
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>You have no payments history.</p>
+            {% endif %}
+            <div class="back-button-container">
+                <button type="button" class="btn back-btn" onclick="location.href='{% url 'my_profile' user.id %}'">Go Back</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

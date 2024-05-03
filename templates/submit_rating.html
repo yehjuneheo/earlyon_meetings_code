@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content=
+        "width=device-width, initial-scale=1.0">
+    
+    <title>
+        Submit Rating - EarlyOn Meetings
+    </title>
+    <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
+
+
+    <link rel="stylesheet" href="{% static 'styleguide.css' %}">
+    <link rel="stylesheet" href="{% static 'my_meetings.css' %}">
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-33Y8RZDE69"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-33Y8RZDE69');
+</script>
+<body>
+    <div class="my-meetings screen">
+        {% include 'header.html' %}
+        <div class="review-section">
+            <header class="review-header">
+                <h1>Submit a Review for your Mentor!</h1>
+                <hr class="divider" />
+            </header>
+        
+            <article class="mentor-info">
+                <img class="mentor-image" src="{{ my_meeting.giver_profile.profile_image.url }}" alt="Mentor's Profile Picture">
+                <h2 class="mentor-name">{{ my_meeting.giver_profile.user.get_full_name }}</h2>
+                <p class="university">{{ my_meeting.giver_profile.university|title }}</p>
+                <p class="major">
+                    {% for major in my_meeting.giver_profile.major.all %}
+                        {{ major.name|title }}{% if not forloop.last %}, {% endif %}
+                    {% endfor %}
+                </p>
+            </article>
+            <form action="{% url 'rating_upload_completed' user.id my_meeting.id %}" method="GET" class="star_rating">
+                <div class="rate">
+                    <input type="radio" id="star5" name="rate" value="5" class="star"/>
+                    <label for="star5" title="text">5 stars</label>
+                    <input type="radio" id="star4" name="rate" value="4" class="star"/>
+                    <label for="star4" title="text">4 stars</label>
+                    <input type="radio" id="star3" name="rate" value="3" class="star"/>
+                    <label for="star3" title="text">3 stars</label>
+                    <input type="radio" id="star2" name="rate" value="2" class="star"/>
+                    <label for="star2" title="text">2 stars</label>
+                    <input type="radio" id="star1" name="rate" value="1" class="star"/>
+                    <label for="star1" title="text">1 star</label>
+                </div>
+                <div class="feedback-section">
+                    <label for="feedback-input" class="feedback-label">Feedback:</label>
+                    <textarea id="feedback-input" name="feedback-input" class="feedback-input" placeholder="Type your feedback here. Tell us how they mentor was in behavior, knowledge, etc!"></textarea>
+                </div>
+        
+                <button type="submit" class="submit-btn">Submit</button>
+            </form>
+        </div>
+    {% include 'footer.html' %}
+</div>
+</body>
+</html>

@@ -1,0 +1,839 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600italic,700,600,800,700italic,400italic,800italic");
+body {
+    min-height: 100vh;
+    height: 100%;
+    width: auto;
+    margin: 0;
+    padding: 0;
+}
+
+
+.home {
+    align-items: center;
+    background-color: var(--white);
+    border: 1px none;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.hidden,
+.hidden * {
+    pointer-events: none;
+    visibility: hidden;
+}
+
+.frame-1-1 {
+    display: flex;
+    justify-content: space-between; /* Aligns children on opposite ends */
+    align-items: center; /* Vertically centers children */
+    width: 100%; /* Ensures the container spans the full width of its parent */
+}
+
+.frame-6, .frame-7 {
+    display: flex;
+    align-items: center; /* Ensures content within these divs is also vertically centered */
+}
+
+.frame-6 {
+    margin-left: 30px;
+    margin-top: 30px;
+}
+
+.frame-7 {
+    margin-right: 30px;
+}
+
+
+.header-profile-2{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: #020202;
+    cursor: pointer;
+    font-family: var(--font-family-open_sans);
+    font-size: var(--font-size-l);
+    font-weight: 600;
+    letter-spacing: 0.9px;
+    line-height: normal;
+    text-align: center;
+    text-decoration: underline;
+    background-color: transparent;
+    border: none;
+    overflow: hidden;
+  }
+  
+.profile-image-2 {
+    width: 26px; /* Adjust size as needed */
+    height: 26px; /* Adjust size as needed */
+    border-radius: 50%; /* Makes the image circular */
+    margin-right: 6px; /* Adjust spacing between image and username as needed */
+    object-fit: cover; /* Ensures the image covers the area without losing aspect ratio */
+    border: 1px solid var(--black);
+  }
+
+.logo-container2 a {
+    display: block; /* Makes the <a> element a block for proper alignment */
+}
+
+.logo-container2 img {
+    height: auto; /* Maintains aspect ratio */
+    width:8vw;
+    max-width: 150px; /* Adjusts the logo size; change as needed */
+    min-width: 100px; /* Adjusts the logo size; change as needed */
+    transition: transform 0.3s ease; /* Adds a smooth transition on hover */
+}
+
+.logo-container2 img:hover {
+    transform: scale(1.05); /* Scales up the logo by 10% on hover */
+}
+
+.frame-7 .login, .frame-7 .rectangle-1 {
+    padding: 8px 16px; /* Adjusts padding for better appearance */
+    margin: 0 5px; /* Adds margin between login and register buttons if both are visible */
+    border: none;
+    border-radius: 4px; /* Optional: Adds rounded corners */
+    cursor: pointer;
+}
+
+.login {
+    color: #020202;
+    cursor: pointer;
+    font-family: var(--font-family-open_sans);
+    font-size: var(--font-size-l);
+    font-weight: 600;
+    letter-spacing: 0.9px;
+    line-height: normal;
+    text-align: center;
+    text-decoration: underline;
+    background-color: transparent;
+    border: none;
+    overflow: hidden;
+}
+
+/* Style for the overlap group if necessary */
+.overlap-group {
+    display: flex;
+    gap: 10px; /* Adjust space between buttons if needed */
+}
+
+.rectangle-1 {
+    background-color: var(--cinnabar);
+    border-radius: 20px;
+    box-shadow: 4px 4px 4px #00000080;
+    cursor: pointer;
+    color: var(--white);
+    font-family: var(--font-family-open_sans);
+    font-size: var(--font-size-l);
+    font-weight: 600;
+    letter-spacing: 0.9px;
+    text-align: center;
+    border-width: 0px;
+    transition: background-color 0.3s ease;
+}
+
+.rectangle-1:hover {
+    background-color: var(--cinnabar2);
+}
+
+.frame-2-home {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    padding: 0px 1px;
+    width: fit-content;
+}
+
+.frame-4 {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: fit-content;
+}
+
+.frame-15 {
+    align-items: center;
+    display: flex;
+    gap: 50px;
+    width: fit-content;
+    padding: 30px 30px
+}
+
+.lorem-ipsum-is-simpl-frame-13,
+.lorem-ipsum-is-simpl-frame-15 {
+    height: 149px;
+    letter-spacing: 0.45px;
+    line-height: normal;
+    width: 828px;
+}
+
+.ellipse {
+    background-color: var(--alto);
+    border-radius: 200px;
+    height: 400px;
+    min-width: 400px;
+}
+
+
+.frame-13 {
+    align-items: center;
+    display: flex;
+    gap: 49px;
+    width: fit-content;
+    padding: 30px 30px
+}
+
+.frame-14 {
+    align-items: center;
+    display: flex;
+    gap: 57px;
+    width: fit-content;
+    padding: 30px 30px
+}
+
+.lorem-ipsum-is-simpl-frame-14 {
+    height: 149px;
+    letter-spacing: 0.45px;
+    line-height: normal;
+    text-align: right;
+    width: 828px;
+}
+
+.lorem-ipsum-is-simpl-frame-14 {
+    height: 149px;
+    letter-spacing: 0.45px;
+    line-height: normal;
+    text-align: right;
+    width: 828px;
+}
+
+.frame-3 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--black-2);
+    background-image: url("background.jpg");
+    background-position: 50% 50%;
+    background-size: cover;
+    box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, .5);
+    width: 100%;
+    padding: 40px 0;
+}
+
+.frame-22 {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: fit-content;
+}
+
+.frame-11 {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    width: fit-content;
+}
+
+.name {
+    color: var(--white);
+    font-family: var(--font-family-open_sans);
+    font-size: var(--font-size-xxxl2);
+    font-style: italic;
+    font-weight: 800;
+    letter-spacing: 1.25px;
+    line-height: normal;
+    margin-top: -1px;
+    text-align: center;
+    width: fit-content;
+}
+
+.frame-2-frame,
+.frame-2-frame-11 {
+    background-color: var(--white);
+    border-radius: 90px;
+    height: 44px;
+    width: calc(200% - 30px); /* Adjusted for responsiveness */
+    max-width: 655px; /* Ensures maximum width does not exceed 655px */
+    position: relative;
+    box-shadow: 4px 4px 4px #00000080;
+    display: flex;
+    align-items: center;
+    padding: 0 20px 0 50px; /* Padding inside the container */
+}
+
+
+.icon2 {
+    height: 40px;
+    left: 10px;
+    object-fit: cover;
+    position: absolute;
+    top: 2px;
+    width: 40px;
+    opacity: 0.5;
+}
+
+.frame {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+    width: fit-content;
+}
+
+.search-your-mentor {
+    color: var(--white);
+    font-family: var(--font-family-open_sans);
+    font-size: 35px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    line-height: normal;
+    text-align: center;
+    width: fit-content;
+}
+
+.line-2 {
+    height: 3px;
+    width: 90%;
+}
+
+.frame-12 {
+    align-items: flex-start;
+    background-color: var(--green-haze);
+    border-radius: 20px;
+    box-shadow: 4px 4px 4px #00000080;
+    cursor: pointer;
+    display: flex;
+    gap: 10px;
+    padding: 10px 19px;
+    width: fit-content;
+    color: var(--white);
+    font-family: var(--font-family-open_sans);
+    font-size: var(--font-size-xl2);
+    font-weight: 600;
+    letter-spacing: 1px;
+    line-height: normal;
+    text-align: center;
+    border-width: 0px;
+    transition: background-color 0.3s ease;
+}
+
+.frame-12:hover {
+    background-color: var(--green-haze2);
+}
+
+.place-2 {
+    color: var(--white);
+    font-family: var(--font-family-open_sans);
+    font-size: var(--font-size-xxxl2);
+    font-style: italic;
+    font-weight: 800;
+    letter-spacing: 1.25px;
+    line-height: normal;
+    text-align: center;
+    width: fit-content;
+}
+
+.icon1 {
+    height: 30px;
+    left: 16px;
+    object-fit: cover;
+    position: absolute;
+    top: 7px;
+    width: 30px;
+    opacity: 0.5;
+}
+
+.title {
+    color: var(--black);
+    font-family: var(--font-family-open_sans);
+    font-size: 40px;
+    font-weight: 800;
+    letter-spacing: 1.95px;
+    line-height: normal;
+    margin-top: -1px;
+    text-align: center;
+    width: fit-content;
+    margin-bottom: 10px;
+}
+
+.get-to-talk-and-ask {
+    letter-spacing: 1px;
+    line-height: normal;
+    text-align: center;
+    width: fit-content;
+}
+
+.line-1 {
+    height: 3px;
+    min-width: 90%;
+}
+
+.frame-5 {
+    align-items: flex-end;
+    background-color: var(--black-2);
+    display: flex;
+    flex-direction: column;
+    gap: 51px;
+    width: fit-content;
+}
+
+.frame-19 {
+    align-items: center;
+    display: flex;
+    width: fit-content;
+}
+
+.rectangle {
+    background-color: var(--alto);
+    height: 40px;
+    min-width: 40px;
+}
+
+.copyright {
+    letter-spacing: 1px;
+    line-height: normal;
+    margin-top: -1px;
+    width: 517px;
+}
+
+.frame-21 {
+    align-items: center;
+    display: flex;
+    width: fit-content;
+}
+
+.frame-20 {
+    background-color: var(--alto);
+    height: 60px;
+    min-width: 80px;
+}
+
+.frame-1-2,
+.frame-1-3 {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    width: fit-content;
+}
+
+.frame-1-item {
+    letter-spacing: 1px;
+    line-height: normal;
+    width: fit-content;
+}
+
+.place-4 {
+    letter-spacing: 1.25px;
+    line-height: normal;
+    margin-top: -1px;
+    width: fit-content;
+}
+
+.place-3 {
+    letter-spacing: 1.25px;
+    line-height: normal;
+    text-align: center;
+    width: fit-content;
+}
+
+.email {
+    letter-spacing: 1px;
+    line-height: normal;
+    text-align: center;
+    width: fit-content;
+}
+
+.address {
+    letter-spacing: 1px;
+    line-height: normal;
+    text-align: center;
+    width: fit-content;
+}
+
+.input_box {
+    background-color: var(--white);
+    border: none; /* Removes border */
+    outline: none; /* Removes outline on focus */
+    height: 40px;
+    width: 100%; /* Makes input take available space */
+    font-size: var(--font-size-l2);
+    margin-left: 10px; /* Adjusts left margin */
+}
+
+
+.content-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px; /* Increases gap for better spacing */
+    padding: 20px;
+    max-width: 900px; /* Adjust as needed */
+    margin: auto; /* Centers the container */
+}
+
+.content-row {
+    display: flex;
+    align-items: center;
+    gap: 40px; /* Adjusts the space between the ellipse and text */
+    width: 100%;
+}
+
+.content-row.reverse {
+    flex-direction: row-reverse;
+}
+
+.circle-image {
+    width: 350px; /* Adjust based on your design */
+    height: 350px; /* Maintain the same value as width for a perfect circle */
+    border-radius: 50%; /* Makes the image circular */
+    object-fit: cover; /* Ensures the image covers the area without losing aspect ratio */
+}
+
+.content-heading {
+    font-size: 19px; /* Adjust the font size as needed */
+    color: var(--cinnabar); /* Example heading color */
+    margin-bottom: 5px; /* Spacing between heading and paragraph */
+}
+
+.content-text {
+    flex: 1;
+    font-size: 16px; /* Larger text for readability */
+    color: #333; /* Darker text for better contrast */
+    line-height: 1.6; /* Improves readability */
+}
+
+/* Additional styling */
+body {
+    font-family: 'Open Sans', sans-serif; /* Ensures consistency in typography */
+}
+
+
+.register-button {
+    align-items: flex-start;
+    background-color: var(--cinnabar);
+    border-radius: 30px;
+    box-shadow: 4px 4px 8px #00000080;
+    cursor: pointer;
+    display: flex;
+    gap: 10px;
+    padding: 12px 20px;
+    width: fit-content;
+    color: var(--white);
+    font-family: var(--font-family-open_sans);
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 1.4px;
+    line-height: normal;
+    margin-top: -1px;
+    text-align: center;
+    border-width: 0px;
+    transition: background-color 0.3s ease;
+}
+
+.register-button:hover {
+    background-color: var(--cinnabar2);
+}
+
+
+
+
+
+
+  .profiles-meet-our-mentors {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  
+  .profiles-meet-our-mentors-heading {
+    font-size: 24px;
+    color: #333; /* Adjust color as needed */
+  }
+
+  .profiles-frame {
+    width: 100%;
+    padding: 50px 0;
+    margin-top: 50px;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    background-color: #fffce9;
+  }
+  
+  .profiles-frame .profiles-div {
+    
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    position: relative;
+    flex: 0 0 auto;
+  }
+  
+  
+  .profiles-frame .profiles-div-2 {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    display: inline-flex;
+    position: relative;
+    flex: 0 0 auto;
+  }
+  
+  .profiles-frame .profiles-img {
+    position: relative;
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 100px;
+  }
+  
+  .profiles-frame .profiles-div-3 {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    flex: 0 0 auto;
+  }
+  
+  .profiles-frame .profiles-div-4 {
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    display: inline-flex;
+    position: relative;
+    flex: 0 0 auto;
+  }
+  
+  .profiles-frame .profiles-text-wrapper {
+    position: relative;
+    width: fit-content;
+    margin-top: -1px;
+    font-family: "Inter", Helvetica;
+    font-weight: 700;
+    font-style: italic;
+    color: #000000;
+    font-size: 24px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .profiles-frame .profiles-line {
+    position: relative;
+    width: 250px;
+    height: 1px;
+    object-fit: cover;
+  }
+  
+  .profiles-frame .profiles-div-5 {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    display: inline-flex;
+    position: relative;
+    flex: 0 0 auto;
+  }
+  
+  .profiles-frame .profiles-img-2 {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+  }
+
+  .profiles-frame .profiles-div-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 25px 25px;
+    position: relative;
+    flex: 0 0 auto;
+    background-color: #ffffff;
+    border-radius: 30px;
+    overflow: hidden;
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+    cursor: pointer; /* Changes cursor to pointer on hover */
+  }
+
+  .profiles-frame .profiles-div-wrapper:hover {
+    background-color: #f9f9f9; /* Lighter shade on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
+    transform: translateY(-5px); /* Slight lift */
+}
+  
+  .profiles-frame .profiles-text-wrapper-3 {    
+    position: relative;
+    width: 250px;
+    height: 29px;
+    padding-bottom: 10px;
+    font-family: "Inter", Helvetica;
+    font-weight: 700;
+    color: #000000;
+    font-size: 18px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .profiles-frame .profiles-text-wrapper-4 {
+    position: relative;
+    width: 250px;
+    height: 25px;
+    font-family: "Inter", Helvetica;
+    font-weight: 400;
+    font-style: italic;
+    color: #000000;
+    font-size: 17px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: normal;
+    margin-bottom: 10px;
+  }
+  
+
+
+  
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .content-row, .content-row.reverse {
+        flex-direction: column;
+        text-align: center; /* Centers text for smaller screens */
+    }
+    .circle-image {
+        margin-bottom: 10px; /* Adds space between the circle and text on small screens */
+        width: 250px; /* Adjust based on your design */
+        height: 250px; /* Maintain the same value as width for a perfect circle */
+    }
+
+    .content-heading {
+        font-size: 16px; /* Adjust the font size as needed */
+    }
+
+    .content-text {
+        font-size: 14px; /* Larger text for readability */
+    }
+
+    .content-row{
+        gap: 0px;
+    }
+
+    
+    .logo-container2 img {
+        height: auto; /* Maintains aspect ratio */
+        width:8vw;
+        max-width: 120px; /* Adjusts the logo size; change as needed */
+        min-width: 80px; /* Adjusts the logo size; change as needed */
+    }
+
+    .login, .rectangle-1 {
+        padding: 8px 16px; /* Smaller padding for smaller screens */
+        font-size: 14px; /* Smaller font size for better fit on smaller screens */
+    }
+
+    .title {
+        font-size: 26px; /* Smaller font size for better fit on smaller screens */
+    }
+
+    .get-to-talk-and-ask {
+        
+        font-size: 14px; /* Smaller font size for better fit on smaller screens */
+    }
+    
+    .search-your-mentor {
+        font-size: 26px; /* Smaller font size for better fit on smaller screens */
+    }
+
+    .place-2 {
+        font-size: 20px; /* Smaller font size for better fit on smaller screens */
+    }
+    .name {
+        font-size: 20px; /* Smaller font size for better fit on smaller screens */
+    }
+
+    
+    .frame-2-frame,
+    .frame-2-frame-11 {
+        width: calc(130%); /* Adjusts width on smaller screens */
+        max-width: 150%; /* Allows the container to fit smaller screens */
+        padding: 0 15px 0 35px; /* Padding inside the container */
+        height: 35px;
+    }
+
+    .input_box {
+        margin-left: 5px; /* Reduces left margin on smaller screens */
+        min-width: auto; /* Removes minimum width constraint */
+        height: 32px;
+        font-size: 13px;
+    }
+
+    .icon1 {
+        height: 20px;
+        left: 12px;
+        top: 6px;
+        width: 20px;
+    }
+
+    .icon2 {
+        height: 30px;
+        left: 8px;
+        top: 2px;
+        width: 30px;
+    }
+
+    .frame-12 {
+        border-radius: 15px;
+        gap: 8px;
+        padding: 8px 16px;
+        font-size: 15px;
+        letter-spacing: 0.5px;
+    }
+
+    
+    .register-button {
+        padding: 8px 16px; /* Reduced padding for a more compact appearance */
+        font-size: 16px; /* Smaller font size to fit smaller screens better */
+        border-radius: 20px; /* Adjusted for a sleeker look on smaller devices */
+        letter-spacing: 1px; /* Adjust letter spacing for smaller font size */
+    }
+
+  
+  .profiles-div {
+    flex-direction: column;
+  }
+
+  .profiles-div .profiles-div-wrapper:not(:first-child) {
+    order: 1; /* Moves one of the profile frames down */
+  }
+
+}
+
+
+@media (max-width: 500px) {
+  .frame-2-frame,
+  .frame-2-frame-11 {
+      width: calc(100%); /* Adjusts width on smaller screens */
+      max-width: 100%; /* Allows the container to fit smaller screens */
+      padding: 0 15px 0 35px; /* Padding inside the container */
+      height: 35px;
+  }
+
+  
+  .profiles-div {
+    flex-direction: column;
+  }
+
+  .profiles-div .profiles-div-wrapper {
+    order: 1; /* Ensures all profile frames are lined up vertically */
+  }
+
+}

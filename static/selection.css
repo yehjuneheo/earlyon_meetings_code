@@ -1,0 +1,1859 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600italic,700,600,800,700italic,400italic,800italic");
+.body {
+    height: 100vh;
+    width: 100%;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+
+.selection {
+    align-items: center;
+    background-color: var(--white);
+    border: 1px none;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.profile_screen {
+    align-items: center;
+    background-color: var(--white);
+    border: 1px none;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.hidden,
+.hidden * {
+    pointer-events: none;
+    visibility: hidden;
+}
+
+.logo {
+    color: var(--black);
+    font-family: var(--font-family-open_sans);
+    font-size: var(--font-size-xl2);
+    font-weight: 600;
+    letter-spacing: 1px;
+    line-height: normal;
+    text-align: center;
+    margin-top: -1px;
+    text-align: center;
+    width: fit-content;
+}
+
+.frame-85 {
+    background-color: var(--white);
+    border-radius: 90px;
+    height: 44px;
+    min-width: 399px;
+    position: relative;
+}
+
+.icon1 {
+    height: 30px;
+    left: 16px;
+    object-fit: cover;
+    position: absolute;
+    top: 7px;
+    width: 30px;
+    opacity: 0.5;
+}
+
+.frame-86 {
+    background-color: var(--white);
+    border-radius: 90px;
+    height: 44px;
+    min-width: 398px;
+    position: relative;
+}
+
+.icon2 {
+    height: 40px;
+    left: 10px;
+    object-fit: cover;
+    position: absolute;
+    top: 2px;
+    width: 40px;
+    opacity: 0.5;
+}
+
+.input_box {
+    background-color: var(--white);
+    border-width: 0px;
+    border: none;
+    outline: none;
+    height: 40px;
+    min-width: 300px;
+    margin-bottom: 35px;
+    margin-left: 60px;
+    font-size: var(--font-size-l2);
+}
+
+.input_box:hover {
+    background-color: var(--alto);
+}
+
+
+
+.frame-5 {
+    align-items: flex-end;
+    background-color: var(--black-2);
+    display: flex;
+    flex-direction: column;
+    gap: 51px;
+    padding: 12px 40px;
+    width: fit-content;
+}
+
+.frame-21 {
+    align-items: center;
+    display: flex;
+    gap: 507px;
+    width: fit-content;
+}
+
+.frame-1-2,
+.frame-1-3 {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    width: fit-content;
+}
+
+.place-3 {
+    letter-spacing: 1.25px;
+    line-height: normal;
+    margin-top: -1px;
+    text-align: center;
+    width: fit-content;
+}
+
+.email {
+    letter-spacing: 1px;
+    line-height: normal;
+    text-align: center;
+    width: fit-content;
+}
+
+.address {
+    letter-spacing: 1px;
+    line-height: normal;
+    text-align: center;
+    width: fit-content;
+}
+
+.place-4 {
+    letter-spacing: 1.25px;
+    line-height: normal;
+    margin-top: -1px;
+    width: fit-content;
+}
+
+.frame-1-item {
+    letter-spacing: 1px;
+    line-height: normal;
+    width: fit-content;
+}
+
+.frame-20 {
+    background-color: var(--alto);
+    height: 60px;
+    min-width: 80px;
+}
+
+.frame-19 {
+    align-items: center;
+    display: flex;
+    gap: 380px;
+    width: fit-content;
+}
+
+.copyright {
+    letter-spacing: 1px;
+    line-height: normal;
+    margin-top: -1px;
+    width: 517px;
+}
+
+.rectangle {
+    background-color: var(--alto);
+    height: 40px;
+    min-width: 40px;
+}
+
+.frame-80 {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 27px;
+    width: fit-content;
+}
+
+.mentors-at-university {
+    color: var(--black);
+    font-family: var(--font-family-open_sans);
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: 0.84px;
+    line-height: normal;
+    margin-top: -1px;
+    text-align: center;
+    width: fit-content;
+}
+
+.line-3 {
+    height: 2px;
+    width: 70vw;
+    max-width: 100%;;
+}
+
+.frame-79 {
+    background-color: #b6b6b6cc;
+    border-radius: 30px;
+    box-shadow: 4px 4px 8px #00000080;
+    height: 27px;
+    min-width: 180px;
+    position: relative;
+}
+
+.advanced-search {
+    color: var(--white);
+    font-family: var(--font-family-open_sans);
+    font-size: var(--font-size-s);
+    font-weight: 600;
+    left: 30px;
+    letter-spacing: 0.65px;
+    line-height: normal;
+    position: absolute;
+    text-align: center;
+    top: 3px;
+}
+
+.frame-144 {
+    border-radius: 30px;
+    height: 243px;
+    position: relative;
+    width: 843px;
+}
+
+.rectangle-36 {
+    background-color: var(--white);
+    border: 5px solid;
+    border-color: var(--alto);
+    border-radius: 30px;
+    cursor: pointer;
+    height: 243px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 843px;
+}
+
+.rectangle-36:hover {
+    background-color: var(--alto);
+}
+
+.frame-143 {
+    align-items: center;
+    display: flex;
+    left: 15px;
+    position: absolute;
+    top: 10px;
+    width: fit-content;
+    gap: 15px
+}
+
+.frame-145 {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    gap: 12px
+}
+
+.frame-147 {
+    align-items: center;
+    display: flex;
+    gap: 78px;
+    width: fit-content;
+}
+
+.frame-146 {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    gap: 12px
+}
+
+.ellipse-4 {
+    border-radius: 100px;
+    height: 200px;
+    min-width: 200px;
+}
+
+.frame-148 {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+}
+
+.my-university-name {
+    color: var(--black);
+    font-family: var(--font-family-open_sans);
+    font-size: var(--font-size-xxxl2);
+    font-weight: 700;
+    letter-spacing: 0.75px;
+    line-height: normal;
+    margin-top: -1px;
+    width: fit-content;
+}
+
+.my-major {
+    color: var(--black);
+    font-family: var(--font-family-open_sans);
+    font-size: var(--font-size-xxl2);
+    font-weight: 700;
+    letter-spacing: 0.66px;
+    line-height: normal;
+    width: fit-content;
+}
+
+.st-name {
+    letter-spacing: 0.6px;
+    line-height: normal;
+    width: fit-content;
+}
+
+.current-education-level {
+    color: var(--black);
+    font-family: var(--font-family-open_sans);
+    font-size: var(--font-size-l2);
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    line-height: normal;
+    margin-top: -1px;
+    width: fit-content;
+}
+
+.brief-introduction {
+    color: var(--black);
+    font-family: var(--font-family-open_sans);
+    font-size: var(--font-size-s);
+    font-weight: 400;
+    height: 133px;
+    letter-spacing: 0.39px;
+    line-height: normal;
+    width: 314px;
+}
+
+.see-more {
+    color: #626262;
+    font-family: var(--font-family-open_sans);
+    font-size: var(--font-size-xl2);
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: normal;
+    width: fit-content;
+}
+
+.frame-161 {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+    width: fit-content;
+}
+
+.line-4 {
+    margin-top: -2px;
+}
+
+.frame-152 {
+    align-items: center;
+    display: flex;
+    gap: 60px;
+    width: fit-content;
+}
+
+.ellipse-8 {
+    border-radius: 145px;
+    height: 290px;
+    min-width: 290px;
+}
+
+.frame-151 {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    width: fit-content;
+}
+
+.frame-149 {
+    align-items: flex-start;
+    display: flex;
+    gap: 8px;
+    width: fit-content;
+}
+
+.frame-1 {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: fit-content;
+}
+
+.my-university-name-1 {
+    letter-spacing: 1.05px;
+    width: fit-content;
+}
+
+.my-major-1 {
+    letter-spacing: 1.05px;
+    line-height: normal;
+    width: fit-content;
+}
+
+.current-education {
+    font-size: (--font-size-xxl);
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.brief_introduction_text {
+    height: 133px;
+    letter-spacing: 0.6px;
+    line-height: normal;
+    width: 1033px;
+}
+
+.frame-155 {
+    align-items: center;
+    display: flex;
+    gap: 150px;
+    width: fit-content;
+}
+
+.frame-154 {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    width: fit-content;
+}
+
+.additional-info {
+    letter-spacing: 0.75px;
+    width: fit-content;
+}
+
+.frame-153 {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    width: fit-content;
+}
+
+.my-minor {
+    letter-spacing: 0.66px;
+    line-height: normal;
+    margin-top: -1px;
+    width: fit-content;
+}
+
+.frame-153-item {
+    letter-spacing: 0.66px;
+    line-height: normal;
+    width: fit-content;
+}
+
+.additional-information {
+    height: 184px;
+    letter-spacing: 0.66px;
+    width: 460px;
+    line-height: normal;
+}
+
+.frame-158 {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: fit-content;
+}
+
+.frame-156 {
+    align-items: flex-end;
+    display: flex;
+    gap: 30px;
+    width: fit-content;
+}
+
+.available-times {
+    letter-spacing: 0.75px;
+    line-height: normal;
+    margin-top: -1px;
+    width: fit-content;
+}
+
+.rectangle-42 {
+    background-color: var(--white);
+    border: 1px solid;
+    border-color: var(--black);
+    height: 31px;
+    min-width: 96px;
+}
+
+.frame-157 {
+    align-items: flex-start;
+    display: flex;
+    gap: 45px;
+    width: fit-content;
+}
+
+.rectangle-40 {
+    background-color: var(--green-haze);
+    border-radius: 10px;
+    box-shadow: 4px 4px 4px #00000080;
+    cursor: pointer;
+    height: 40px;
+    min-width: 100px;
+}
+
+.rectangle-4 {
+    background-color: var(--green-haze);
+    border-radius: 10px;
+    box-shadow: 4px 4px 4px #00000080;
+    height: 40px;
+    min-width: 100px;
+}
+
+
+.frame-159 {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+    width: fit-content;
+}
+
+.reviews {
+    letter-spacing: 0.75px;
+    line-height: normal;
+    margin-top: -1px;
+    width: fit-content;
+}
+
+.anonymous-stars {
+    letter-spacing: 0.6px;
+    line-height: normal;
+    width: fit-content;
+}
+
+.feedback {
+    height: 60px;
+    letter-spacing: 0.6px;
+    line-height: normal;
+    width: 875px;
+}
+
+.frame-162 {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: fit-content;
+    margin-top: 30px;
+}
+
+.frame-160 {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: fit-content;
+}
+
+.other-suggestions {
+    color: var(--black);
+    font-family: var(--font-family-open_sans);
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: 0.84px;
+    line-height: normal;
+    margin-top: -1px;
+    text-align: center;
+    width: fit-content;
+}
+
+#searchForm {
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+    padding: 20px;
+}
+
+.profile_frame .profile_div-wrapper {
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px 20px;
+    background-color: #ffffff;
+    border-radius: 90px;
+    overflow: hidden;
+    border: 1px solid;
+    border-color: #008805;
+    display: inline-flex;
+    position: relative;
+    flex: 0 0 auto;
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
+  }
+  
+  .profile_frame .profile_text-wrapper-3 {
+    position: relative;
+    width: fit-content;
+    margin-top: -1px;
+    font-family: "Inter", Helvetica;
+    font-weight: 400;
+    color: #008805;
+    font-size: 17px;
+    letter-spacing: 0;
+    line-height: normal;
+    transition: color 0.3s ease; /* Smooth transition for text color */
+  }
+
+  .profile_frame .profile_div-wrapper:hover {
+    background-color: #008805; /* New background color on hover */
+  }
+
+#advancedSearchOptions {
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+#advancedSearchToggle {
+    background-color: #008805;
+    color: #ffffff;
+    border: 1px solid;
+    border-color: #008805;
+    border-radius: 30px;
+    box-shadow: 4px 4px 8px #00000080;
+    height: 27px;
+    min-width: 180px;
+    position: relative;
+    cursor: pointer;
+    transition: color 0.3s ease; /* Smooth transition for text color */
+}
+
+#advancedSearchToggle:hover {
+    color: #008805;
+    background-color: #ffffff;
+}
+
+#searchForm input[type="text"], #searchForm select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#searchForm button[type="submit"] {
+    width: 100%;
+    background-color: #28a745;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#searchForm button[type="submit"]:hover {
+    background-color: #218838;
+}
+
+
+
+.display_frame {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    background-color: #ffffff;
+    width: 100%;
+}
+  
+.display_frame .div {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  position: relative;
+  flex: 0 0 auto;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.display_frame .div-2 {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.display_frame .div-wrapper {
+  display: flex;
+  width: 80vw;
+  height: auto;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 40px 54px;
+  position: relative;
+  background-color: #ffffff;
+  border-radius: 60px;
+  overflow: hidden;
+  border: 1px solid;
+  border-color: #b7b7b7;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.display_frame .div-wrapper:hover {
+  transform: translateY(-5px); /* Slight lift */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adds a shadow for a 3D effect */
+}
+  
+.display_frame .text-wrapper {
+  position: absolute; /* This positions the element absolutely within its nearest positioned ancestor */
+  bottom: 30px; /* Aligns the element to the bottom of the .div-wrapper */
+  right: 30px;
+  width: fit-content;
+  font-family: "Inter", Helvetica;
+  font-weight: 400;
+  color: #585858;
+  font-size: 21px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.display_frame .div-3 {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  position: relative;
+}
+
+.display_frame .element-f {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 200px;
+}
+
+.display_frame .div-4 {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.display_frame .text-wrapper-2 {
+  position: relative;
+  width: fit-content;
+  margin-top: -1px;
+  font-family: "Inter", Helvetica;
+  font-weight: 700;
+  color: #000000;
+  font-size: 30px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.display_frame .div-5 {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 9px;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.display_frame .text-wrapper-3 {
+  position: relative;
+  width: fit-content;
+  margin-top: -1px;
+  font-family: "Inter", Helvetica;
+  font-weight: 400;
+  color: #555555;
+  font-size: 22px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.display_frame .div-6 {
+  display: flex; /* Changed to flex for a block-level flex container */
+  flex-direction: row; /* Aligns children horizontally */
+  align-items: stretch;
+  gap: 20px;
+  position: relative;
+  width: 80vw; /* This keeps .div-6 always at 80% of the viewport width */
+  flex-wrap: wrap;
+}
+
+.display_frame .frame-wrapper {
+  flex-grow: 1; /* Allows the element to grow and take up available space */
+  flex-basis: 0; /* Starts sizing from 0% of the flex container's size */
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 34px 50px;
+  position: relative;
+  background-color: #ffffff;
+  border-radius: 60px;
+  overflow: hidden;
+  border: 1px solid #b7b7b7;
+  max-width: 300px; /* Ensures it doesn't grow beyond the container's size */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.display_frame .frame-wrapper:hover {
+  transform: translateY(-5px); /* Slight lift */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adds a shadow for a 3D effect */
+}
+
+.display_frame .div-7 {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+  position: relative;
+  flex: 1; /* This makes each child flexible */
+}
+
+.display_frame .element-university-of {
+  position: relative;
+  width: auto;
+  height: 100px;
+  object-fit: cover;
+}
+
+.display_frame .div-8 {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 13px;
+  position: relative;
+  flex: 1; /* This makes each child flexible */
+}
+
+.display_frame .p {
+  position: relative;
+  min-width: 10%; /* Adjust based on your design's needs */
+  max-width: 220px; /* This was your original fixed width */
+  margin: 0 auto; /* Center the text blocks */
+  font-size: clamp(1rem, 2.5vw, 21px); 
+  margin-top: -1px;
+  font-family: "Inter", Helvetica;
+  font-weight: 700;
+  color: #000000;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+  margin-bottom: 0;
+  white-space: normal;
+  overflow-wrap: break-word;
+}
+
+.display_frame .text-wrapper-4 {
+  position: relative;
+  min-width: 10%; /* Adjust based on your design's needs */
+  max-width: 220px; /* This was your original fixed width */
+  margin: 0 auto; /* Center the text blocks */
+  font-size: clamp(1rem, 2.5vw, 20px); 
+  font-family: "Inter", Helvetica;
+  font-weight: 400;
+  font-style: italic;
+  color: #000000;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: normal;
+  overflow-wrap: break-word;
+}
+
+.display_frame .speedily-say-has-wrapper {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 13px;
+  flex: 1;
+  position: relative;
+  background-color: #ffffff;
+  border-radius: 60px;
+  overflow: hidden;
+  border: 1px solid;
+  border-color: #b7b7b7;
+  padding: 40px 45px;
+  min-height: 100%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.display_frame .speedily-say-has-wrapper:hover {
+  transform: translateY(-5px); /* Slight lift */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adds a shadow for a 3D effect */
+}
+
+.display_frame .speedily-say-has {
+  min-width: 50%; /* Adjust based on your design's needs */
+  max-width: 800px; /* This was your original fixed width */
+  margin: 0 auto; /* Center the text blocks */
+  font-size: clamp(1rem, 2.5vw, 16px); 
+  position: relative;
+  margin-top: -1px;
+  font-family: "Inter", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: normal;
+  overflow-wrap: break-word;
+}
+
+.display_frame .div-9 {
+  display: flex;
+  flex-direction: row; /* Align children horizontally */
+  align-items: stretch;
+  gap: 20px;
+  position: relative;
+  width: 80vw;
+  flex-wrap: wrap; 
+}
+
+.display_frame .div-10 {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  position: relative;
+  flex: 1; /* Gives equal importance to both divs */
+  max-width: fit-content; /* Prevents them from becoming too small */
+  min-width: 180px; /* Prevents them from becoming too small */
+}
+
+.display_frame .div-10.horizontal-layout {
+  flex-direction: row; /* Change flex direction to row */
+  justify-content: space-between; /* Adjust this as needed */
+  align-items: center; /* Align items vertically in the center */
+}
+
+
+.display_frame .frame-wrapper-2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  max-width: 170px;
+  max-height: 170px;
+  padding: 20px 35px;
+  position: relative;
+  flex: 0 0 auto;
+  background-color: #ffffff;
+  border-radius: 60px;
+  overflow: hidden;
+  border: 1px solid;
+  border-color: #b7b7b7;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.display_frame .frame-wrapper-2:hover {
+  transform: translateY(-5px); /* Slight lift */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adds a shadow for a 3D effect */
+}
+
+.display_frame .div-11 {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.display_frame .resume {
+  position: relative;
+  width: 100px;
+  height: 100px;
+}
+
+.display_frame .text-wrapper-5 {
+  position: relative;
+  width: fit-content;
+  font-family: "Inter", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 17px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.display_frame a {
+  text-decoration: none;
+}
+
+
+.display_frame .frame-wrapper-3 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 170px;
+  max-height: 170px;
+  gap: 10px;
+  padding: 20px 36px;
+  position: relative;
+  flex: 0 0 auto;
+  background-color: #ffffff;
+  border-radius: 60px;
+  overflow: hidden;
+  border: 1px solid;
+  border-color: #b7b7b7;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.display_frame .frame-wrapper-3:hover {
+  transform: translateY(-5px); /* Slight lift */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adds a shadow for a 3D effect */
+}
+
+.display_frame .div-12 {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 9px;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.display_frame .linkedin-logo {
+  position: relative;
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+}
+
+.display_frame .div-13 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px; /* Makes div-13 take the full width of its parent */
+  flex: 1; /* Gives equal importance to both divs */
+  min-width: 250px; /* Prevents them from becoming too small */
+}
+
+.display_frame .div-30 {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 21px;
+  position: relative;
+  flex: 0 0 auto;
+  max-width: 80vw;
+}
+
+
+.display_frame .fluent-in-english-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 5%;
+  box-sizing: border-box;
+  position: relative;
+  flex: 0 0 auto;
+  background-color: #ffffff;
+  border-radius: 60px;
+  overflow: hidden;
+  border: 1px solid;
+  border-color: #b7b7b7;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.display_frame .fluent-in-english-wrapper:hover {
+  transform: translateY(-5px); /* Slight lift */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adds a shadow for a 3D effect */
+}
+
+.display_frame .fluent-in-english {
+  position: relative;
+  width: 100%; /* Allows text to fill the space of its container */
+  text-align: left;
+  margin-top: -1px;
+  margin-bottom: 0;
+  font-family: "Inter", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: clamp(1rem, 2.5vw, 18px); 
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.display_frame .span {
+  font-family: "Inter", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: clamp(1rem, 2.5vw, 18px); 
+  letter-spacing: 0;
+}
+
+.display_frame .text-wrapper-6 {
+  font-weight: 700;
+}
+
+  
+.display_frame .speedily-say-has-wrapper-2::before,
+.display_frame .speedily-say-has-wrapper-2::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 20px; /* Adjust the height to control the size of the fading effect */
+  z-index: 2;
+  pointer-events: none; /* Make sure clicks go through the pseudo-element */
+}
+
+
+.display_frame .speedily-say-has-wrapper-2::before {
+  top: 0;
+  background-image: linear-gradient(to bottom, white, rgba(255, 255, 255, 0));
+}
+
+.display_frame .speedily-say-has-wrapper-2::after {
+  bottom: 0;
+  background-image: linear-gradient(to top, white, rgba(255, 255, 255, 0));
+}
+  
+
+.display_frame .speedily-say-has-wrapper-2 {
+  display: inline-flex;
+  flex-direction: column;
+  width: 100%; /* Adjust width to be responsive */
+  padding: 15px 3%;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  position: relative;
+  background-color: #ffffff;
+  border-radius: 60px;
+  overflow: hidden;
+  border: 1px solid;
+  border-color: #b7b7b7;
+  flex-grow: 1;
+  flex-basis: 0;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.display_frame .speedily-say-has-wrapper-2:hover {
+  transform: translateY(-5px); /* Slight lift */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adds a shadow for a 3D effect */
+}
+
+.display_frame .speedily-say-has-2 {
+  width: 100%; /* Allows text to fill the space of its container */
+  overflow-y: auto; /* Make content scrollable */
+  max-height: 100%; /* Set a maximum height to make the element scrollable */
+  text-align: left;
+  position: relative;
+  padding: 20px 20px;
+  font-size: clamp(1rem, 2.5vw, 16px); 
+  margin-top: -1px;
+  margin-bottom: 0;
+  font-family: "Inter", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  letter-spacing: 0;
+  line-height: normal;
+  
+}
+.display_frame .speedily-say-has-2 {
+  scrollbar-width: thin; /* 'auto' or 'thin' */
+  scrollbar-color: #2e2e2e transparent; /* thumb and track colors */
+}
+
+  
+  .display_frame .frame-wrapper-4 {
+    display: inline-flex;
+    flex-direction: column;
+    width: 80vw;
+    height: auto;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 34px 62px;
+    position: relative;
+    background-color: #ffffff;
+    border-radius: 60px;
+    overflow: hidden;
+    border: 1px solid;
+    border-color: #b7b7b7;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .display_frame .frame-wrapper-4:hover {
+    transform: translateY(-5px); /* Slight lift */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adds a shadow for a 3D effect */
+  }
+  
+  .display_frame .div-14 {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    flex-grow: 1;
+    flex-basis: 0;
+    gap: 20px;
+    position: relative;
+    flex: 0 0 auto;
+  }
+  
+  .display_frame .text-wrapper-7 {
+    position: relative;
+    width: fit-content;
+    margin-top: -1px;
+    font-family: "Inter", Helvetica;
+    font-weight: 700;
+    color: #000000;
+    font-size: 26px;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+    margin-bottom: 10px;
+  }
+  
+  .display_frame .div-15 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    position: relative;
+    flex: 0 0 auto;
+  }
+  
+  .display_frame .div-16 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 33px;
+    position: relative;
+  }
+  
+  
+  .display_frame .text-field {
+    align-items: center;
+    gap: 16px;
+    padding: 16px;
+    align-self: stretch;
+    flex: 0 0 auto;
+    background-color: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 2px solid;
+    border-color: #ececec;
+    box-shadow: 0px 0px 0px 4px #dddddd29;
+    display: flex;
+    position: relative;
+    min-width: 400px; /* Minimum width */
+    max-width: 600px; /* Maximum width */
+    font-size: 16px;
+  }
+  
+  .display_frame .text-wrapper-8 {
+    position: relative;
+    flex: 1;
+    margin-top: -2px;
+    font-family: "Neue Montreal-Regular", Helvetica;
+    font-weight: 400;
+    color: #2a2f3b;
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: 24px;
+  }
+  
+  .display_frame .chevron-up {
+    position: relative;
+    width: 24px;
+    height: 24px;
+  }
+  
+  .display_frame .div-wrapper-2 {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px 18px;
+    position: relative;
+    flex: 0 0 auto;
+    background-color: var(--green-haze);
+    box-shadow: 4px 4px 4px #00000080;
+    border-radius: 15px;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    transition: background-color 0.3s ease;
+  }
+
+.display_frame .div-wrapper-2:hover {
+    background-color: var(--green-haze2);
+}
+
+  
+  .display_frame .text-wrapper-9 {
+    position: relative;
+    width: fit-content;
+    margin-top: -1px;
+    font-family: "Inter", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 20px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 24px;
+    white-space: nowrap;
+  }
+  
+  .display_frame .div-17 {
+    display: inline-flex;
+    width:100%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 48px;
+    position: relative;
+    flex: 1;
+    flex-basis: 0;
+    flex-grow: 1;
+  }
+  
+  .display_frame .text-wrapper-10 {
+    position: relative;
+    width: fit-content;
+    margin-top: -1px;
+    font-family: "Inter", Helvetica;
+    font-weight: 700;
+    color: #000000;
+    font-size: 30px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 24px;
+    white-space: nowrap;
+  }
+  
+  .display_frame .div-18 {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    align-items: flex-start;
+    gap: 15px 26px;
+    position: relative;
+    flex-grow: 1;
+    flex-basis: 0;
+  }
+  
+  .display_frame .div-wrapper-3 {
+    display: flex;
+    width: 120px;
+    height: 45px;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 6px 13px;
+    position: relative;
+    background-color: #32ba38;
+    border: none;
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+  }
+
+  .display_frame .div-wrapper-3:hover {
+    background-color: #2a9f32; /* Slightly darker shade on hover */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow for "lifted" effect */
+    transform: translateY(-3px); /* Slight lift */
+
+  }
+  
+  .display_frame .text-wrapper-11 {
+    position: relative;
+    width: fit-content;
+    font-family: "Inter", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 18px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 24px;
+    white-space: nowrap;
+    background: none;
+    border: none;
+  }
+  
+  .display_frame .frame-wrapper-5 {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    width: 80vw;
+    padding: 44px 53px;
+    position: relative;
+    flex: 0 0 auto;
+    background-color: #ffffff;
+    border-radius: 60px;
+    overflow: hidden;
+    border: 1px solid;
+    border-color: #b7b7b7;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .display_frame .frame-wrapper-5:hover {
+    transform: translateY(-5px); /* Slight lift */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adds a shadow for a 3D effect */
+  }
+  
+  .display_frame .div-19 {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    position: relative;
+    flex: 1;
+  }
+  
+  .display_frame .div-20 {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+    position: relative;
+    flex: 1;
+  }
+  
+  .display_frame .div-21 {
+    display: inline-flex;
+    align-items: center;
+    gap: 50px;
+    position: relative;
+    flex: 1;
+  }
+  
+  .display_frame .ellipse {
+    position: relative;
+    width: 55.57px;
+    height: 55.57px;
+    object-fit: cover;
+  }
+  
+  .display_frame .div-22 {
+    gap: 4px;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+    flex: 0 0 auto;
+  }
+  
+  .display_frame .div-23 {
+    gap: 3px;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+    flex: 0 0 auto;
+  }
+  
+  .display_frame .text-wrapper-12 {
+    position: relative;
+    width: fit-content;
+    margin-top: -1px;
+    font-family: "Inter", Helvetica;
+    font-weight: 400;
+    color: #000000;
+    font-size: 15px;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+  }
+  
+  .display_frame .text-wrapper-13 {
+    position: relative;
+    width: fit-content;
+    font-family: "Inter", Helvetica;
+    font-weight: 400;
+    color: #676767;
+    font-size: 12px;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .display_frame .img {
+    position: relative;
+    flex: 0 0 auto;
+  }
+
+  .display_frame .speedily-say-has-wrapper-3 {
+    display: inline-flex;
+    flex-direction: column;
+    width: 100%; /* Adjust width to be responsive */
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background-color: #ffffff;
+    overflow: hidden;
+    flex-grow: 1;
+    flex-basis: 0;
+  }
+  
+  
+  .display_frame .speedily-say-has-3 {
+    width: 100%; /* Allows text to fill the space of its container */
+    text-align: left;
+    position: relative;
+    height: auto;
+    padding: 20px 20px;
+    margin-top: -1px;
+    margin-bottom: 0;
+    font-family: "Inter", Helvetica;
+    font-weight: 400;
+    color: #000000;
+    font-size: 14px;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .display_frame .line {
+    position: relative;
+    height: 1px;
+    object-fit: cover;
+    width: 100%;
+  }
+  
+  .flatpickr-calendar {
+    font-family: 'Open Sans', sans-serif;
+  }
+
+.display_frame .text-wrapper-123 {
+  position: relative;
+  width: fit-content;
+  margin-top: -1px;
+  font-family: "Inter", Helvetica;
+  font-weight: 600;
+  color: red;
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+
+}
+
+.display_frame .frame-wrapper-6 {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: center;
+  align-items: center;
+}
+
+#searchTimezoneButton {
+  background-color: var(--green-haze); /* Green */
+  color: white;
+  padding: 3px 3px;
+  font-size: 12px;
+  border: none;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 2px 2px 4px #00000080;
+  transition: background-color 0.3s ease;
+}
+#searchTimezoneButton:hover {
+  background-color: var(--green-haze2); 
+}
+
+.timezone-image {
+  width: 25px;
+  height: 25px;
+}
+
+.display_frame .modal2 {
+  display: none;
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+.display_frame .modal2-content {
+  background-color: #fefefe;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 100%; /* Could be more or less, depending on screen size */
+  border-radius: 5px; /* Rounded corners */
+  font-family: var(--font-family-open_sans)
+}
+
+.display_frame .close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.display_frame .close:hover,
+.display_frame .close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal2 h5 {
+  margin-bottom: 3px;
+}
+
+/* Dropdown and Button Styling inside the Modal */
+#timezoneDropdown {
+  width: 100%;
+  padding: 10px;
+  margin-top: 0px;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  box-sizing: border-box; /* Makes sure padding doesn't affect width */
+}
+
+#calculateTimezoneButton {
+  background-color: #008CBA; /* Blue */
+  color: white;
+  padding: 14px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+}
+
+#calculateTimezoneButton:hover {
+  background-color: #007B9E;
+}
+
+#timezoneMessage {
+  margin-top: 10px;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.display_frame .frame-wrapper-7 {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: center;
+}
+
+  /* Style for the message container */
+.no-slots-message {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #f8d7da; /* Light red background */
+  color: #721c24; /* Dark red text */
+  border: 1px solid #f5c6cb; /* Light red border */
+  border-radius: 5px;
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+}
+
+/* Style for the bold date */
+.bold-date {
+  font-weight: bold;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.profile_star_rating .profile_rate {
+  font-size: 22px; /* Adjust the size as needed */
+  color: #ccc; /* Color for unfilled star */
+  display: inline-block;
+}
+
+.profile_star_rating .profile_rate > span {
+  cursor: default;
+}
+
+/* The filled star color */
+.profile_star_rating .profile_rate {
+  color: #ffc700; /* Adjust filled star color as needed */
+}
+
+
+.pagination {
+  text-align: center;
+  padding: 20px 0;
+}
+
+.step-links {
+  display: inline-block;
+  font-family: var(--font-family-open_sans);
+}
+
+.step-links a, .step-links .current {
+  margin: 0 10px;
+  padding: 8px 12px;
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 5px;
+  color: #007bff;
+  text-decoration: none;
+}
+
+.step-links a:hover, .step-links a:focus {
+  background-color: #e9ecef;
+  color: #0056b3;
+  border-color: #dee2e6;
+  text-decoration: none;
+}
+
+.step-links .current {
+  font-weight: bold;
+  color: #495057;
+  background-color: #e2e6ea;
+  border-color: #dae0e5;
+}
+
+
+@media (max-width: 768px) {
+  .display_frame .div-6 {
+    flex-direction: column; /* Changes layout to a column */
+    align-items: stretch; /* Optional: Stretches items to fill the container width */
+  }
+  .display_frame .frame-wrapper {
+    max-width: 100%; /* Ensures it doesn't grow beyond the container's size */
+    flex-basis: auto;
+  }
+
+  .display_frame .text-wrapper {
+    bottom: 15px; /* Aligns the element to the bottom of the .div-wrapper */
+    right: 30px;
+    font-size: 15px;
+  } 
+
+  
+  .display_frame .div-9 {
+    flex-direction: column; /* Stacks div-10 and div-13 vertically */
+    align-items: center; /* Aligns items in the middle horizontally */
+}
+
+.display_frame .div-10 {
+    flex-direction: row; /* Makes children of div-10 line up next to each other */
+    align-items: stretch;
+    justify-content: center; /* Centers items horizontally */
+    flex-wrap: wrap; /* Allows items to wrap to next line if space is constrained */
+}
+
+.display_frame .div-10 > * {
+    flex: 1; /* Allows children of div-10 to grow and fill available space */
+    max-width: 100%; /* Ensures it doesn't grow beyond the container's size */
+    flex-basis: 1;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+ .display_frame .div-12, .display_frame .div-11{
+  flex-direction: row; /* Makes children of div-10 line up next to each other */
+}
+
+.display_frame .speedily-say-has-wrapper-2 {
+  flex-basis: auto;
+}
+
+.display_frame .text-field {
+  min-width: 200px; /* Minimum width */
+}
+.display_frame .div-21 {
+  flex-direction: column;
+  gap: 10px;
+}
+
+.display_frame .speedily-say-has-wrapper-3 {
+  flex-basis: auto;
+}
+
+.display_frame .div-13 {
+  width: 100%;
+}
+
+.frame-wrapper-2 .text-wrapper-5,
+.frame-wrapper-3 .text-wrapper-5 {
+  display: none; /* Hide the text on small screens */
+}
+
+.frame-wrapper-2, .frame-wrapper-3{
+  height: 120px;
+}
+
+}
+
+@media (max-width: 450px) {
+  .pagination {
+      padding: 10px 0;
+  }
+
+  .step-links a, .step-links .current {
+      margin: 0 5px; /* Reduce margin for smaller screens */
+      padding: 6px 8px; /* Reduce padding for smaller screens */
+      font-size: 14px; /* Optional: adjust font size for smaller screens */
+  }
+
+  .display_frame .div-16 {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .display_frame .text-wrapper-10 {
+    font-size: 24px;
+  }
+
+  .display_frame .text-wrapper-123 {
+    font-size: 16px;
+  }
+
+  .display_frame .div-wrapper-3 {
+    width: 100px;
+    height: 40px;
+  }
+}

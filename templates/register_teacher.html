@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content=
+        "width=device-width, initial-scale=1.0">
+    
+    <title>
+        Register Mentor - EarlyOn Meetings
+    </title>
+    <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
+
+    <link rel="stylesheet" href="{% static 'styleguide.css' %}">
+    <link rel="stylesheet" href="{% static 'register_teacher.css' %}">
+
+    
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+
+
+    <script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const input = document.getElementById('university-search');
+            const dropdownList = document.getElementById('university-list');
+        
+            input.addEventListener('input', function() {
+                fetch(`/university-autocomplete/?term=${encodeURIComponent(this.value)}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        dropdownList.innerHTML = ''; // Clear existing items
+                        if(data.length) {
+                            dropdownList.style.display = 'block'; // Show dropdown
+                        } else {
+                            dropdownList.style.display = 'none'; // Hide dropdown
+                        }
+                        data.forEach(name => {
+                            let item = document.createElement('div');
+                            item.classList.add('dropdown-item');
+                            item.textContent = capitalizeWords(name); // Use the capitalize function
+                            item.onclick = function() {
+                                input.value = this.textContent; // Set input value
+                                dropdownList.style.display = 'none'; // Hide dropdown
+                            };
+                            dropdownList.appendChild(item);
+                        });
+                    });
+            });
+        
+            // Hide dropdown when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!input.contains(e.target) && !dropdownList.contains(e.target)) {
+                    dropdownList.style.display = 'none';
+                }
+            });
+            function capitalizeWords(str) {
+                return str.toLowerCase().replace(/\b(\w)/g, s => s.toUpperCase());
+            }
+        });
+
+        $(document).ready(function() {
+            $('#major-select').select2({
+                ajax: {
+                    url: '/major-autocomplete/',
+                    dataType: 'json',
+                    delay: 250,
+                    data: function(params) {
+                        return {
+                            term: params.term, // search term
+                            page: params.page
+                        };
+                    },
+                    processResults: function(data, params) {
+                        params.page = params.page || 1;
+                        return {
+                            results: data.map(function(item) { return {id: item, text: item}; }),
+                        };
+                    },
+                    cache: true
+                },
+                minimumInputLength: 1,
+                placeholder: "Search and select majors",
+                allowClear: true
+            });
+        });
+
+        $(document).ready(function() {
+            // Initialize Select2 on #languages-select
+            $('#languages-select').select2({
+                placeholder: "Select languages",
+                allowClear: true
+            });
+            // Append options to the select
+            languages.forEach(function(language) {
+                var option = new Option(language.text, language.id, false, false);
+                $('#languages-select').append(option).trigger('change');
+            });
+        
+            // Set the value and trigger change event to display the selected options
+            $('#languages-select').val(['en', 'es']).trigger('change');
+        });
+        
+        </script>
+
+        <script>
+          function checkDeviceType() {
+              var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+              if (isMobile) {
+                  document.getElementById('availability-table').style.display = 'none';
+                  document.getElementById('mobile-message').style.display = 'block';
+              } else {
+                  document.getElementById('mobile-message').style.display = 'none';
+              }
+          }
+      
+          window.onload = checkDeviceType; // Run the function on page load
+      </script>
+
+
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-33Y8RZDE69"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-33Y8RZDE69');
+</script>
+<body>
+    <div class="logo-container">
+        <a href="{% url 'home' %}">
+            <img src="{% static 'earlyon_color_logo.png' %}" alt="Logo" class="logo"/>
+        </a>
+    </div>
+    <div class="register-mentor screen">
+        <div class="frame-70">
+            <div class="frame-48">
+                <h1 class="title">Create a Mentor Account</h1>
+                <img class="line-3" src="{% static 'line.png' %}" alt="Line 3"/>
+            </div>
+            {% for message in messages %}
+            <h5>{{message}}</h5>
+            {% endfor %}
+            <form method="POST" action="register_teacher" class="form" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="frame">
+                    <div class="first-name opensans-semi-bold-white-17px">
+                        <span class="opensans-semi-bold-black-17px">First Name</span>
+                        <span class="opensans-semi-bold-red-17px">*</span>
+                    </div>
+                    <input type="text" name="firstname" class="rectangle" placeholder="First Name" required/>
+                </div>
+                <div class="frame">
+                    <div class="last-name opensans-semi-bold-white-17px">
+                        <span class="opensans-semi-bold-black-17px">Last Name</span>
+                        <span class="opensans-semi-bold-red-17px">*</span>
+                    </div>
+                    <input type="text" name="lastname" class="rectangle" placeholder="Last Name" required/>
+                </div>
+                <div class="frame">
+                    <div class="username opensans-semi-bold-white-17px">
+                        <span class="opensans-semi-bold-black-17px">Username</span>
+                        <span class="opensans-semi-bold-red-17px">*</span>
+                    </div>
+                    <div class="username_div">
+                        <input type="text" name="username" id="id_username" class="rectangle_1" placeholder="Username" required/>
+                        <div id="username_error"></div>
+                    </div>
+                </div>
+                <div class="frame">
+                    <div class="gender opensans-semi-bold-white-17px">
+                        <span class="opensans-semi-bold-black-17px">Gender</span>
+                        <span class="opensans-semi-bold-red-17px">*</span>
+                    </div>
+                    <select name="gender" class="rectangle" required>
+                        <option selected="selected" disabled>Select your gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="genderqueer">Genderqueer / genderfluid</option>
+                        <option value="nonbinary">Nonbinary</option>
+                        <option value="transgender">Transgender</option>
+                        <option value="twospirit">Two-spirit</option>
+                        <option value="other">Other</option>
+                        <option value="noresponse">Prefer not to respond</option>
+                    </select>
+                </div>
+                <div class="frame">
+                    <div class="university opensans-semi-bold-white-17px">
+                        <span class="opensans-semi-bold-black-17px">University</span>
+                        <span class="opensans-semi-bold-red-17px">*</span>
+                    </div>
+                    <input name = "university" class = "rectangle" type="text" id="university-search" list="university-list" placeholder="Search Universities" autocomplete="off" required>
+                    <datalist id="university-list" class="dropdown-list-2"></datalist>
+                </div>
+                <div class="frame">
+                    <div class="university-email opensans-semi-bold-white-17px">
+                        <span class="opensans-semi-bold-black-17px">University Email</span>
+                        <span class="opensans-semi-bold-red-17px">*</span>
+                    </div>
+                    <input type="text" name="email" class="rectangle" placeholder="University Email (.edu)" required/>
+                </div>
+                <div class="frame2">
+                    <div class="major-select-all opensans-semi-bold-white-17px">
+                        <span class="opensans-semi-bold-black-17px">Major (Select All)</span>
+                        <span class="opensans-semi-bold-red-17px">*</span>
+                    </div>
+                    <select id="major-select" class="rectangle" multiple="multiple" name="majors" required></select>
+                </div>
+                <div class="frame">
+                    <div class="current-education-level opensans-semi-bold-white-17px">
+                        <span class="opensans-semi-bold-black-17px">Current Education Level</span>
+                        <span class="opensans-semi-bold-red-17px">*</span>
+                    </div>
+                    <select name="education_level" class="rectangle" required>
+                        <option selected="selected" disabled>Select Current/Pursuing Education Level</option>
+                        <option value="Associate">Associate</option>
+                        <option value="Bachelor's">Bachelor's</option>
+                        <option value="Master's">Master's</option>
+                        <option value="PhD">PhD</option>
+                    </select>
+                </div>
+                
+                <div class="frame">
+                    <div class="current-grade-level opensans-semi-bold-white-17px">
+                        <span class="opensans-semi-bold-black-17px">(Optional) Current Grade Level</span>
+                    </div>
+                    <select name="grade_level" class="rectangle">
+                        <option selected="selected" disabled>Select Current Grade Level</option>
+                        <option value="Freshman">Freshman</option>
+                        <option value="Sophomore">Sophomore</option>
+                        <option value="Junior">Junior</option>
+                        <option value="Senior">Senior</option>
+                        <option value="Graduated">Graduated</option>
+                    </select>
+                </div>
+                <div class="frame">
+                    <!-- Timezone selection -->
+                    <div class="form-group">
+                        <label for="timezone">Select Timezone:</label>
+                        <select name="timezone" id="timezone" class="form-control" required>
+                            {% for tz in timezones %}
+                            <option value="{{ tz }}" {% if tz == "Etc/GMT-5" %}selected{% endif %}>{{ tz }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="timezone">Select Available Timeslots:</label>
+                        <div id="mobile-message" style="display: none; background-color: #000; color: white; text-align: center; padding: 20px; box-sizing: border-box; width: 100%;">
+                            <p>This feature is optimized for desktop use and is currently not supported on mobile devices.<br>
+                            Please access this part from a computer after you sign up to select a time.</p>
+                        </div>
+                    <table id="availability-table">
+                        <tr>
+                          <th>Time/Day</th>
+                          <th>Sun</th>
+                          <th>Mon</th>
+                          <th>Tue</th>
+                          <th>Wed</th>
+                          <th>Thu</th>
+                          <th>Fri</th>
+                          <th>Sat</th>
+                        </tr>
+                        <tr class="hour">
+                          <td>12:00 AM</td>
+                          <td data-time="00:00" data-day="SUN" class="availability_time_slot"></td>
+                          <td data-time="00:00" data-day="MON" class="availability_time_slot"></td>
+                          <td data-time="00:00" data-day="TUE" class="availability_time_slot"></td>
+                          <td data-time="00:00" data-day="WED" class="availability_time_slot"></td>
+                          <td data-time="00:00" data-day="THU" class="availability_time_slot"></td>
+                          <td data-time="00:00" data-day="FRI" class="availability_time_slot"></td>
+                          <td data-time="00:00" data-day="SAT" class="availability_time_slot"></td>
+                        </tr>
+                        <tr class="half-hour">
+                          <td>12:30 AM</td>
+                          <td data-time="00:30" data-day="SUN" class="availability_time_slot"></td>
+                          <td data-time="00:30" data-day="MON" class="availability_time_slot"></td>
+                          <td data-time="00:30" data-day="TUE" class="availability_time_slot"></td>
+                          <td data-time="00:30" data-day="WED" class="availability_time_slot"></td>
+                          <td data-time="00:30" data-day="THU" class="availability_time_slot"></td>
+                          <td data-time="00:30" data-day="FRI" class="availability_time_slot"></td>
+                          <td data-time="00:30" data-day="SAT" class="availability_time_slot"></td>
+                        </tr>
+                        <tr class="hour">
+                          <td>01:00 AM</td>
+                          <td data-time="01:00" data-day="SUN" class="availability_time_slot"></td>
+                          <td data-time="01:00" data-day="MON" class="availability_time_slot"></td>
+                          <td data-time="01:00" data-day="TUE" class="availability_time_slot"></td>
+                          <td data-time="01:00" data-day="WED" class="availability_time_slot"></td>
+                          <td data-time="01:00" data-day="THU" class="availability_time_slot"></td>
+                          <td data-time="01:00" data-day="FRI" class="availability_time_slot"></td>
+                          <td data-time="01:00" data-day="SAT" class="availability_time_slot"></td>
+                        </tr>
+                        <tr class="half-hour">
+                          <td>01:30 AM</td>
+                          <td data-time="01:30" data-day="SUN" class="availability_time_slot"></td>
+                          <td data-time="01:30" data-day="MON" class="availability_time_slot"></td>
+                          <td data-time="01:30" data-day="TUE" class="availability_time_slot"></td>
+                          <td data-time="01:30" data-day="Wed" class="availability_time_slot"></td>
+                          <td data-time="01:30" data-day="THU" class="availability_time_slot"></td>
+                          <td data-time="01:30" data-day="FRI" class="availability_time_slot"></td>
+                          <td data-time="01:30" data-day="SAT" class="availability_time_slot"></td>
+                        </tr>
+                        <tr class="hour">
+                          <td>02:00 AM</td>
+                          <td data-time="02:00" data-day="SUN" class="availability_time_slot"></td>
+                          <td data-time="02:00" data-day="MON" class="availability_time_slot"></td>
+                          <td data-time="02:00" data-day="TUE" class="availability_time_slot"></td>
+                          <td data-time="02:00" data-day="WED" class="availability_time_slot"></td>
+                          <td data-time="02:00" data-day="THU" class="availability_time_slot"></td>
+                          <td data-time="02:00" data-day="FRI" class="availability_time_slot"></td>
+                          <td data-time="02:00" data-day="SAT" class="availability_time_slot"></td>
+                        </tr>
+                        <tr class="half-hour">
+                          <td>02:30 AM</td>
+                          <td data-time="02:30" data-day="SUN" class="availability_time_slot"></td>
+                          <td data-time="02:30" data-day="MON" class="availability_time_slot"></td>
+                          <td data-time="02:30" data-day="TUE" class="availability_time_slot"></td>
+                          <td data-time="02:30" data-day="WED" class="availability_time_slot"></td>
+                          <td data-time="02:30" data-day="THU" class="availability_time_slot"></td>
+                          <td data-time="02:30" data-day="FRI" class="availability_time_slot"></td>
+                          <td data-time="02:30" data-day="SAT" class="availability_time_slot"></td>
+                        </tr>
+                        <tr class="hour">
+                          <td>03:00 AM</td>
+                          <td data-time="03:00" data-day="SUN" class="availability_time_slot"></td>
+                          <td data-time="03:00" data-day="MON" class="availability_time_slot"></td>
+                          <td data-time="03:00" data-day="TUE" class="availability_time_slot"></td>
+                          <td data-time="03:00" data-day="WED" class="availability_time_slot"></td>
+                          <td data-time="03:00" data-day="THU" class="availability_time_slot"></td>
+                          <td data-time="03:00" data-day="FRI" class="availability_time_slot"></td>
+                          <td data-time="03:00" data-day="SAT" class="availability_time_slot"></td>
+                        </tr>
+                        <tr class="half-hour">
+                          <td>03:30 AM</td>
+                          <td data-time="03:30" data-day="SUN" class="availability_time_slot"></td>
+                          <td data-time="03:30" data-day="MON" class="availability_time_slot"></td>
+                          <td data-time="03:30" data-day="TUE" class="availability_time_slot"></td>
+                          <td data-time="03:30" data-day="WED" class="availability_time_slot"></td>
+                          <td data-time="03:30" data-day="THU" class="availability_time_slot"></td>
+                          <td data-time="03:30" data-day="FRI" class="availability_time_slot"></td>
+                          <td data-time="03:30" data-day="SAT" class="availability_time_slot"></td>
+                        </tr>
+                        <tr class="hour">
+                          <td>04:00 AM</td>
+                          <td data-time="04:00" data-day="SUN" class="availability_time_slot"></td>
+                          <td data-time="04:00" data-day="MON" class="availability_time_slot"></td>
+                          <td data-time="04:00" data-day="TUE" class="availability_time_slot"></td>
+                          <td data-time="04:00" data-day="WED" class="availability_time_slot"></td>
+                          <td data-time="04:00" data-day="THU" class="availability_time_slot"></td>
+                          <td data-time="04:00" data-day="FRI" class="availability_time_slot"></td>
+                          <td data-time="04:00" data-day="SAT" class="availability_time_slot"></td>
+                        </tr>
+                        <tr class="half-hour">
+                          <td>04:30 AM</td>
+                          <td data-time="04:30" data-day="SUN" class="availability_time_slot"></td>
+                          <td data-time="04:30" data-day="MON" class="availability_time_slot"></td>
+                          <td data-time="04:30" data-day="TUE" class="availability_time_slot"></td>
+                          <td data-time="04:30" data-day="WED" class="availability_time_slot"></td>
+                          <td data-time="04:30" data-day="THU" class="availability_time_slot"></td>
+                          <td data-time="04:30" data-day="FRI" class="availability_time_slot"></td>
+                          <td data-time="04:30" data-day="SAT" class="availability_time_slot"></td>
+                        </tr>
+                        <tr class="hour">
+                          <td>05:00 AM</td>
+                          <td data-time="05:00" data-day="SUN" class="availability_time_slot"></td>
+                          <td data-time="05:00" data-day="MON" class="availability_time_slot"></td>
+                          <td data-time="05:00" data-day="TUE" class="availability_time_slot"></td>
+                          <td data-time="05:00" data-day="WED" class="availability_time_slot"></td>
+                          <td data-time="05:00" data-day="THU" class="availability_time_slot"></td>
+                          <td data-time="05:00" data-day="FRI" class="availability_time_slot"></td>
+                          <td data-time="05:00" data-day="SAT" class="availability_time_slot"></td>
+                        </tr>
+                        <tr class="half-hour">
+                          <td>05:30 AM</td>
+                          <td data-time="05:30" data-day="SUN" class="availability_time_slot"></td>
+                          <td data-time="05:30" data-day="MON" class="availability_time_slot"></td>
+                          <td data-time="05:30" data-day="TUE" class="availability_time_slot"></td>
+                          <td data-time="05:30" data-day="WED" class="availability_time_slot"></td>
+                          <td data-time="05:30" data-day="THU" class="availability_time_slot"></td>
+                          <td data-time="05:30" data-day="FRI" class="availability_time_slot"></td>
+                          <td data-time="05:30" data-day="SAT" class="availability_time_slot"></td>
+                        </tr>
+                        <tr class="hour">
+                          <td>06:00 AM</td>
+                          <td data-time="06:00" data-day="SUN" class="availability_time_slot"></td>
+                          <td data-time="06:00" data-day="MON" class="availability_time_slot"></td>
+                          <td data-time="06:00" data-day="TUE" class="availability_time_slot"></td>
+                          <td data-time="06:00" data-day="WED" class="availability_time_slot"></td>
+                          <td data-time="06:00" data-day="THU" class="availability_time_slot"></td>
+                          <td data-time="06:00" data-day="FRI" class="availability_time_slot"></td>
+                          <td data-time="06:00" data-day="SAT" class="availability_time_slot"></td>
+                        </tr>
+                        <tr class="half-hour">
+                          <td>06:30 AM</td>
+                          <td data-time="06:30" data-day="SUN" class="availability_time_slot"></td>
+                          <td data-time="06:30" data-day="MON" class="availability_time_slot"></td>
+                          <td data-time="06:30" data-day="TUE" class="availability_time_slot"></td>
+                          <td data-time="06:30" data-day="WED" class="availability_time_slot"></td>
+                          <td data-time="06:30" data-day="THU" class="availability_time_slot"></td>
+                          <td data-time="06:30" data-day="FRI" class="availability_time_slot"></td>
+                          <td data-time="06:30" data-day="SAT" class="availability_time_slot"></td>
+                        </tr>
+                        <tr class="hour">
+                          <td>07:00 AM</td>
+                          <td data-time="07:00" data-day="SUN" class="availability_time_slot"></td>
+                          <td data-time="07:00" data-day="MON" class="availability_time_slot"></td>
+                          <td data-time="07:00" data-day="TUE" class="availability_time_slot"></td>
+                          <td data-time="07:00" data-day="WED" class="availability_time_slot"></td>
+                          <td data-time="07:00" data-day="THU" class="availability_time_slot"></td>
+                          <td data-time="07:00" data-day="FRI" class="availability_time_slot"></td>
+                          <td data-time="07:00" data-day="SAT" class="availability_time_slot"></td>
+                        </tr>
+                        <tr class="half-hour">
+                          <td>07:30 AM</td>
+                          <td data-time="07:30" data-day="SUN" class="availability_time_slot"></td>
+                          <td data-time="07:30" data-day="MON" class="availability_time_slot"></td>
+                          <td data-time="07:30" data-day="TUE" class="availability_time_slot"></td>
+                          <td data-time="07:30" data-day="WED" class="availability_time_slot"></td>
+                          <td data-time="07:30" data-day="THU" class="availability_time_slot"></td>
+                          <td data-time="07:30" data-day="FRI" class="availability_time_slot"></td>
+                          <td data-time="07:30" data-day="SAT" class="availability_time_slot"></td>
+                        </tr>
+                        <tr class="hour">
+                          <td>08:00 AM</td>
+                          <td data-time="08:00" data-day="SUN" class="availability_time_slot"></td>
+                          <td data-time="08:00" data-day="MON" class="availability_time_slot"></td>
+                          <td data-time="08:00" data-day="TUE" class="availability_time_slot"></td>
+                          <td data-time="08:00" data-day="WED" class="availability_time_slot"></td>
+                          <td data-time="08:00" data-day="THU" class="availability_time_slot"></td>
+                          <td data-time="08:00" data-day="FRI" class="availability_time_slot"></td>
+                          <td data-time="08:00" data-day="SAT" class="availability_time_slot"></td>
+                        </tr>
+                        <tr class="half-hour">
+                          <td>08:30 AM</td>
+                          <td data-time="08:30" data-day="SUN" class="availability_time_slot"></td>
+                          <td data-time="08:30" data-day="MON" class="availability_time_slot"></td>
+                          <td data-time="08:30" data-day="TUE" class="availability_time_slot"></td>
+                          <td data-time="08:30" data-day="WED" class="availability_time_slot"></td>
+                          <td data-time="08:30" data-day="THU" class="availability_time_slot"></td>
+                          <td data-time="08:30" data-day="FRI" class="availability_time_slot"></td>
+                          <td data-time="08:30" data-day="SAT" class="availability_time_slot"></td>
+                        </tr>
+                        <tr class="hour">
+                          <td>09:00 AM</td>
+                          <td data-time="09:00" data-day="SUN" class="availability_time_slot"></td>
+                          <td data-time="09:00" data-day="MON" class="availability_time_slot"></td>
+                          <td data-time="09:00" data-day="TUE" class="availability_time_slot"></td>
+                          <td data-time="09:00" data-day="WED" class="availability_time_slot"></td>
+                          <td data-time="09:00" data-day="THU" class="availability_time_slot"></td>
+                          <td data-time="09:00" data-day="FRI" class="availability_time_slot"></td>
+                          <td data-time="09:00" data-day="SAT" class="availability_time_slot"></td>
+                        </tr>
+                        <tr class="half-hour">
+                          <td>09:30 AM</td>
+                          <td data-time="09:30" data-day="SUN" class="availability_time_slot"></td>
+                          <td data-time="09:30" data-day="MON" class="availability_time_slot"></td>
+                          <td data-time="09:30" data-day="TUE" class="availability_time_slot"></td>
+                          <td data-time="09:30" data-day="WED" class="availability_time_slot"></td>
+                          <td data-time="09:30" data-day="THU" class="availability_time_slot"></td>
+                          <td data-time="09:30" data-day="FRI" class="availability_time_slot"></td>
+                          <td data-time="09:30" data-day="SAT" class="availability_time_slot"></td>
+                        </tr>
+                        <tr class="hour">
+                          <td>10:00 AM</td>
+                          <td data-time="10:00" data-day="SUN" class="availability_time_slot"></td>
+                          <td data-time="10:00" data-day="MON" class="availability_time_slot"></td>
+                          <td data-time="10:00" data-day="TUE" class="availability_time_slot"></td>
+                          <td data-time="10:00" data-day="WED" class="availability_time_slot"></td>
+                          <td data-time="10:00" data-day="THU" class="availability_time_slot"></td>
+                          <td data-time="10:00" data-day="FRI" class="availability_time_slot"></td>
+                          <td data-time="10:00" data-day="SAT" class="availability_time_slot"></td>
+                        </tr>
+                        <tr class="half-hour">
+                          <td>10:30 AM</td>
+                          <td data-time="10:30" data-day="SUN" class="availability_time_slot"></td>
+                          <td data-time="10:30" data-day="MON" class="availability_time_slot"></td>
+                          <td data-time="10:30" data-day="TUE" class="availability_time_slot"></td>
+                          <td data-time="10:30" data-day="WED" class="availability_time_slot"></td>
+                          <td data-time="10:30" data-day="THU" class="availability_time_slot"></td>
+                          <td data-time="10:30" data-day="FRI" class="availability_time_slot"></td>
+                          <td data-time="10:30" data-day="SAT" class="availability_time_slot"></td>
+                        </tr>
+                        <tr class="hour">
+                          <td>11:00 AM</td>
+                          <td data-time="11:00" data-day="SUN" class="availability_time_slot"></td>
+                          <td data-time="11:00" data-day="MON" class="availability_time_slot"></td>
+                          <td data-time="11:00" data-day="TUE" class="availability_time_slot"></td>
+                          <td data-time="11:00" data-day="WED" class="availability_time_slot"></td>
+                          <td data-time="11:00" data-day="THU" class="availability_time_slot"></td>
+                          <td data-time="11:00" data-day="FRI" class="availability_time_slot"></td>
+                          <td data-time="11:00" data-day="SAT" class="availability_time_slot"></td>
+                        </tr>
+                        <tr class="half-hour">
+                          <td>11:30 AM</td>
+                          <td data-time="11:30" data-day="SUN" class="availability_time_slot"></td>
+                          <td data-time="11:30" data-day="MON" class="availability_time_slot"></td>
+                          <td data-time="11:30" data-day="TUE" class="availability_time_slot"></td>
+                          <td data-time="11:30" data-day="WED" class="availability_time_slot"></td>
+                          <td data-time="11:30" data-day="THU" class="availability_time_slot"></td>
+                          <td data-time="11:30" data-day="FRI" class="availability_time_slot"></td>
+                          <td data-time="11:30" data-day="SAT" class="availability_time_slot"></td>
+                        </tr>
+                        <tr class="hour">
+                          <td>12:00 PM</td>
+                          <td data-time="12:00" data-day="SUN" class="availability_time_slot"></td>
+                          <td data-time="12:00" data-day="MON" class="availability_time_slot"></td>
+                          <td data-time="12:00" data-day="TUE" class="availability_time_slot"></td>
+                          <td data-time="12:00" data-day="WED" class="availability_time_slot"></td>
+                          <td data-time="12:00" data-day="THU" class="availability_time_slot"></td>
+                          <td data-time="12:00" data-day="FRI" class="availability_time_slot"></td>
+                          <td data-time="12:00" data-day="SAT" class="availability_time_slot"></td>
+                        </tr>
+                        <tr class="half-hour">
+                          <td>12:30 PM</td>
+                          <td data-time="12:30" data-day="SUN" class="availability_time_slot"></td>
+                          <td data-time="12:30" data-day="MON" class="availability_time_slot"></td>
+                          <td data-time="12:30" data-day="TUE" class="availability_time_slot"></td>
+                          <td data-time="12:30" data-day="WED" class="availability_time_slot"></td>
+                          <td data-time="12:30" data-day="THU" class="availability_time_slot"></td>
+                          <td data-time="12:30" data-day="FRI" class="availability_time_slot"></td>
+                          <td data-time="12:30" data-day="SAT" class="availability_time_slot"></td>
+                        </tr>
+                        <tr class="hour">
+                          <td>01:00 PM</td>
+                          <td data-time="13:00" data-day="SUN" class="availability_time_slot"></td>
+                          <td data-time="13:00" data-day="MON" class="availability_time_slot"></td>
+                          <td data-time="13:00" data-day="TUE" class="availability_time_slot"></td>
+                          <td data-time="13:00" data-day="WED" class="availability_time_slot"></td>
+                          <td data-time="13:00" data-day="THU" class="availability_time_slot"></td>
+                          <td data-time="13:00" data-day="FRI" class="availability_time_slot"></td>
+                          <td data-time="13:00" data-day="SAT" class="availability_time_slot"></td>
+                        </tr>
+                        <tr class="half-hour">
+                          <td>01:30 PM</td>
+                          <td data-time="13:30" data-day="SUN" class="availability_time_slot"></td>
+                          <td data-time="13:30" data-day="MON" class="availability_time_slot"></td>
+                          <td data-time="13:30" data-day="TUE" class="availability_time_slot"></td>
+                          <td data-time="13:30" data-day="WED" class="availability_time_slot"></td>
+                          <td data-time="13:30" data-day="THU" class="availability_time_slot"></td>
+                          <td data-time="13:30" data-day="FRI" class="availability_time_slot"></td>
+                          <td data-time="13:30" data-day="SAT" class="availability_time_slot"></td>
+                        </tr>
+                        <tr class="hour">
+                          <td>02:00 PM</td>
+                          <td data-time="14:00" data-day="SUN" class="availability_time_slot"></td>
+                          <td data-time="14:00" data-day="MON" class="availability_time_slot"></td>
+                          <td data-time="14:00" data-day="TUE" class="availability_time_slot"></td>
+                          <td data-time="14:00" data-day="WED" class="availability_time_slot"></td>
+                          <td data-time="14:00" data-day="THU" class="availability_time_slot"></td>
+                          <td data-time="14:00" data-day="FRI" class="availability_time_slot"></td>
+                          <td data-time="14:00" data-day="SAT" class="availability_time_slot"></td>
+                        </tr>
+                        <tr class="half-hour">
+                          <td>02:30 PM</td>
+                          <td data-time="14:30" data-day="SUN" class="availability_time_slot"></td>
+                          <td data-time="14:30" data-day="MON" class="availability_time_slot"></td>
+                          <td data-time="14:30" data-day="TUE" class="availability_time_slot"></td>
+                          <td data-time="14:30" data-day="WED" class="availability_time_slot"></td>
+                          <td data-time="14:30" data-day="THU" class="availability_time_slot"></td>
+                          <td data-time="14:30" data-day="FRI" class="availability_time_slot"></td>
+                          <td data-time="14:30" data-day="SAT" class="availability_time_slot"></td>
+                        </tr>
+                        <tr class="hour">
+                          <td>03:00 PM</td>
+                          <td data-time="15:00" data-day="SUN" class="availability_time_slot"></td>
+                          <td data-time="15:00" data-day="MON" class="availability_time_slot"></td>
+                          <td data-time="15:00" data-day="TUE" class="availability_time_slot"></td>
+                          <td data-time="15:00" data-day="WED" class="availability_time_slot"></td>
+                          <td data-time="15:00" data-day="THU" class="availability_time_slot"></td>
+                          <td data-time="15:00" data-day="FRI" class="availability_time_slot"></td>
+                          <td data-time="15:00" data-day="SAT" class="availability_time_slot"></td>
+                        </tr>
+                        <tr class="half-hour">
+                          <td>03:30 PM</td>
+                          <td data-time="15:30" data-day="SUN" class="availability_time_slot"></td>
+                          <td data-time="15:30" data-day="MON" class="availability_time_slot"></td>
+                          <td data-time="15:30" data-day="TUE" class="availability_time_slot"></td>
+                          <td data-time="15:30" data-day="WED" class="availability_time_slot"></td>
+                          <td data-time="15:30" data-day="THU" class="availability_time_slot"></td>
+                          <td data-time="15:30" data-day="FRI" class="availability_time_slot"></td>
+                          <td data-time="15:30" data-day="SAT" class="availability_time_slot"></td>
+                        </tr>
+                        <tr class="hour">
+                          <td>04:00 PM</td>
+                          <td data-time="16:00" data-day="SUN" class="availability_time_slot"></td>
+                          <td data-time="16:00" data-day="MON" class="availability_time_slot"></td>
+                          <td data-time="16:00" data-day="TUE" class="availability_time_slot"></td>
+                          <td data-time="16:00" data-day="WED" class="availability_time_slot"></td>
+                          <td data-time="16:00" data-day="THU" class="availability_time_slot"></td>
+                          <td data-time="16:00" data-day="FRI" class="availability_time_slot"></td>
+                          <td data-time="16:00" data-day="SAT" class="availability_time_slot"></td>
+                        </tr>
+                        <tr class="half-hour">
+                          <td>04:30 PM</td>
+                          <td data-time="16:30" data-day="SUN" class="availability_time_slot"></td>
+                          <td data-time="16:30" data-day="MON" class="availability_time_slot"></td>
+                          <td data-time="16:30" data-day="TUE" class="availability_time_slot"></td>
+                          <td data-time="16:30" data-day="WED" class="availability_time_slot"></td>
+                          <td data-time="16:30" data-day="THU" class="availability_time_slot"></td>
+                          <td data-time="16:30" data-day="FRI" class="availability_time_slot"></td>
+                          <td data-time="16:30" data-day="SAT" class="availability_time_slot"></td>
+                        </tr>
+                        <tr class="hour">
+                          <td>05:00 PM</td>
+                          <td data-time="17:00" data-day="SUN" class="availability_time_slot"></td>
+                          <td data-time="17:00" data-day="MON" class="availability_time_slot"></td>
+                          <td data-time="17:00" data-day="TUE" class="availability_time_slot"></td>
+                          <td data-time="17:00" data-day="WED" class="availability_time_slot"></td>
+                          <td data-time="17:00" data-day="THU" class="availability_time_slot"></td>
+                          <td data-time="17:00" data-day="FRI" class="availability_time_slot"></td>
+                          <td data-time="17:00" data-day="SAT" class="availability_time_slot"></td>
+                        </tr>
+                        <tr class="half-hour">
+                          <td>05:30 PM</td>
+                          <td data-time="17:30" data-day="SUN" class="availability_time_slot"></td>
+                          <td data-time="17:30" data-day="MON" class="availability_time_slot"></td>
+                          <td data-time="17:30" data-day="TUE" class="availability_time_slot"></td>
+                          <td data-time="17:30" data-day="WED" class="availability_time_slot"></td>
+                          <td data-time="17:30" data-day="THU" class="availability_time_slot"></td>
+                          <td data-time="17:30" data-day="FRI" class="availability_time_slot"></td>
+                          <td data-time="17:30" data-day="SAT" class="availability_time_slot"></td>
+                        </tr>
+                        <tr class="hour">
+                          <td>06:00 PM</td>
+                          <td data-time="18:00" data-day="SUN" class="availability_time_slot"></td>
+                          <td data-time="18:00" data-day="MON" class="availability_time_slot"></td>
+                          <td data-time="18:00" data-day="TUE" class="availability_time_slot"></td>
+                          <td data-time="18:00" data-day="WED" class="availability_time_slot"></td>
+                          <td data-time="18:00" data-day="THU" class="availability_time_slot"></td>
+                          <td data-time="18:00" data-day="FRI" class="availability_time_slot"></td>
+                          <td data-time="18:00" data-day="SAT" class="availability_time_slot"></td>
+                        </tr>
+                        <tr class="half-hour">
+                          <td>06:30 PM</td>
+                          <td data-time="18:30" data-day="SUN" class="availability_time_slot"></td>
+                          <td data-time="18:30" data-day="MON" class="availability_time_slot"></td>
+                          <td data-time="18:30" data-day="TUE" class="availability_time_slot"></td>
+                          <td data-time="18:30" data-day="WED" class="availability_time_slot"></td>
+                          <td data-time="18:30" data-day="THU" class="availability_time_slot"></td>
+                          <td data-time="18:30" data-day="FRI" class="availability_time_slot"></td>
+                          <td data-time="18:30" data-day="SAT" class="availability_time_slot"></td>
+                        </tr>
+                        <tr class="hour">
+                          <td>07:00 PM</td>
+                          <td data-time="19:00" data-day="SUN" class="availability_time_slot"></td>
+                          <td data-time="19:00" data-day="MON" class="availability_time_slot"></td>
+                          <td data-time="19:00" data-day="TUE" class="availability_time_slot"></td>
+                          <td data-time="19:00" data-day="WED" class="availability_time_slot"></td>
+                          <td data-time="19:00" data-day="THU" class="availability_time_slot"></td>
+                          <td data-time="19:00" data-day="FRI" class="availability_time_slot"></td>
+                          <td data-time="19:00" data-day="SAT" class="availability_time_slot"></td>
+                        </tr>
+                        <tr class="half-hour">
+                          <td>07:30 PM</td>
+                          <td data-time="19:30" data-day="SUN" class="availability_time_slot"></td>
+                          <td data-time="19:30" data-day="MON" class="availability_time_slot"></td>
+                          <td data-time="19:30" data-day="TUE" class="availability_time_slot"></td>
+                          <td data-time="19:30" data-day="WED" class="availability_time_slot"></td>
+                          <td data-time="19:30" data-day="THU" class="availability_time_slot"></td>
+                          <td data-time="19:30" data-day="FRI" class="availability_time_slot"></td>
+                          <td data-time="19:30" data-day="SAT" class="availability_time_slot"></td>
+                        </tr>
+                        <tr class="hour">
+                          <td>08:00 PM</td>
+                          <td data-time="20:00" data-day="SUN" class="availability_time_slot"></td>
+                          <td data-time="20:00" data-day="MON" class="availability_time_slot"></td>
+                          <td data-time="20:00" data-day="TUE" class="availability_time_slot"></td>
+                          <td data-time="20:00" data-day="WED" class="availability_time_slot"></td>
+                          <td data-time="20:00" data-day="THU" class="availability_time_slot"></td>
+                          <td data-time="20:00" data-day="FRI" class="availability_time_slot"></td>
+                          <td data-time="20:00" data-day="SAT" class="availability_time_slot"></td>
+                        </tr>
+                        <tr class="half-hour">
+                          <td>08:30 PM</td>
+                          <td data-time="20:30" data-day="SUN" class="availability_time_slot"></td>
+                          <td data-time="20:30" data-day="MON" class="availability_time_slot"></td>
+                          <td data-time="20:30" data-day="TUE" class="availability_time_slot"></td>
+                          <td data-time="20:30" data-day="WED" class="availability_time_slot"></td>
+                          <td data-time="20:30" data-day="THU" class="availability_time_slot"></td>
+                          <td data-time="20:30" data-day="FRI" class="availability_time_slot"></td>
+                          <td data-time="20:30" data-day="SAT" class="availability_time_slot"></td>
+                        </tr>
+                        <tr class="hour">
+                          <td>09:00 PM</td>
+                          <td data-time="21:00" data-day="SUN" class="availability_time_slot"></td>
+                          <td data-time="21:00" data-day="MON" class="availability_time_slot"></td>
+                          <td data-time="21:00" data-day="TUE" class="availability_time_slot"></td>
+                          <td data-time="21:00" data-day="WED" class="availability_time_slot"></td>
+                          <td data-time="21:00" data-day="THU" class="availability_time_slot"></td>
+                          <td data-time="21:00" data-day="FRI" class="availability_time_slot"></td>
+                          <td data-time="21:00" data-day="SAT" class="availability_time_slot"></td>
+                        </tr>
+                        <tr class="half-hour">
+                          <td>09:30 PM</td>
+                          <td data-time="21:30" data-day="SUN" class="availability_time_slot"></td>
+                          <td data-time="21:30" data-day="MON" class="availability_time_slot"></td>
+                          <td data-time="21:30" data-day="TUE" class="availability_time_slot"></td>
+                          <td data-time="21:30" data-day="WED" class="availability_time_slot"></td>
+                          <td data-time="21:30" data-day="THU" class="availability_time_slot"></td>
+                          <td data-time="21:30" data-day="FRI" class="availability_time_slot"></td>
+                          <td data-time="21:30" data-day="SAT" class="availability_time_slot"></td>
+                        </tr>
+                        <tr class="hour">
+                          <td>10:00 PM</td>
+                          <td data-time="22:00" data-day="SUN" class="availability_time_slot"></td>
+                          <td data-time="22:00" data-day="MON" class="availability_time_slot"></td>
+                          <td data-time="22:00" data-day="TUE" class="availability_time_slot"></td>
+                          <td data-time="22:00" data-day="WED" class="availability_time_slot"></td>
+                          <td data-time="22:00" data-day="THU" class="availability_time_slot"></td>
+                          <td data-time="22:00" data-day="FRI" class="availability_time_slot"></td>
+                          <td data-time="22:00" data-day="SAT" class="availability_time_slot"></td>
+                        </tr>
+                        <tr class="half-hour">
+                          <td>10:30 PM</td>
+                          <td data-time="22:30" data-day="SUN" class="availability_time_slot"></td>
+                          <td data-time="22:30" data-day="MON" class="availability_time_slot"></td>
+                          <td data-time="22:30" data-day="TUE" class="availability_time_slot"></td>
+                          <td data-time="22:30" data-day="WED" class="availability_time_slot"></td>
+                          <td data-time="22:30" data-day="THU" class="availability_time_slot"></td>
+                          <td data-time="22:30" data-day="FRI" class="availability_time_slot"></td>
+                          <td data-time="22:30" data-day="SAT" class="availability_time_slot"></td>
+                        </tr>
+                        <tr class="hour">
+                          <td>11:00 PM</td>
+                          <td data-time="23:00" data-day="SUN" class="availability_time_slot"></td>
+                          <td data-time="23:00" data-day="MON" class="availability_time_slot"></td>
+                          <td data-time="23:00" data-day="TUE" class="availability_time_slot"></td>
+                          <td data-time="23:00" data-day="WED" class="availability_time_slot"></td>
+                          <td data-time="23:00" data-day="THU" class="availability_time_slot"></td>
+                          <td data-time="23:00" data-day="FRI" class="availability_time_slot"></td>
+                          <td data-time="23:00" data-day="SAT" class="availability_time_slot"></td>
+                        </tr>
+                        <tr class="half-hour">
+                          <td>11:30 PM</td>
+                          <td data-time="23:30" data-day="SUN" class="availability_time_slot"></td>
+                          <td data-time="23:30" data-day="MON" class="availability_time_slot"></td>
+                          <td data-time="23:30" data-day="TUE" class="availability_time_slot"></td>
+                          <td data-time="23:30" data-day="WED" class="availability_time_slot"></td>
+                          <td data-time="23:30" data-day="THU" class="availability_time_slot"></td>
+                          <td data-time="23:30" data-day="FRI" class="availability_time_slot"></td>
+                          <td data-time="23:30" data-day="SAT" class="availability_time_slot"></td>
+                        </tr>
+                        <tr class="hour">
+                          <td>12:00 PM</td>
+                          <td data-time="24:00" data-day="SUN" class="availability_time_slot"></td>
+                          <td data-time="24:00" data-day="MON" class="availability_time_slot"></td>
+                          <td data-time="24:00" data-day="TUE" class="availability_time_slot"></td>
+                          <td data-time="24:00" data-day="WED" class="availability_time_slot"></td>
+                          <td data-time="24:00" data-day="THU" class="availability_time_slot"></td>
+                          <td data-time="24:00" data-day="FRI" class="availability_time_slot"></td>
+                          <td data-time="24:00" data-day="SAT" class="availability_time_slot"></td>
+                        </tr>
+                    </table>
+                    </div>
+                      
+                </div>
+                
+                <div class="frame">
+                    <div class="about-you opensans-semi-bold-white-17px">
+                        <span class="opensans-semi-bold-black-17px">Brief Introduction About Yourself</span>
+                        <span class="opensans-semi-bold-red-17px">*</span>
+                    </div>
+                    <textarea class="rectangle-3-1" name="brief_introduction" placeholder="Please share a brief introduction about yourself here. Include your name, your major, where you're from, and a few of your interests or hobbies. Feel free to also mention your dreams, any projects you are working on, or any goals or aspirations you have."></textarea>
+                </div>
+                <div class="frame-101">
+                    <div class="language opensans-semi-bold-white-17px">
+                        <span class="opensans-semi-bold-black-17px">Speaking Languages</span>
+                        <span class="opensans-semi-bold-red-17px">*</span>
+                    </div>
+                    <select id="languages-select" class="select2" multiple="multiple" name="languages" required>
+                        {% for language in languages %}
+                        <option value="{{ language.id }}">{{ language.name }}</option>
+                        {% endfor %}
+                    </select>
+                    
+                </div>
+                <div class="frame">
+                    <div class="upload-profile-picture opensans-semi-bold-white-17px">
+                        <span class="opensans-semi-bold-black-17px">(Recommended) Upload Profile Picture</span>
+                    </div>
+                    <input type="file" class="image_input" name="imagefile" accept="image/*" onchange="readURL(this);"/>
+                    <img id="blah" class="display_image"/>
+                </div>
+                <div class="frame">
+                    <div class="optional-upload-resume opensans-semi-bold-white-17px">
+                        <span class="opensans-semi-bold-black-17px">(Recommended) Upload Resume</span>
+                    </div>
+                    <input type="file" class="file_input" name="resumefile" accept="application/pdf, application/msword" />
+                </div>
+                <div class="frame">
+                    <div "optional-linkedin-profile-link opensans-semi-bold-white-17px">
+                        <span class="opensans-semi-bold-black-17px">(Recommended) Linkedin Profile Link</span>
+                    </div>
+                    <input type="text" name="linkedin" class="rectangle" placeholder="Place URL Here"/>
+                </div>
+                <div class="frame-a">
+                    <div class="password opensans-semi-bold-white-17px">
+                        <span class="opensans-semi-bold-black-17px">Password</span>
+                        <span class="opensans-semi-bold-red-17px">*</span>
+                    </div>
+                    <div class="container">
+                        <input name="password" class="password_input" type="password" id="password" oninput="strengthChecker()" placeholder="Enter Password">
+                        <span id="toggle" onclick="toggle()">
+                            <i class="fas fa-eye"></i>
+                        </span>
+                        <div id="strength-bar"></div>
+                    </div>
+                    <p id="msg"></p>
+                </div>
+                <div class="frame">
+                    <div class="reenter-password opensans-semi-bold-white-17px">
+                        <span class="opensans-semi-bold-black-17px">Reenter Password</span>
+                        <span class="opensans-semi-bold-red-17px">*</span>
+                    </div>
+                    <input type="password" name="password2" id="password2" class="rectangle-repass" placeholder="Reenter Password" oninput="checkPasswordMatch()" required/>
+                    <p id="password-match-msg"></p>
+                </div>
+                <div class="frame">
+                  <div class="optional-additional-information opensans-semi-bold-white-17px">
+                      <span class="opensans-semi-bold-black-17px">(Recommended) Additional Information</span>
+                  </div>
+                  <textarea class="rectangle-3-1" name="additional_information" placeholder="Feel free to add more information or any other relevant experiences that you think would be beneficial for us to know i.e. minors, hobbies, achievements, etc."></textarea>
+              </div>
+                <div id="agreementContainer">
+                    <div id="agreementSection">
+                        <input type="checkbox" id="agreementCheckbox" required>
+                        <label for="agreementCheckbox" id="agreementLabel">Read and Sign the Indepdent Contract</label>
+                        <button type="button" id="readAgreementButton" onclick="openAgreement()">Read Agreement</button>
+                        <input type="hidden" id="signatureField" name="signature" value="">
+                    </div>
+                </div>
+                
+                <div id="agreementContainer_2">
+                  <div id="agreementSection_2">
+                      <input type="checkbox" id="agreementCheckbox_2" required>
+                      <label for="agreementCheckbox_2" id="agreementLabel_2">I agree to the terms and conditions and privacy policy</label>
+                  </div>
+              </div>
+                
+                <div class="frame-100">
+                    <input type="submit" class="frame-67" value="Register as Mentor"/>
+                </div>
+            </form>
+            <div class="frame-68">
+                <div class="already-have-an-account opensans-semi-bold-black-17px">Already have an Account?</div>
+                <input type="submit" class="login-now" value="Login Now" onclick="location.href='{% url 'login' %}'"/>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        let parameters = {
+            count : false,
+            letters : false,
+            numbers : false,
+            special : false
+        }
+        let strengthBar = document.getElementById("strength-bar");
+        let msg = document.getElementById("msg");
+
+        
+        function strengthChecker(){
+            let password = document.getElementById("password").value;
+        
+            parameters.letters = (/[A-Za-z]+/.test(password))?true:false;
+            parameters.numbers = (/[0-9]+/.test(password))?true:false;
+            parameters.special = (/[!\"$%&/()=?@~`\\.\';:+=^*_-]+/.test(password))?true:false;
+            parameters.count = (password.length > 7)?true:false;
+        
+            let barLength = Object.values(parameters).filter(value=>value);
+        
+            console.log(Object.values(parameters), barLength);
+        
+            strengthBar.innerHTML = "";
+            for( let i in barLength){
+                let span = document.createElement("span");
+                span.classList.add("strength");
+                strengthBar.appendChild(span);
+            }
+        
+            let spanRef = document.getElementsByClassName("strength");
+            for( let i = 0; i < spanRef.length; i++){
+                switch(spanRef.length - 1){
+                    case 0 :
+                        spanRef[i].style.background = "#ff3e36";
+                        msg.textContent = "Your password is very weak";
+                        break;
+                    case 1:
+                        spanRef[i].style.background = "#ff691f";
+                        msg.textContent = "Your password is weak";
+                        break;
+                    case 2:
+                        spanRef[i].style.background = "#ffda36";
+                        msg.textContent = "Your password is good";
+                        break;
+                    case 3:
+                        spanRef[i].style.background = "#0be881";
+                        msg.textContent = "Your password is strong";
+                        break;
+                }
+            }
+        }
+        
+        function toggle(){
+            let password = document.getElementById("password");
+            let eye = document.getElementById("toggle");
+        
+            if(password.getAttribute("type") == "password"){
+                password.setAttribute("type","text");
+                eye.style.color = "#0be881";
+            }
+            else{
+                password.setAttribute("type","password");
+                eye.style.color = "#808080";
+            }
+        }
+
+        
+              
+      function checkPasswordMatch() {
+        var password = document.getElementById('password').value;
+        var confirmPassword = document.getElementById('password2').value;
+        var message = document.getElementById('password-match-msg');
+        
+        if (password === confirmPassword) {
+            if(password !== "") {
+                message.style.color = 'green';
+                message.innerHTML = 'Passwords match!';
+            } else {
+                message.innerHTML = ''; // Clear message when input is empty
+            }
+        } else {
+            message.style.color = 'red';
+            message.innerHTML = 'Passwords do not match!';
+        }
+      }
+
+        function openAgreement() {
+          const firstName = document.querySelector('input[name="firstname"]').value;
+          const lastName = document.querySelector('input[name="lastname"]').value;
+      
+              // Check if either the first name or last name is empty
+          if (!firstName || !lastName) {
+              // Alert the user that both fields are required
+              alert("Please enter both your first and last names before reading the agreement.");
+            } else {
+              // Construct the URL with query parameters for first and last names
+              const agreementUrl = `/agreement/?firstname=${encodeURIComponent(firstName)}&lastname=${encodeURIComponent(lastName)}`;
+
+              // Open the agreement window with the constructed URL
+              window.open(agreementUrl, '_blank', 'width=600,height=400');
+          }
+        }
+          
+          const agreementCheckbox = document.getElementById('agreementCheckbox');
+          
+          agreementCheckbox.addEventListener('click', function(event) {
+            event.preventDefault(); // prevent the checkbox from being checked or unchecked
+          });
+          
+          window.addEventListener('message', function(event) {
+            // Check if the message is about the agreement confirmation
+            if (event.data === 'agreement_confirmed' || localStorage.getItem('agreementConfirmed') === 'true') {
+                agreementCheckbox.checked = true; // Check the checkbox programmatically
+                localStorage.removeItem('agreementConfirmed'); // Clean up
+            }
+            
+            // Then, separately check if this is the signature data message
+            if (event.data.type === 'signature' && event.data.data) {
+                const signatureField = document.getElementById('signatureField');
+                if (signatureField) {
+                    signatureField.value = event.data.data; // Save the signature data URL in a hidden input
+                    console.log(signatureField.value)
+                }
+            }
+        });
+
+          function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                
+                reader.onload = function (e) {
+                    // Assuming your image container has the id 'blah'
+                    document.getElementById('blah').src = e.target.result;
+                    document.getElementById('blah').style.display = 'block'; // Make sure to display the image if it was hidden
+                }
+                
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+          
+        function delay(callback, ms) {
+            var timer = 0;
+            return function() {
+              var context = this, args = arguments;
+              clearTimeout(timer);
+              timer = setTimeout(function () {
+                callback.apply(context, args);
+              }, ms || 0);
+            };
+          }
+          
+          // Attach the event listener with the delay function
+          document.getElementById('id_username').addEventListener('keyup', delay(function(e) {
+              var username = this.value;
+              var xhr = new XMLHttpRequest();
+              xhr.open('GET', '{% url "check_username" %}?username=' + encodeURIComponent(username));
+              xhr.onload = function() {
+                  if (xhr.status === 200) {
+                      var data = JSON.parse(xhr.responseText);
+                      var usernameError = document.getElementById('username_error');
+                      if (data.is_taken) {
+                          usernameError.innerText = "This username is already taken.";
+                          usernameError.style.color = "red";
+                      } else {
+                          usernameError.innerText = "Username is available.";
+                          usernameError.style.color = "green";
+                      }
+                  }
+              };
+              xhr.send();
+          }, 500)); // Delay of 500ms
+          
+          document.addEventListener('DOMContentLoaded', function() {
+            let isDragging = false;
+            let selectionState = null; // True for selecting, false for deselecting
+            let lastEntered = null; // Keep track of the last entered slot to avoid repetitive processing
+        
+            const timeSlots = document.querySelectorAll('.availability_time_slot');
+            const form = document.querySelector('form'); // Ensure this targets your specific form
+        
+            timeSlots.forEach(slot => {
+                slot.addEventListener('mousedown', e => {
+                    e.preventDefault(); // Prevent text selection
+                    isDragging = true;
+                    // Determine if we're selecting or deselecting based on the initial slot's state
+                    selectionState = !slot.classList.contains('selected');
+                    slot.classList.toggle('selected', selectionState); // Set the initial slot's state
+                    lastEntered = slot; // Initialize lastEntered with the first slot
+                    document.addEventListener('mouseup', endDrag);
+                });
+        
+                slot.addEventListener('mouseenter', e => {
+                    if (isDragging && e.target !== lastEntered) {
+                        e.target.classList.toggle('selected', selectionState);
+                        lastEntered = e.target; // Update lastEntered to the current target
+                    }
+                });
+            });
+        
+            function endDrag() {
+                isDragging = false;
+                selectionState = null;
+                lastEntered = null;
+                document.removeEventListener('mouseup', endDrag); // Clean up the event listener
+                updateHiddenInputs(); // Update hidden inputs after selection
+            }
+        
+            function updateHiddenInputs() {
+                // Identify all existing time slot inputs and remove only those
+                form.querySelectorAll('input[name$="_start[]"], input[name$="_end[]"]').forEach(input => input.remove());
+            
+                // Create new inputs for selected slots
+                document.querySelectorAll('.availability_time_slot.selected').forEach(slot => {
+                    const day = slot.getAttribute('data-day');
+                    const time = slot.getAttribute('data-time');
+            
+                    // Create inputs for start times
+                    const inputStart = document.createElement('input');
+                    inputStart.type = 'hidden';
+                    inputStart.name = `${day}_start[]`;
+                    inputStart.value = time;
+            
+                    // Assuming each slot represents a 30-minute interval
+                    const endTime = addTime(time, 30);
+                    const inputEnd = document.createElement('input');
+                    inputEnd.type = 'hidden';
+                    inputEnd.name = `${day}_end[]`;
+                    inputEnd.value = endTime;
+
+                    console.log(inputStart);
+                    console.log(inputEnd);
+            
+                    form.appendChild(inputStart);
+                    form.appendChild(inputEnd);
+                });
+            }
+            
+        
+            // Helper function to add minutes to a "HH:MM" formatted string
+            function addTime(time, minsToAdd) {
+                const [hours, minutes] = time.split(':').map(Number);
+                const date = new Date();
+                date.setHours(hours, minutes + minsToAdd, 0, 0);
+                return date.toTimeString().substring(0, 5);
+            }
+        });
+        
+        
+    </script>
+</body>
+</html>

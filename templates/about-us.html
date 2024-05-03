@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        About Us - EarlyOn Meetings
+    </title>
+    <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
+
+    <link rel="stylesheet" href="{% static 'styleguide.css' %}">
+    <link rel="stylesheet" href="{% static 'about_us.css' %}"> <!-- Placeholder for your About Us CSS -->
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            color: #333;
+            background: #f4f4f4;
+        }
+                
+        .about-us-container {
+            max-width: 1000px;
+            width: 80vw;
+            margin: auto;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        h2 {
+            color: #333;
+        }
+        
+        section {
+            background: white;
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            width: 100%;
+        }
+        
+        .team-member {
+            display: flex;
+            justify-content: space-between;
+            flex-direction: row;
+            align-items: center;
+            margin-top: 10px;
+        }
+        
+        .team-member img {
+            border-radius: 50%;
+            margin-right: 20px;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .team-member-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .team-member-info h3 {
+            margin: 0;
+            color: #333;
+        }
+
+        .team-member-info p {
+            margin: 0;
+            color: #666;
+        }
+        
+        ul {
+            list-style-position: inside;
+        }
+        
+        a {
+            color: #333;
+            text-decoration: none;
+        }
+        
+        /* Add more custom CSS as needed */
+        section {
+            /* Other styles remain the same */
+            visibility: hidden; /* Add this line */
+        }
+        
+        .is-visible {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+            visibility: visible; /* Add this line */
+        }
+        
+    </style>
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-33Y8RZDE69"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-33Y8RZDE69');
+</script>
+
+<body>
+    <div class="my-meetings screen">
+        {% include 'header.html' %}
+        <div class="about-us-container">
+
+            <section class="company-mission">
+                <h2>Our Mission</h2>
+                <p>EarlyOn Meetings Inc. is committed to unlocking the full potential of future university students by providing direct, personalized mentorship from those who have successfully navigated the path before them. Our mission is to bridge the informational gap between aspiring students and the complex world of university admissions, ensuring every student has access to the insights and guidance needed to make informed decisions about their educational future.</p>
+            </section>
+
+            <section class="company-vision">
+                <h2>Our Vision</h2>
+                <p>We envision EarlyOn Meetings Inc. becoming a global beacon for educational mentorship, where every student, regardless of geographic location or background, can connect with a mentor that lights the way to academic and personal success. Our goal is to expand the scope of our services beyond admissions, supporting students through various stages of their educational journey and establishing EarlyOn Meetings Inc. as an integral part of the global education ecosystem.</p>
+            </section>
+
+            <section class="values">
+                <h2>Our Values</h2>
+                <ul>
+                    <li>Authenticity - We believe in the power of real stories and genuine advice. Our platform is built on the principle of sharing honest, firsthand experiences that provide value beyond conventional wisdom.</li>
+                    <li>Empowerment - EarlyOn Meetings Inc. empowers both mentors and mentees by facilitating meaningful exchanges that inspire and enable success. We're dedicated to creating opportunities for growth, learning, and achievement for all members of our community.</li>
+                    <li>Inclusivity - Our community thrives on diversity. We are committed to creating an inclusive environment where everyone, regardless of their background, has equal access to opportunities and feels valued and respected.</li>
+                    <!-- Add more values as needed -->
+                </ul>
+            </section>
+
+            <section class="meet-the-team">
+                <h2>Meet the Team</h2>
+                <div class="team-member">
+                    <img src="{% static 'ceo_profile_2.jpg' %}" alt="Team Member Name">
+                    <div class="team-member-info">
+                        <h3>Yehjune Heo, CEO</h3>
+                        <p>Yehjune Heo, founder and CEO of EarlyOn Meetings Inc., combines his technical skills and personal experiences with university admissions to lead the company. His vision for EarlyOn Meetings Inc. is to simplify the university admissions process for students globally through technology-driven mentorship, making educational guidance accessible and empowering for all.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="contact-us">
+                <h2>Contact Us</h2>
+                <p>For more information or inquiries, please reach out to us at:</p>
+                <ul>
+                    <li>Email: <a href="mailto:info@earlyonmeetings.com">info@earlyonmeetings.com</a></li>
+                    <li>Phone: (302) 414-0509</li>
+                    <!-- Add more contact options as necessary -->
+                </ul>
+            </section>
+        </div>
+
+        {% include 'footer.html' %}
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("is-visible");
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+        
+            const sections = document.querySelectorAll("section");
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+        </script>
+        
+</body>
+
+</html>

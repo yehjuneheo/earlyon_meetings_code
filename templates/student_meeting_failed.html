@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content=
+        "width=device-width, initial-scale=1.0">
+    
+    <title>
+        Meeting Failed - EarlyOn Meetings
+    </title>
+    <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
+
+
+    <link rel="stylesheet" href="{% static 'styleguide.css' %}">
+    <link rel="stylesheet" href="{% static 'my_meetings.css' %}">
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-33Y8RZDE69"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-33Y8RZDE69');
+</script>
+<body>
+    <div class="my-meetings screen">
+        {% include 'header.html' %}
+        <div class="review-section">
+            <header class="review-header">
+                <h1>Meeting Failure Report</h1>
+                <hr class="divider" />
+            </header>
+        
+            <article class="mentor-info">
+                <img class="mentor-image" src="{{ my_meeting.giver_profile.profile_image.url }}" alt="Mentor's Profile Picture">
+                <h2 class="mentor-name">{{ my_meeting.giver_profile.user.get_full_name }}</h2>
+                <p class="date-time">{{ my_meeting.datetime }} ~ {{ my_meeting.endtime|date:"f a" }} on {{ my_meeting.timezone }}</p>
+            </article>
+            <form action="{% url 'submitted_reason' user.id my_meeting.id %}" method="GET" class="submit_reason">
+                <label for="feedback-input" class="feedback-label">Please select a reason why the meeting was unsuccessful:</label>
+                <div class="failure_checkbox_div">
+                    <div class="failure_checkbox_items">
+                        <input type="checkbox" id="failure_checkbox" name="failure_checkbox" value="mentor_not_attend">
+                        <label for="failure_checkbox">The Mentor didn't attend.</label>
+                    </div>
+                    <div class="failure_checkbox_items">
+                        <input type="checkbox" id="failure_checkbox2" name="failure_checkbox2" value="mentor_no_time">
+                        <label for="failure_checkbox2">The Mentor didn't have enough time.</label>
+                    </div>
+                    <div class="failure_checkbox_items">
+                        <input type="checkbox" id="failure_checkbox3" name="failure_checkbox3" value="mentor_not_prepared">
+                        <label for="failure_checkbox3">The Mentor wasn't prepared enough.</label>
+                    </div>
+                    <div class="failure_checkbox_items">
+                        <input type="checkbox" id="failure_checkbox4" name="failure_checkbox4" value="mentor_no_resources">
+                        <label for="failure_checkbox4">The Mentor didn't have enough resources.</label>
+                    </div>
+                    <div class="failure_checkbox_items">
+                        <input type="checkbox" id="failure_checkbox5" name="failure_checkbox5" value="mentee_not_attend">
+                        <label for="failure_checkbox5">I wasn't able to attend.</label>
+                    </div>
+                    <div class="failure_checkbox_items">
+                        <input type="checkbox" id="failure_checkbox6" name="failure_checkbox6" value="mentee_no_time">
+                        <label for="failure_checkbox6">I didn't have enough time.</label>
+                    </div>
+                    <div class="failure_checkbox_items">
+                        <input type="checkbox" id="failure_checkbox7" name="failure_checkbox7" value="other">
+                        <label for="failure_checkbox7">Other</label>
+                    </div>
+                </div>
+                <div class="reasoning-section">
+                    <label for="reasoning-input" class="reasoning-label">Please provide specific details of how the meeting was unsuccessful:</label>
+                    <textarea id="reasoning-input" name="reasoning-input" class="reasoning-input" placeholder="Type your reason here"></textarea>
+                </div>
+        
+                <button type="submit" class="submit-btn">Submit</button>
+            </form>
+        </div>
+    {% include 'footer.html' %}
+</div>
+</body>
+</html>

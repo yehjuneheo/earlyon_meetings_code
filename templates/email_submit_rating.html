@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+  <title>Submit Review Email from EarlyOn Meetings</title>
+  <style>
+    body { font-family: Helvetica, Arial, sans-serif; color:black; }
+    .header, .footer { background-color: #F8F8F8; padding: 20px; text-align: center; }
+    .button { padding: 8px 12px; border-radius: 2px; font-size: 15px; font-weight: bold; text-decoration: none; display: inline-block; }
+    .confirm { background-color: #00a651; color: #ffffff; }
+    .reject { background-color: #ED2939; color: #ffffff; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <img src="https://i.imgur.com/cJoW808.png" alt="EarlyOn Logo" style="max-width: 150px;"><br>
+    <h2 style="color:black;">Submit Review Email from EarlyOn Meetings</h2>
+  </div>
+  <table width="100%" cellspacing="2" cellpadding="2">
+    <tr>
+        <td align="center">
+            <h1 class="request-sent" style="font-weight: bold; font-size:25px; padding-bottom:10px; color:black;">You have completed a meeting!</h1>
+            <h2 style="font-weight: bold; font-size:17px; color:black;">Your meeting with {{giver.user.get_full_name}} has successfully ended.</h2>
+            <h2 style="font-weight: bold; font-size:17px; color:black;">Please submit a review for your mentor!</h2>
+            <table cellspacing="5" cellpadding="5">
+                <tr>
+                  <td style="border-radius: 2px;" bgcolor="#00a651">
+                    <a href="{{domain}}{% url 'submit_rating' student.user.id meeting.id %}" class="button confirm" style="color:white;">
+                        Submit Review             
+                    </a>
+                  </td>
+                </tr>
+              </table>
+        </td>
+    </tr>
+</table>
+
+  <div class="footer">
+    <p style="color:black;">EarlyOn Meetings Inc.<br>
+      3911 Concord Pike #8030 • Wilmington, DE, 19803<br>
+    <a href="https://earlyonmeetings.com">www.earlyonmeetings.com</a> | <a href="mailto:info@earlyonmeetings.com">info@earlyonmeetings.com</a><br>
+    © 2024 EarlyOn Meetings Inc. All rights reserved.</p>
+  </div>
+</body>
+</html>
+

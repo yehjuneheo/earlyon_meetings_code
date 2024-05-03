@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+{% load static %}
+{% load university_images %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content=
+        "width=device-width, initial-scale=1.0">
+    
+    <title>
+        Mentor Selection - EarlyOn Meetings
+    </title>
+    <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
+
+
+    <link rel="stylesheet" href="{% static 'styleguide.css' %}">
+    <link rel="stylesheet" href="{% static 'selection.css' %}">
+
+    <script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-33Y8RZDE69"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-33Y8RZDE69');
+</script>
+<body>
+    <div class="selection screen">
+        {% include 'header.html' %}
+        <div class="frame-80">
+            <h1 class="mentors-at-university">
+                {% if not query_university and not query_major %}
+                    Mentors Recommended For You
+                {% elif query_university and not query_major %}
+                    Mentors at {{ query_university|title }}
+                {% elif query_major and not query_university %}
+                    Mentors Studying {{ query_major|title }}
+                {% else %}
+                    Mentors at {{ query_university|title }} studying {{ query_major|title }}
+                {% endif %}
+            </h1>
+            <img class="line-3" src="{% static 'line.png' %}" alt="Line 3" />
+            <form id="searchForm" method="GET" action="{% url 'search' %}">
+                <input type="hidden" name="university" value="{{ request.GET.university|default_if_none:'' }}">
+                <input type="hidden" name="major" value="{{ request.GET.major|default_if_none:'' }}">
+                <button type="button" id="advancedSearchToggle">Advanced Search</button>
+                <div id="advancedSearchOptions" style="display: none;">
+                    <select id="languages-select" name="language" required>
+                        {% for language in languages %}
+                            <option value="{{ language.id }}">{{ language.name }}</option>
+                        {% endfor %}
+                    </select>
+                    <select name="education_level">
+                        <option value="" {% if request.GET.education_level == "" %}selected{% endif %}>Select Education Level</option>
+                        <option value="Associate" {% if request.GET.education_level == "Associate" %}selected{% endif %}>Associate</option>
+                        <option value="Bachelor's" {% if request.GET.education_level == "Bachelor's" %}selected{% endif %}>Bachelor's</option>
+                        <option value="Master's" {% if request.GET.education_level == "Master's" %}selected{% endif %}>Master's</option>
+                        <option value="PhD" {% if request.GET.education_level == "PhD" %}selected{% endif %}>PhD</option>
+                    </select>
+                    <select name="grade_level">
+                        <option value="" {% if request.GET.grade_level == "" %}selected{% endif %}>Select Grade Level</option>
+                        <option value="Freshman" {% if request.GET.grade_level == "Freshman" %}selected{% endif %}>Freshman</option>
+                        <option value="Sophomore" {% if request.GET.grade_level == "Sophomore" %}selected{% endif %}>Sophomore</option>
+                        <option value="Junior" {% if request.GET.grade_level == "Junior" %}selected{% endif %}>Junior</option>
+                        <option value="Senior" {% if request.GET.grade_level == "Senior" %}selected{% endif %}>Senior</option>
+                        <option value="Graduated" {% if request.GET.grade_level == "Graduated" %}selected{% endif %}>Graduated</option>
+                    </select>
+                    <input type="text" name="keywords" placeholder="Keywords" value="{{ request.GET.keywords|default_if_none:'' }}">
+                    <button type="submit">Search</button>
+                </div>
+            </form>
+        </div>
+        {% if page_obj.object_list %}
+            {% for giver in page_obj.object_list %}
+            <a class="profile_frame" href="/profile/{{ giver.id }}">
+                <div class="profile_div">
+                <div class="profile_div-2">
+                    <img class="profile_ellipse" src="{{ giver.profile_image.url }}" />
+                    <div class="profile_div-3">
+                    <div class="profile_div-4">
+                        <div class="profile_div-9">
+                        <div class="profile_text-wrapper">{{ giver.user.first_name }} {{ giver.user.last_name }}</div>
+                        <div class="profile_div-5">
+                            <div class="profile_text-wrapper-2">{{ giver.education_level }}</div>
+                            {% if giver.grade_level %}
+                                <div class="profile_text-wrapper-2">/ {{ giver.grade_level }}</div>
+                            {% endif %}
+                        </div>
+                        </div>
+                        <div class="profile_div-wrapper"><div class="profile_text-wrapper-3">View Profile</div></div>
+                    </div>
+                    <div class="profile_div-6">
+                        
+                        <img class="profile_element-university-of" src="{% university_image_url giver.university %}" alt="{{ giver.university }}"/>
+                        <div class="profile_div-7">
+                        <p class="profile_p">{{ giver.university|title }}</p>
+                        <div class="profile_text-wrapper-4">
+                            {% for major in giver.major.all %}
+                                {{ major.name|title }}{% if not forloop.last %}, {% endif %}
+                            {% endfor %}
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <div class="profile_div-8">
+                    <p class="profile_text-wrapper-5">
+                        {{ giver.brief_introduction }}
+                    </p>
+                    <p class="profile_jinjun-oh-is-fluent">
+                        <span class="profile_span">{{ giver.user.first_name }} is fluent in </span>
+                        <span class="profile_text-wrapper-6">
+                        {% for language in giver.languages.all %}
+                            {{ language.name }}{% if not forloop.last %}, {% endif %}
+                        {% endfor %}
+                        </span>
+                    </p>
+                </div>
+                </div>
+            </a>
+            {% endfor %}
+        {% endif %}
+        
+        <div class="pagination">
+            <span class="step-links">
+                {% if page_obj.has_previous %}
+                    <a href="?page=1{% for key, value in request.GET.items %}{% if key != 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}">&laquo; first</a>
+                    <a href="?page={{ page_obj.previous_page_number }}{% for key, value in request.GET.items %}{% if key != 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}">previous</a>
+                {% endif %}
+                
+                <span class="current">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+                </span>
+                
+                {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number }}{% for key, value in request.GET.items %}{% if key != 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}">next</a>
+                    <a href="?page={{ page_obj.paginator.num_pages }}{% for key, value in request.GET.items %}{% if key != 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}">last &raquo;</a>
+                {% endif %}
+            </span>
+        </div>
+        
+        {% include 'footer.html' %}
+    </div>
+    <script>
+        document.getElementById('advancedSearchToggle').addEventListener('click', function() {
+            var advancedOptions = document.getElementById('advancedSearchOptions');
+            var isDisplayed = advancedOptions.style.display === 'block';
+            advancedOptions.style.display = isDisplayed ? 'none' : 'block';
+        });
+        </script>
+</body>
+</html>

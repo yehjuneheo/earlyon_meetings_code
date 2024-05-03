@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content=
+        "width=device-width, initial-scale=1.0">
+    
+    <title>
+        My Profile - EarlyOn Meetings
+    </title>
+    <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
+
+
+    <link rel="stylesheet" href="{% static 'styleguide.css' %}">
+    <link rel="stylesheet" href="{% static 'my_meetings.css' %}">
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-33Y8RZDE69"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-33Y8RZDE69');
+</script>
+<body>
+    <div class="my-meetings screen">
+        {% include 'header.html' %}
+        <div class="student_profile_screen">
+
+            <header>
+                <h1>Your Profile</h1>
+            </header>
+    
+            {% if not my_profile.user.is_email_verified %}
+            <main aria-labelledby="actions-header">
+                <h2 id="actions-header">Actions</h2>
+                <p>Your email is not verified. Please verify your email to access all features.</p>
+                <input id="verify-email" type="submit" value="Verify Email" onclick="location.href='{% url 'send_activation_email' %}'" autofocus></input>
+            {% endif %}
+            </main>
+            <main>
+                <section class="actions-header">
+                    <input id="see-meetings" type="submit" value="See my meetings" onclick="location.href='{% url 'student_meetings' user.id %}'" />
+                    <input id="see-payments" type="submit" value="Payment History" onclick="location.href='{% url 'payment_history' user.id %}'" />
+                    <input id="see-settings" type="submit" value="Settings" onclick="location.href='{% url 'student_settings' user.id %}'" />
+                </section>
+                <section aria-labelledby="profile-info-header">
+                    <div class="profile-info-header-div">
+                        <h2 id="profile-info-header">Profile Information</h2>
+                        <button class="edit-button" onclick="openModal()">Edit</button>
+                    </div>
+                    <dl>
+                        <div>
+                            <dt>First Name</dt>
+                            <dd>{{ my_profile.user.first_name }} 
+                        </div>
+                        <div>
+                            <dt>Last Name</dt>
+                            <dd>{{ my_profile.user.last_name }} 
+                        </div>
+                        <div>
+                            <dt>Username</dt>
+                            <dd>{{my_profile.user.username}}</dd>
+                        </div>
+                        <div>
+                            <dt>Email Address</dt>
+                            <dd>{{my_profile.user.email}}</dd>
+                        </div>
+                        <div>
+                            <dt>Timezone</dt>
+                            <dd>{{my_profile.timezone}}</dd>
+                        </div>
+                        <div id="editModal" class="modal">
+                            <div class="modal-content">
+                                <span class="close-button" onclick="closeModal()">&times;</span>
+                                <form action="{% url 'profile_update' user.id %}" method="post">
+                                    {% csrf_token %}
+                                    <label for="first_name">First Name:</label>
+                                    <input type="text" id="first_name" name="first_name" value="{{ my_profile.user.first_name }}">
+                        
+                                    <label for="last_name">Last Name:</label>
+                                    <input type="text" id="last_name" name="last_name" value="{{ my_profile.user.last_name }}">
+                        
+                                    <label for="timezone">Timezone:</label>
+                                    <div class="timezone-form-group-2">
+                                        <select name="timezone" id="timezone" class="form-control" required>
+                                          {% for tz in timezones %}
+                                          <option value="{{ tz }}" {% if tz == my_profile.timezone %}selected{% endif %}>{{ tz }}</option>
+                                          {% endfor %}
+                                      </select>
+                                    </div>
+                        
+                                    <input type="submit" value="Update">
+                                </form>
+                            </div>
+                        </div>
+                    </dl>
+                </section>
+            </main>
+        
+            <footer>
+                <input id="log-out" type="submit" value="Logout" onclick="location.href='{% url 'logout_view' %}'" />
+            </footer>
+            <div class="back-button-container">
+                <button type="button" class="btn back-btn" onclick="history.back()">Go Back</button>
+            </div>
+        </div>
+        {% include 'footer.html' %}
+    </div>
+    <script>
+        function openModal() {
+            document.getElementById("editModal").style.display = "block";
+        }
+        
+        function closeModal() {
+            document.getElementById("editModal").style.display = "none";
+        }
+        
+        // Optional: Close the modal if the user clicks anywhere outside of it
+        window.onclick = function(event) {
+            var modal = document.getElementById("editModal");
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+        </script>
+        
+</body>
+</html>

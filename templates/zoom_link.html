@@ -1,0 +1,27 @@
+<table>
+    <thead>
+      <tr>
+        <th>Start Time</th>
+        <th>End Time</th>
+        <th>Reservation Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for time_slot in time_slots %}
+        <tr>
+          <td>{{ time_slot.start_time }}</td>
+          <td>{{ time_slot.end_time }}</td>
+          <td>{% if time_slot.is_reserved %}Reserved{% else %}Available{% endif %}</td>
+          <td>
+            {% if not time_slot.is_reserved %}
+              <form action="{% url 'reserve_time_slot' time_slot.id %}" method="post">
+                {% csrf_token %}
+                <button type="submit">Reserve</button>
+              </form>
+            {% else %}
+              {% if time_slot.zoom_url %}
+                <a href="{{ time_slot.zoom_url }}" target="_blank">Join Zoom Meeting</a>
+              {% else %}
+                <p>Meeting created</p>
+  

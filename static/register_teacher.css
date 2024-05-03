@@ -1,0 +1,1173 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600italic,700,600,800,700italic,400italic,800italic");
+
+*,
+*:before,
+*:after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.wrapper {
+    background-color: #ffffff;
+    width: 400px;
+    padding: 50px 0;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%;
+    border-radius: 8px;
+    box-shadow: 0 20px 25px rgba(0, 0, 0, 0.2);
+}
+
+.container {
+    min-width: 400px;
+    position: relative;
+    margin: auto;
+}
+
+.password_input {
+    background-color: var(--white);
+    border: 1px solid;
+    border-color: var(--black-2);
+    border-radius: 5px;
+    height: 40px;
+    min-width: 400px;
+    position: relative;
+    padding-left: 8px;
+    width: 100%;
+}
+
+#toggle {
+    position: absolute;
+    top: 12px;
+    color: #808080;
+    cursor: pointer;
+    right: 15px;
+}
+
+.strength {
+    width: 25%;
+    display: inline-block;
+    position: relative;
+    height: 100%;
+    bottom: 5px;
+}
+
+#strength-bar {
+    background-color: #dcdcdc;
+    height: 10px;
+    position: relative;
+}
+
+p {
+    width: 100%;
+    text-align: center;
+}
+
+#msg{
+    font-family: "Roboto Mono", monospace;
+    margin-bottom: 30px;
+}
+
+
+#password-match-msg{
+    font-family: "Roboto Mono", monospace;
+    margin-bottom: 30px;
+}
+
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-image: url("background2.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, .5);
+}
+
+.register-mentor {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background for better readability */
+    border-radius: 10px; /* Optional: adds rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Soft shadow for depth */
+    width: auto; /* Adjust based on content */
+    max-width: 600px; /* Maximum width to contain the layout */
+}
+
+.hidden,
+.hidden * {
+    pointer-events: none;
+    visibility: hidden;
+}
+
+.frame-70 {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 39px;
+    padding: 50px;
+    width: fit-content;
+}
+
+.frame {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: fit-content;
+}
+
+.frame2 {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: fit-content;
+    margin-bottom: 35px;
+}
+
+
+.university {
+    letter-spacing: 0.5px;
+    line-height: normal;
+    margin-top: -1px;
+    width: fit-content;
+}
+
+.rectangle {
+    background-color: var(--white);
+    border: 1px solid;
+    border-color: var(--black-2);
+    border-radius: 5px;
+    height: 40px;
+    min-width: 400px;
+    margin-bottom: 35px;
+    padding-left: 8px;
+}
+
+
+.rectangle-repass {
+    background-color: var(--white);
+    border: 1px solid;
+    border-color: var(--black-2);
+    border-radius: 5px;
+    height: 40px;
+    min-width: 400px;
+    padding-left: 8px;
+}
+
+
+
+.username_div {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.rectangle_1 {
+    background-color: var(--white);
+    border: 1px solid;
+    border-color: var(--black-2);
+    border-radius: 5px;
+    height: 40px;
+    min-width: 400px;
+    padding-left: 8px;
+}
+
+#username_error {
+    font-family: var(--font-family-open_sans);
+    color: #d9534f; /* Bootstrap's `btn-danger` color for errors */
+    font-size: 14px; /* Smaller font size for error messages */
+    margin-top: 5px; /* Space between input and error message */
+    height: 20px; /* Reserve space for potential error message */
+}
+
+.frame-67 {
+    align-items: flex-start;
+    background-color: var(--cinnabar);
+    border-radius: 30px;
+    box-shadow: 4px 4px 8px #00000080;
+    display: flex;
+    gap: 10px;
+    padding: 11px 23px;
+    width: fit-content;
+    border-width: 0px;
+    cursor: pointer;
+    color: var(--white);
+    font-family: var(--font-family-open_sans);
+    font-size: var(--font-size-xxl2);
+    font-weight: 600;
+    letter-spacing: 1.1px;
+    line-height: normal;
+    margin-top: -1px;
+    text-align: center;
+}
+
+.frame-67:hover {
+    background-color: var(--cinnabar2);
+}
+
+
+.dropdown-list-2 {
+    display: none; /* Initially hidden */
+    position: relative; /* Position it below the input field */
+    background-color: #fff; /* Match the input field background */
+    width: calc(100% - 30px); /* Match input field width minus padding */
+    max-width: 400px;
+    max-height: 200px; /* Limit height of dropdown */
+    overflow-y: auto; /* Enable scroll if too many items */
+    border-radius: 8px; /* Rounded corners for the dropdown */
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1); /* Subtle shadow for depth */
+    z-index: 1000; /* Ensure it's above other content */
+    top: -45px; /* Adjust based on input field size */
+    font-family: var(--font-family-open_sans);
+    text-transform: capitalize; /* Capitalize each item */
+}
+
+.dropdown-list-2 .dropdown-item {
+    padding: 10px 20px; /* Adequate padding for touch targets */
+    cursor: pointer; /* Indicate an item can be selected */
+    text-transform: capitalize; /* Capitalize each item */
+}
+
+.dropdown-list-2 .dropdown-item:hover {
+    background-color: #f0f0f0; /* Highlight on hover */
+}
+
+.university-email {
+    letter-spacing: 0.5px;
+    line-height: normal;
+    margin-top: -1px;
+    width: fit-content;
+}
+
+.rectangle-30 {
+    background-color: var(--white);
+    border: 1px solid;
+    border-color: var(--black-2);
+    border-radius: 5px;
+    height: 130px;
+    min-width: 400px;
+    margin-bottom: 35px;
+    padding: 4px 4px;
+}
+
+.available-timelines {
+    letter-spacing: 0.5px;
+    line-height: normal;
+    margin-top: -1px;
+    width: fit-content;
+}
+
+.password {
+    letter-spacing: 0.5px;
+    line-height: normal;
+    margin-top: -1px;
+    width: fit-content;
+}
+
+.optional-linkedin-profile-link {
+    letter-spacing: 0.5px;
+    line-height: normal;
+    margin-top: -1px;
+    width: fit-content;
+}
+
+.minor-select-all {
+    letter-spacing: 0.5px;
+    line-height: normal;
+    margin-top: -1px;
+    width: fit-content;
+}
+
+.major-select-all {
+    letter-spacing: 0.5px;
+    line-height: normal;
+    margin-top: -1px;
+    width: fit-content;
+}
+
+.rectangle-3-1 {
+    background-color: var(--white);
+    border: 1px solid;
+    border-color: var(--black-2);
+    border-radius: 5px;
+    height: 140px;
+    min-width: 400px;
+    resize: none;
+    margin-bottom: 35px;
+    padding: 8px 8px;
+}
+
+
+.rectangle-3-1-1 {
+    background-color: var(--white);
+    border: 1px solid;
+    border-color: var(--black-2);
+    border-radius: 5px;
+    height: 500px;
+    min-width: 400px;
+    resize: none;
+    margin-bottom: 35px;
+    padding: 8px 8px;
+}
+
+
+.frame-a {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: fit-content;
+}
+
+.optional-additional-information {
+    letter-spacing: 0.5px;
+    line-height: normal;
+    margin-top: -1px;
+    width: fit-content;
+}
+
+.frame-48 {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 23px;
+    width: fit-content;
+}
+
+.line-3 {
+    height: 2px;
+    min-width: 90%;
+}
+
+.title {
+    color: var(--black);
+    font-family: var(--font-family-open_sans);
+    font-size: var(--font-size-xxxxl2);
+    font-weight: 800;
+    letter-spacing: 0.9px;
+    line-height: normal;
+    margin-top: -1px;
+    text-align: center;
+    width: fit-content;
+}
+
+.first-name {
+    letter-spacing: 0.5px;
+    line-height: normal;
+    margin-top: -1px;
+    width: fit-content;
+}
+
+.last-name {
+    letter-spacing: 0.5px;
+    line-height: normal;
+    margin-top: -1px;
+    width: fit-content;
+}
+
+.reenter-password {
+    letter-spacing: 0.5px;
+    line-height: normal;
+    margin-top: -1px;
+    width: fit-content;
+}
+
+.frame-68 {
+    align-items: flex-start;
+    display: flex;
+    gap: 13px;
+    width: fit-content;
+}
+
+.login-now {
+    color: #1511e7;
+    cursor: pointer;
+    font-family: var(--font-family-open_sans);
+    font-size: var(--font-size-l2);
+    font-weight: 600;
+    letter-spacing: 0.51px;
+    line-height: normal;
+    margin-top: -1px;
+    text-align: center;
+    text-decoration: underline;
+    width: fit-content;
+    background-color: transparent;
+    border: none;
+    overflow: hidden;
+}
+
+.already-have-an-account {
+    letter-spacing: 0.5px;
+    line-height: normal;
+    margin-top: -1px;
+    text-align: center;
+    width: fit-content;
+}
+
+.current-education-level {
+    letter-spacing: 0.5px;
+    line-height: normal;
+    margin-top: -1px;
+    width: fit-content;
+}
+
+.optional-upload-resume {
+    letter-spacing: 0.5px;
+    line-height: normal;
+    margin-top: -1px;
+    width: fit-content;
+}
+
+.rectangle-3 {
+    background-color: var(--white);
+    border: 1px solid;
+    border-color: var(--black-2);
+    border-radius: 5px;
+    height: 40px;
+    min-width: 161px;
+    margin-bottom: 35px;
+}
+
+.upload-profile-picture {
+    letter-spacing: 0.5px;
+    line-height: normal;
+    margin-top: -1px;
+    width: fit-content;
+}
+
+.frame-69 {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+    width: fit-content;
+}
+
+.image_input {
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #f2f2f2;
+    border: 2px dashed #cccccc;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #888888;
+    width: 100%;
+    text-align: center;
+}
+
+.image_input:hover {
+    background-color: #e9e9e9;
+    border-color: #aaaaaa;
+}
+
+.display_image {
+    width: 200px; /* Adjust as needed */
+    height: 200px; /* Adjust to match the width for a perfect circle */
+    object-fit: cover;
+    margin-bottom: 30px;
+    border-radius: 50%; /* Makes the image circular */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease-in-out;
+}
+
+.display_image:hover {
+    transform: scale(1.05);
+}
+
+
+
+.display_image2 {
+    width: 200px; /* Adjust as needed */
+    height: 200px; /* Adjust to match the width for a perfect circle */
+    object-fit: cover;
+    border-radius: 50%; /* Makes the image circular */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease-in-out;
+}
+
+.display_image2:hover {
+    transform: scale(1.05);
+}
+
+.upload-profile-picture-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.upload-profile-picture {
+    text-align: center;
+    width: 100%;
+}
+
+
+.rectangle-36 {
+    background-color: var(--white);
+    border: 1px solid;
+    border-color: var(--black-2);
+    border-radius: 5px;
+    height: 291px;
+    min-width: 400px;
+    margin-bottom: 40px;
+}
+
+.setup-bank-account {
+    letter-spacing: 0.5px;
+    line-height: normal;
+    margin-top: -1px;
+    width: fit-content;
+}
+
+.frame-55 {
+    height: 69px;
+    min-width: 400px;
+}
+
+.gender {
+    letter-spacing: 0.5px;
+    line-height: normal;
+    margin-top: -1px;
+    width: fit-content;
+}
+
+.brief-introfuction-about-yourself {
+    letter-spacing: 0.5px;
+    line-height: normal;
+    margin-top: -1px;
+    width: fit-content;
+}
+
+h5 {
+    text-align: center;
+    color: red;
+    font-family: var(--font-family-open_sans);
+    font-size: var(--font-size-l2);
+    margin-top: 2px;
+    margin-bottom: 20px;
+}
+
+.frame-100 {
+    justify-content: center;
+    display: flex;
+}
+
+
+.file_input {
+    margin-bottom: 35px;
+}
+
+.rectangle-1 {
+    background-color: var(--white);
+    font-family: var(--font-family-open_sans);
+    border-width: 0px;
+    border-radius: 5px;
+    height: 40px;
+    min-width: 400px;
+    margin-bottom: 10px;
+    padding-left: 8px;
+}
+
+.rectangle-3-2 {
+    background-color: var(--white);
+    border-width: 0px;
+    border-radius: 5px;
+    height: 140px;
+    min-width: 400px;
+    resize: none;
+    margin-bottom: 10px;
+    padding: 8px 8px;
+}
+
+.rectangle-37 {
+    background-color: var(--white);
+    border-width: 0px;
+    border-radius: 5px;
+    height: 291px;
+    min-width: 400px;
+    margin-bottom: 40px;
+}
+
+
+/* Overall container of the Select2 box */
+.select2-container--default .select2-selection--multiple {
+    border: 1px solid #aaa; /* Border color */
+    border-radius: 4px; /* Rounded corners */
+    cursor: text; /* Cursor style */
+    background-color: #fff; /* Background color */
+    font-family: 'Roboto Mono', monospace; /* Font family */
+    font-size: 14px; /* Font size */
+}
+
+/* Background color for the selected item */
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+    background-color: #6c757d; /* Dark background for selected item */
+    border: 1px solid #666; /* Border for selected item */
+    border-radius: 4px; /* Rounded corners for selected item */
+    color: #000; /* Text color for selected item */
+    padding: 0 10px; /* Padding for selected item */
+    margin-top: 5px; /* Margin top for spacing */
+    margin-right: 5px; /* Margin right for spacing */
+}
+
+/* Style for the remove icon in selected item */
+.select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
+    color: #e9ecef; /* Color of remove icon */
+    cursor: pointer; /* Cursor style */
+    margin-right: 5px; /* Margin right for spacing */
+}
+
+/* Hover effect for the remove icon */
+.select2-container--default .select2-selection--multiple .select2-selection__choice__remove:hover {
+    color: #f8f9fa; /* Lighter color on hover */
+}
+
+/* Placeholder and input field within Select2 box */
+.select2-container--default .select2-selection--multiple .select2-search--inline .select2-search__field {
+    padding: 0; /* Padding reset */
+    margin-top: 5px; /* Margin top for spacing */
+    margin-left: 5px; /* Margin left for spacing */
+}
+
+/* Dropdown menu styling */
+.select2-container--default .select2-dropdown {
+    border: 1px solid #aaa; /* Border color */
+    border-radius: 4px; /* Rounded corners */
+    background-color: #fff; /* Background color */
+}
+
+/* Dropdown menu items */
+.select2-container--default .select2-results__option {
+    padding: 6px; /* Padding for items */
+    user-select: none; /* Prevent text selection */
+    -webkit-user-select: none;
+}
+
+/* Hover and active state for dropdown items */
+.select2-container--default .select2-results__option--highlighted[aria-selected],
+.select2-container--default .select2-results__option[aria-selected="true"] {
+    background-color: #007bff; /* Background color for active/hover item */
+    color: #fff; /* Text color for active/hover item */
+}
+
+/* Increase specificity for the Select2 container */
+.select2-container--default.select2-container--focus .select2-selection--multiple,
+.select2-container--default .select2-selection--multiple {
+    font-family: var(--font-family-open_sans);
+    font-size: 14px !important; /* Adjust font size */
+}
+
+/* Increase specificity for the selected options within the Select2 box */
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+    font-family: var(--font-family-open_sans);
+    font-size: 12px !important; /* Adjust font size for selected items if necessary */
+}
+
+/* Ensure input field within Select2 box also uses the custom font */
+.select2-container--default .select2-search--inline .select2-search__field {
+    font-family: var(--font-family-open_sans);
+    font-size: 14px !important; /* Ensure consistency in font size */
+}
+
+/* Style for the dropdown items to match */
+.select2-container--default .select2-results__option {
+    font-family: var(--font-family-open_sans);
+    font-size: 14px !important; /* Keep font size consistent */
+}
+
+#agreementContainer {
+    border: 1px solid #ccc; /* Frame border */
+    padding: 20px; /* Padding inside the frame */
+    border-radius: 8px; /* Optional: rounded corners for the frame */
+    display: inline-flex; /* Make the container fit its content width */
+    align-items: center; /* Align items vertically */
+    gap: 10px; /* Space between items */
+    margin-bottom: 35px; /* Margin at the bottom of the frame */
+}
+
+/* Styling for the agreement section container */
+#agreementSection {
+    display: flex; /* Use flexbox layout */
+    align-items: center; /* Align items vertically */
+    gap: 10px; /* Space between items */
+}
+
+/* Styling for the checkbox */
+#agreementCheckbox {
+    cursor: pointer;
+    /* margin-right is removed because flexbox gap is used */
+}
+
+/* Styling for the label associated with the checkbox */
+#agreementLabel {
+    cursor: pointer;
+    font-family: var(--font-family-open_sans);
+    font-size: 14px; /* Suitable font size */
+    color: #333; /* Text color */
+    /* display: inline-block; is not necessary due to flex layout */
+    /* margin-bottom is removed because it's no longer directly above the button */
+}
+
+
+#agreementContainer_2 {
+    border: 1px solid #ccc; /* Frame border */
+    padding: 20px; /* Padding inside the frame */
+    border-radius: 8px; /* Optional: rounded corners for the frame */
+    display: inline-flex; /* Make the container fit its content width */
+    align-items: center; /* Align items vertically */
+    gap: 10px; /* Space between items */
+    margin-bottom: 35px; /* Margin at the bottom of the frame */
+}
+
+/* Styling for the agreement section container */
+#agreementSection_2 {
+    display: flex; /* Use flexbox layout */
+    align-items: center; /* Align items vertically */
+    gap: 10px; /* Space between items */
+}
+
+/* Styling for the checkbox */
+#agreementCheckbox_2 {
+    cursor: pointer;
+    /* margin-right is removed because flexbox gap is used */
+}
+
+/* Styling for the label associated with the checkbox */
+#agreementLabel_2 {
+    cursor: pointer;
+    font-family: var(--font-family-open_sans);
+    font-size: 14px; /* Suitable font size */
+    color: #333; /* Text color */
+    /* display: inline-block; is not necessary due to flex layout */
+    /* margin-bottom is removed because it's no longer directly above the button */
+}
+
+
+/* Styling for the button */
+#readAgreementButton {
+    background-color: #007bff; /* Button background color */
+    color: white; /* Button text color */
+    border: none; /* Remove default border */
+    padding: 5px 10px; /* Padding inside the button */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Cursor to pointer to indicate it's clickable */
+    font-family: var(--font-family-open_sans);
+    font-size: 14px; /* Suitable font size */
+    /* display: block; is changed to display: inline-block; if necessary */
+    /* margin-top is removed as flexbox handles the alignment */
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+#readAgreementButton:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}
+
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: flex;
+    margin-bottom: 5px;
+    gap: 10px;
+    font-weight: bold;
+    color: #333;
+    font-family: var(--font-family-open_sans);
+    cursor: pointer;
+}
+
+.form-control {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.day-availability {
+    margin-bottom: 1rem;
+}
+
+.time-slots {
+    margin-left: 1.5rem;
+    margin-top: 0.5rem;
+}
+
+.time-slot {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Style for the select dropdown */
+.time-select {
+    padding: 0.375rem 0.75rem;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+}
+
+.add-time-slot,
+.remove-time-slot {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    margin-left: 0.5rem;
+}
+.add-time-slot::before {
+    content: '+';
+    display: inline-block;
+    padding: 0.375rem;
+    margin-right: 0.5rem;
+    font-size: 1.5rem;
+    color: green;
+    font-weight: bold;
+}
+
+/* Using a 'x' character for the remove button */
+.remove-time-slot::before {
+    content: '✕'; /* Multiplication X symbol */
+    display: inline-block;
+    margin-right: 0.5rem;
+    font-size: 1.1rem;
+    color: gray;
+    font-weight: bold;
+}
+
+.day-checkbox {
+    margin-right: 10px;
+    transform: scale(1.5); /* Makes checkbox larger */
+    margin-left: 5px; /* Adds space before the checkbox */
+    vertical-align: middle; /* Aligns checkbox vertically with the text */
+    cursor: pointer;
+}
+
+.day-checkbox + label {
+    display: inline-block;
+    padding: 0.375rem;
+    margin-right: 0.5rem;
+    cursor: pointer;
+    background: #f8f9fa;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+}
+
+.day-checkbox:checked + label {
+    background-color: #e9ecef;
+    border-color: #adb5bd;
+}
+
+/* Style for the time slots container */
+.time-slots {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.time-slot {
+    background-color: #f8f9fa;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    padding: 0.375rem;
+    display: flex;
+    align-items: center;
+}
+
+/* Style for the time range within a time slot */
+.time-range {
+    margin: 0 0.5rem;
+}
+
+/* Additional global styles for the form */
+select.form-control {
+    display: block;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    cursor: pointer;
+}
+
+.frame-101 {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: fit-content;
+    margin-bottom: 35px;
+}
+
+#languages-select {
+    width: 245%;
+}
+
+.my_profile_form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.mentor-profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background for better readability */
+    border-radius: 10px; /* Optional: adds rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Soft shadow for depth */
+    width: 70%;
+    min-height: 100vh;
+}
+
+.mentor-profile .student_profile_screen {
+    background-color: transparent;
+}
+
+
+.mentor-profile .student_meetings {
+    background-color: transparent;
+}
+
+
+.mentor_profile_screen {
+    font-family: 'Arial', sans-serif;
+    width: 80%;
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+
+.mentor_profile_screen header h1 {
+    font-size: 24px;
+    color: #333;
+}
+
+
+.mentor_profile_screen h2 {
+    margin-bottom: 10px;
+    color: #555;
+}
+
+.my_profile_info_text {
+    text-align: left;
+}
+
+
+/* Buttons styling */
+.mentor_profile_screen input {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.mentor_profile_screen #verify-email {
+    color: white;
+    background-color: #FF7851;
+}
+
+.mentor_profile_screen #verify-email:hover {
+    background-color: #E66A45;
+}
+
+.mentor_profile_screen #see-meetings {
+    color: white;
+    background-color: #34C759;
+}
+
+.mentor_profile_screen #see-payments {
+    color: white;
+    background-color: #34C759;
+}
+
+.mentor_profile_screen #see-settings {
+    color: white;
+    background-color: #34C759;
+}
+
+.mentor_profile_screen #see-settings:hover {
+    background-color: #2FA14B;
+}
+
+.mentor_profile_screen #see-payments:hover {
+    background-color: #2FA14B;
+}
+
+.mentor_profile_screen #see-meetings:hover {
+    background-color: #2FA14B;
+}
+
+.mentor_profile_screen footer input {
+    color: white;
+    width: auto;
+    padding: 8px 20px;
+    background-color: #FF3B30;
+}
+
+.mentor_profile_screen footer input:hover {
+    background-color: #E63327;
+}
+
+.mentor_profile_screen footer {
+    text-align: center;
+    padding-top: 20px;
+}
+
+
+.mentor_profile_screen .actions-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+}
+
+#availability-table {
+    width: 100%;
+    border-collapse: collapse;
+    user-select: none; /* Prevent text selection during dragging */
+    table-layout: fixed; /* Ensure consistent column widths */
+    font-family: var(--font-family-open_sans);
+    font-size: 10px;
+    margin-bottom: 20px;
+  }
+  
+  #availability-table th, #availability-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+    border-bottom: 0px;
+  }
+  
+  #availability-table th {
+    background-color: #34C759;
+    color: white;
+  }
+  
+  #availability-table tr.hour td:not(:first-child),
+  #availability-table tr.half-hour td:not(:first-child) {
+    border-top: 1px dotted #ddd;
+  }
+  
+  #availability-table tr.hour td:first-child {
+    border-top: 1px solid #ddd;
+  }
+  
+  #availability-table tr.hour td:hover,
+  #availability-table tr.half-hour td:hover {
+    background-color: #ddd;
+  }
+  
+  #availability-table tr.hour {
+    background-color: #f2f2f2;
+  }
+  
+  #availability-table tr.half-hour {
+    background-color: #f9f9f9;
+  }
+
+  
+#availability-table td:first-child {
+    padding: 2px;
+    pointer-events: none; /* Keeps the hover effect away from this cell */
+    background-color: transparent
+  }
+  
+#availability-table tr:last-child {
+    pointer-events: none; /* Keeps the hover effect away from this cell */
+    background-color: transparent;
+    border-bottom: 0px;
+  }
+
+.availability_time_slot.selected {
+    background-color: #34C759; /* Example selected color, match it to your design */
+}
+
+  
+@media (max-width: 1150px) {
+    .mentor_profile_screen .actions-header{
+        flex-direction: column;
+    }
+}
+
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .frame {
+        width: calc(100% - 2rem);
+    }
+
+    .time-slots {
+        flex-direction: column;
+    }
+
+    .rectangle {
+        min-width: 300px;
+    }
+
+    .rectangle-1 {
+        min-width: 300px;
+    }
+    
+    .rectangle_1 {
+        min-width: 300px;
+    }
+
+    .rectangle-3-1 {
+        min-width: 300px;
+    }
+    
+    .rectangle-repass {
+        min-width: 300px;
+    }
+    .container {
+        min-width: 300px;
+    }
+
+    .password_input {
+        min-width: 300px;
+    }
+
+    #languages-select {
+        width: 300px;
+    }
+
+    .frame-70 {
+        padding: 5px;
+    }
+
+}
+

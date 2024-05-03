@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content=
+        "width=device-width, initial-scale=1.0">
+    
+    <title>
+        My Settings - EarlyOn Meetings
+    </title>
+    <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
+
+
+    <link rel="stylesheet" href="{% static 'styleguide.css' %}">
+    <link rel="stylesheet" href="{% static 'my_meetings.css' %}">
+    <link rel="stylesheet" href="{% static 'register_teacher.css' %}">
+    <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-33Y8RZDE69"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-33Y8RZDE69');
+</script>
+<body>
+    <div class="mentor-profile screen">
+        <div class="student_profile_screen">
+
+            <header>
+                <h1>Settings</h1>
+            </header>
+
+            <main>
+                <div class="student_settings">
+                    
+                    {% if my_profile.is_working %}
+                    <div class="pause-account-container">
+                        <span class="pause-account-text">Want to pause reservations requests?</span>
+                        <button type="button" class="btn pause-btn" onclick="openPauseModal()">Pause Reservations</button>
+                    </div>
+                    <!-- Deactivation Confirmation Modal -->
+                    <div id="pauseConfirmModal" class="modal">
+                        <div class="modal-content">
+                            <span class="close-pause">&times;</span>
+                            <h2>Pause Reversations?</h2>
+                            <p>Are you sure you want to pause reservation requests? You can allow it anytime.</p>
+                            <div class="modal-buttons">
+                                <button type="button" class="btn confirm-delete-btn" onclick="confirmPause()">Yes, pause it</button>
+                                <button type="button" class="btn cancel-btn" onclick="closePauseModal()">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                    {% else %}
+                    <div class="pause-account-container">
+                        <span class="pause-account-text">Want to allow reservation requests?</span>
+                        <button type="button" class="btn pause-btn" onclick="confirmPause()">Activate Account</button>
+                    </div>
+                    {% endif %}
+                    {% if my_profile.is_displaying %}
+                    <div class="deactivate-account-container">
+                        <span class="deactivate-account-text">Want to deactivate your account instead?</span>
+                        <button type="button" class="btn deactivate-btn" onclick="openDeactivateModal()">Deactivate Account</button>
+                    </div>
+                    <!-- Deactivation Confirmation Modal -->
+                    <div id="deactivateConfirmModal" class="modal">
+                        <div class="modal-content">
+                            <span class="close-deactivate">&times;</span>
+                            <h2>Deactivate Account?</h2>
+                            <p>Are you sure you want to deactivate your account? You can reactivate it anytime.</p>
+                            <div class="modal-buttons">
+                                <button type="button" class="btn confirm-delete-btn" onclick="confirmDeactivate()">Yes, deactivate it</button>
+                                <button type="button" class="btn cancel-btn" onclick="closeDeactivateModal()">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                    {% else %}
+                    <div class="deactivate-account-container">
+                        <span class="deactivate-account-text">Want to activate your account?</span>
+                        <button type="button" class="btn deactivate-btn" onclick="confirmDeactivate()">Activate Account</button>
+                    </div>
+                    {% endif %}
+
+                     
+                    <!-- Change Email Section -->
+                    <div class="delete-account-container">
+                        <span class="delete-account-text">Want to change your email?</span>
+                        <button type="button" class="btn change-email-btn" onclick="openEmailModal()">Change Email</button>
+                    </div>
+                    <!-- Change Email Modal -->
+                    <div id="changeEmailModal" class="modal">
+                        <div class="modal-content">
+                            <span class="close" onclick="closeEmailModal()">&times;</span>
+                            <h2>Change Email</h2>
+                            <p>Enter your new email address below.</p>
+                            <input type="email" id="newEmail" placeholder="New email address">
+                            <span id="emailError" class="error-message"></span> <!-- Error message placeholder -->
+                            <div class="modal-buttons">
+                                <button type="button" class="btn cancel-btn" onclick="changeEmail()">Change Email</button>
+                                <button type="button" class="btn delete-btn" onclick="closeEmailModal()">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+
+                         
+                    <!-- Change Password Section -->
+                    <div class="delete-account-container">
+                        <span class="delete-account-text">Want to change your password?</span>
+                        <button type="button" class="btn change-email-btn" onclick="openPasswordModal()">Change Password</button>
+                    </div>
+                    <!-- Confirmation Modal -->
+                    <div id="changePasswordModal" class="modal">
+                        <div class="modal-content">
+                            <span class="close3" onclick="closePasswordModal()">&times;</span>
+                            <h2>Change Password?</h2>
+                            <p>An email to change the password will be sent.</p>
+                            <div class="modal-buttons">
+                                <button type="button" class="btn cancel-btn" onclick="changePassword()">Change Password</button>
+                                <button type="button" class="btn delete-btn" onclick="closePasswordModal()">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                    <div class="delete-account-container">
+                        <span class="delete-account-text">Want to view your independent contract agreement?</span>
+                        <button type="button" class="btn change-email-btn" onclick="window.open('/view_agreement/', '_blank')">View Agreement</button>
+                    </div>
+
+                    <div class="delete-account-container">
+                        <span class="delete-account-text">Want to delete your account?</span>
+                        <button type="button" class="btn delete-btn" onclick="openModal()">Delete Account</button>
+                    </div>
+                    <!-- Confirmation Modal -->
+                    <div id="deleteConfirmModal" class="modal">
+                        <div class="modal-content">
+                            <span class="close">&times;</span>
+                            <h2>Delete Account?</h2>
+                            <p>Are you sure you want to delete your account? This action cannot be undone.</p>
+                            <div class="modal-buttons">
+                                <button type="button" class="btn confirm-delete-btn" onclick="confirmDelete()">Yes, delete it</button>
+                                <button type="button" class="btn cancel-btn" onclick="closeModal()">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </main>
+            
+        
+            <div class="back-button-container">
+                <button type="button" class="btn back-btn" onclick="location.href='{% url 'my_profile' user.id %}'">Go Back</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+        // For Delete Modal
+        var deleteModal = document.getElementById('deleteConfirmModal');
+        var spanDelete = document.getElementsByClassName("close")[0];
+        
+        function openModal() {
+            deleteModal.style.display = "block";
+        }
+        
+        function closeModal() {
+            deleteModal.style.display = "none";
+        }
+        
+        spanDelete.onclick = function() {
+            closeModal();
+        }
+        
+        function confirmDelete() {
+            // Redirect to Django view for account deletion
+            window.location.href = '{% url "my_delete_account" user.id %}';
+        }
+    
+        // For Deactivate Modal
+        var deactivateModal = document.getElementById('deactivateConfirmModal');
+        var spanDeactivate = document.getElementsByClassName("close-deactivate")[0];
+        
+        function openDeactivateModal() {
+            deactivateModal.style.display = "block";
+        }
+        
+        function closeDeactivateModal() {
+            deactivateModal.style.display = "none";
+        }
+        
+        spanDeactivate.onclick = function() {
+            closeDeactivateModal();
+        }
+        
+        function confirmDeactivate() {
+            // Redirect to Django view for account deactivation
+            window.location.href = '{% url "deactivate_account" user.id %}';
+        }
+
+    
+        // For Deactivate Modal
+        var pauseModal = document.getElementById('pauseConfirmModal');
+        var spanPause = document.getElementsByClassName("close-pause")[0];
+        
+        function openPauseModal() {
+            pauseModal.style.display = "block";
+        }
+        
+        function closePauseModal() {
+            pauseModal.style.display = "none";
+        }
+        
+        spanPause.onclick = function() {
+            closePauseModal();
+        }
+        
+        function confirmPause() {
+            // Redirect to Django view for account deactivation
+            window.location.href = '{% url "pause_account" user.id %}';
+        }
+
+        
+        window.onclick = function(event) {
+            if (event.target == deleteModal) {
+                closeModal();
+            } else if (event.target == deactivateModal) { // Handle clicks outside the deactivate modal
+                closeDeactivateModal();
+            } else if (event.target == pauseModal) { // Handle clicks outside the deactivate modal
+                closePauseModal();
+            }
+        }
+
+
+        
+        var emailModal = document.getElementById('changeEmailModal');
+        var emailSpan = document.getElementsByClassName("close2");
+        var passwordModal = document.getElementById('changePasswordModal');
+        var passwordSpan = document.getElementsByClassName("close3");
+        var user_email = '{{ user.email }}'
+        
+        function openEmailModal() {
+            emailModal.style.display = "block";
+        }
+        
+        function closeEmailModal() {
+            emailModal.style.display = "none";
+        }
+
+        function openPasswordModal() {
+            passwordModal.style.display = "block";
+        }
+        
+        function closePasswordModal() {
+            passwordModal.style.display = "none";
+        }
+        
+        passwordSpan.onclick = function() {
+            closePasswordModal();
+        }
+
+        emailSpan.onclick = function() {
+            closeEmailModal();
+        }
+        
+        function changeEmail() {
+            var newEmail = document.getElementById('newEmail').value;
+            // Validate the new email
+            if(newEmail === user_email) {
+                document.getElementById('emailError').innerText = 'New email cannot be the same as the current email.';
+                return;
+            } else if (newEmail.trim() === '') {
+                document.getElementById('emailError').innerText = 'New email cannot be empty.';
+                return;
+            } else {
+                document.getElementById('emailError').innerText = ''; // Clear any existing error messages
+            }
+        
+            // Fetch API to send the new email to the server
+            fetch('{% url "change_email" %}', { // Replace "your_email_change_endpoint" with your actual Django URL name
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': csrftoken, // Use the CSRF token
+                },
+                body: JSON.stringify({ new_email: newEmail }) // Send the new email as JSON
+            })
+            .then(response => {
+                if(response.ok) {
+                    return response.json(); // Assuming the server responds with JSON
+                }
+                // If we get an error response, parse it here so we can access the error message
+                return response.json().then(errorData => {
+                    throw new Error(errorData.error || 'Something went wrong, please try again.');
+                });
+            })
+            .then(data => {
+                console.log(data); // Process your server response here
+                alert('Activation email sent. Please check your inbox.');
+                closeEmailModal();
+                user_email = newEmail; // Update the current email variable
+            })
+            .catch(error => {
+                console.error('There was a problem with the fetch operation:', error);
+                // Display the server's error message
+                document.getElementById('emailError').innerText = error.message;
+            });
+        }
+
+        function changePassword() {
+            window.location.href = '{% url "reset_password" %}';
+        }
+        
+        
+    </script>
+    
+</body>
+</html>

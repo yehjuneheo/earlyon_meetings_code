@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content=
+        "width=device-width, initial-scale=1.0">
+    
+    <title>
+        Mentor Guideline - EarlyOn Meetings
+    </title>
+    <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
+
+    <link rel="stylesheet" href="{% static 'styleguide.css' %}">
+    <link rel="stylesheet" href="{% static 'my_meetings.css' %}">
+    <link rel="stylesheet" href="{% static 'register_teacher.css' %}">
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-33Y8RZDE69"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-33Y8RZDE69');
+</script>
+<body>
+    <div class="mentor-profile screen">
+        <div class="frame-6">
+            <div class="logo-container2">
+                <a href="{% url 'home' %}">
+                    <img src="{% static 'earlyon_color_logo.png' %}" alt="Logo" class="logo2"/>
+                </a>
+            </div>
+        </div>
+        <div class="student_meetings">
+            <header>
+                <h1>Mentorship Meeting Guide for Mentors</h1>
+            </header>
+            <br>
+
+            <h2>Introduction</h2>   <br>
+            <p style="text-align: left">As a mentor at EarlyOn Meetings Inc., your insights and experiences are invaluable to guiding prospective students. This guide outlines potential questions organized by category to prepare you for one-on-one mentorship sessions.</p><br>
+            <br>
+
+            <h2>Preparation and Conduct</h2>   <br>
+            
+            <ul>
+                <li>Be prepared to discuss your high school and university experiences in detail.</li>
+                <li>Listen attentively to the mentee's questions, allowing them to speak first before providing your response.</li>
+                <li>Aim to provide concise, precise answers, efficiently managing your time to cover as much ground as possible.</li>
+                <li>You will have 65 minutes for the session, with an extra 5 minutes to conclude the discussion. However, you're free to end the meeting anytime after the 60-minute mark.</li>
+            </ul>
+            <br>
+
+            <h2>Potential Categories and Questions</h2><br>
+            
+            <h3>Academic and Extracurricular Preparation</h3>
+            <ul>
+                <li>What projects did you undertake in high school to get admitted?</li>
+                <li>What strategies did you use to enhance your high school resume?</li>
+                <li>How did you spend your summer breaks during high school?</li>
+                <li>Does engaging in sports or playing an instrument impact admissions positively?</li>
+                <li>Did participating in summer programs or internships play a role in your admissions success?</li>
+                <li>How did you balance your academic workload with extracurricular activities?</li>
+                <li>Did you engage with any private admission consulting firms? If so, how was the experience?</li>
+            </ul>
+            <br>
+        
+            <h3>Major and Career Path</h3>
+            <ul>
+                <li>Why did you choose your major, and how did you pursue your interest from an early stage?</li>
+                <li>Can you share any current university projects you’re working on?</li>
+                <li>Do you have any advice for high schoolers aiming to enter your major?</li>
+                <li>What resources helped you decide on your major?</li>
+                <li>How early did you start exploring your current field of study?</li>
+                <li>What are the emerging trends or opportunities within your major?</li>
+            </ul>
+            <br>
+        
+            <h3>Admissions Process</h3>
+            <ul>
+                <li>How did you approach writing your college essay? What topics did you choose?</li>
+                <li>What do you believe was the most impactful part of your resume?</li>
+                <li>Which other schools did you apply to, and where were you accepted?</li>
+                <li>How many iterations did your college essay go through before final submission?</li>
+                <li>What role did letters of recommendation play in your application?</li>
+                <li>How did you demonstrate your interest in your chosen university?</li>
+            </ul>
+            <br>
+        
+            <h3>Campus Life and Advice</h3>
+            <ul>
+                <li>What advice do you have for adapting well as a future freshman?</li>
+                <li>Which residence hall do you recommend for making friends?</li>
+                <li>Are there any organizations or clubs you suggest joining?</li>
+                <li>What was your biggest challenge in adapting to university life?</li>
+                <li>Can you share tips on managing time effectively as a freshman?</li>
+                <li>What are the must-do experiences for a freshman at your university?</li>
+            </ul>
+            <br>
+        
+            <h3>Specific Queries</h3>
+            <ul>
+                <li>What classes would you recommend taking in the freshman year?</li>
+                <li>Could you suggest strategies for crafting a standout college essay?</li>
+                <li>How important are AP classes or IB scores in the admissions process?</li>
+                <li>What are some misconceptions about the admissions process you encountered?</li>
+                <li>Is participating in the honors program or pursuing minors beneficial?</li>
+            </ul>
+            <br>
+        
+            <h3>General Well-being and Resources</h3>
+            <ul>
+                <li>Where can freshmen find general help or academic support on campus?</li>
+                <li>Are there any easy-A classes or subjects better taken at community colleges and transferred?</li>
+                <li>How do you deal with academic stress or pressure at the university?</li>
+                <li>Are there any student-led initiatives or support groups you recommend?</li>
+                <li>What are the best ways to seek mentorship or academic advice on campus?</li>
+            </ul>
+            <br>
+        
+            <h3>Sports and Extracurricular Activities</h3>
+            <ul>
+                <li>Can you provide information on sports teams or leagues available for students?</li>
+                <li>How do you balance academic responsibilities with athletic commitments?</li>
+                <li>Are there intramural sports teams, and how competitive are they?</li>
+                <li>Can involvement in music or arts groups aid in personal development or networking?</li>
+            </ul>
+            <br>
+            <div class="back-button-container">
+                <button type="button" class="btn back-btn" onclick="location.href='{% url 'my_profile' user.id %}'">Go Back</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content=
+        "width=device-width, initial-scale=1.0">
+    
+    <title>
+        Confirm Reservation - EarlyOn Meetings
+    </title>
+    <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
+
+
+    <link rel="stylesheet" href="{% static 'styleguide.css' %}">
+    <link rel="stylesheet" href="{% static 'my_meetings.css' %}">
+    
+    <script src="https://polyfill.io/v3/polyfill.min.js?version=3.52.1&features=fetch"></script>
+    <script src="https://js.stripe.com/v3/"></script>
+    <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-33Y8RZDE69"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-33Y8RZDE69');
+</script>
+<body>
+    <div class="my-meetings screen">
+        {% include 'header.html' %}
+        <div class="profiles-frame">
+            <h1 class="title">Meeting Request</h1>
+            <img class="line-4" src="{% static 'line.png' %}" alt="Line 4" />
+            <h1 class="send-request">Send Meeting Request To:</h1>
+            <img class="success-icon" src="{{ profiles.profile_image.url }}" alt="Success" />
+            <div class="frame-139">
+                <p class="st-name">{{ profiles.user.first_name }} {{ profiles.user.last_name }}</p>
+            </div>
+            <p class="university_major">{{ profiles.university|title }}</p>
+            <p class="university_major_2">
+                {% for major in profiles.major.all %}
+                    {{ major.name|title }}{% if not forloop.last %}, {% endif %}
+                {% endfor %}
+            </p>
+            <!-- Display the selected date and time -->
+            <p class="date-time-original">{{ selected_date }}, {{ selected_time }} ~ {{ end_time }} on {{ profiles.timezone }}</p>
+            <div class="timezone-form-group">
+              <label for="timezone">Select Timezone:</label>
+              <select name="timezone" id="timezone" class="form-control" required>
+                {% for tz in timezones %}
+                <option value="{{ tz }}" {% if tz == my_profile.timezone %}selected{% endif %}>{{ tz }}</option>
+                {% endfor %}
+            </select>
+            </div>
+            <p class="date-time-converted">{{ selected_date_naive }}, {{ selected_time_naive }} ~ {{ end_time_naive }} on {{ my_profile.timezone }}</p>
+
+            <!-- Updated to use the correct URL and method for navigation -->
+            <input type="button" class="frame-140" value="Send Request" id="checkout-button" />
+        </div>
+        {% include 'footer.html' %}
+    </div>
+    
+    <script type="text/javascript">
+        const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+        // Create an instance of the Stripe object with your publishable API key
+        var stripe = Stripe("{{ STRIPE_PUBLIC_KEY }}");
+        var checkoutButton = document.getElementById("checkout-button");
+    
+        checkoutButton.addEventListener("click", function () {
+          // Include selected_date and selected_time in the body of the POST request
+          const data = {
+            selected_date: "{{ selected_date }}",
+            selected_time: "{{ selected_time }}",
+            end_time: "{{ end_time }}",
+            utc_datetime: "{{ utc_datetime}}"
+          };
+    
+          fetch("{% url 'create-checkout-session' profiles.id product.id %}", {
+            method: "POST",
+            headers: {
+              'Content-Type': 'application/json',
+              'X-CSRFToken': csrftoken,
+            },
+            body: JSON.stringify(data),  // Send the date and time as part of the request
+          })
+          .then(function (response) {
+            return response.json();
+          })
+          .then(function (session) {
+            return stripe.redirectToCheckout({ sessionId: session.id });
+          })
+          .then(function (result) {
+            if (result.error) {
+              alert(result.error.message);
+            }
+          })
+          .catch(function (error) {
+            console.error("Error:", error);
+          });
+        });
+
+
+      document.getElementById('timezone').addEventListener('change', function() {
+        const pk = "{{ my_profile.id }}";
+        const timezone = this.value;  // Assuming you have the convertTimezone function as before
+    
+        // Prepare data to send
+        const data = { timezone: timezone };
+    
+        // Fetch CSRF token from cookie or meta tag
+        const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+    
+        // AJAX request to update timezone in the database
+        fetch(`/update-timezone/${pk}/`, {  // Make sure to replace `${receiverId}` with the actual ID
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'X-CSRFToken': csrftoken,
+            },
+            body: new URLSearchParams(data)
+        })
+        .then(response => response.json())
+        .then(data => {
+          console.log(data.message);  // Log the success message
+          window.location.reload();  // Reload the page
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+    });
+    
+      
+    </script>
+    
+</body>
+</html>

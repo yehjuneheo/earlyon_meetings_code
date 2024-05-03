@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content=
+        "width=device-width, initial-scale=1.0">
+    
+    <title>
+        Failure Request Submitted - EarlyOn Meetings
+    </title>
+    <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
+
+
+    <link rel="stylesheet" href="{% static 'styleguide.css' %}">
+    <link rel="stylesheet" href="{% static 'my_meetings.css' %}">
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-33Y8RZDE69"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-33Y8RZDE69');
+</script>
+<body>
+    <div class="my-meetings screen">
+        {% include 'header.html' %}
+        <div class="frame-1">
+            <h1 class="title">Your Failure Request has been Submitted</h1>
+            <img class="line-4" src="{% static 'line.png' %}" alt="Line 4" />
+            <img class="success-icon" src="{% static 'success.png' %}" alt="Sucess" />
+            <p class="date-time">Our team is reviewing your request. Please allow 2~3 business days for a response.</p>
+            <input type="submit" class="frame-97" value = "My Meetings" onclick="location.href='{% url 'my_meetings' user.id %}'" />
+        </div>
+        {% include 'footer.html' %}
+    </div>
+</body>
+</html>

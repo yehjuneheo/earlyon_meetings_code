@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content=
+        "width=device-width, initial-scale=1.0">
+    
+    
+    <title>
+        Meeting Failed - EarlyOn Meetings
+    </title>
+    <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
+
+
+    <link rel="stylesheet" href="{% static 'styleguide.css' %}">
+    <link rel="stylesheet" href="{% static 'my_meetings.css' %}">
+    <link rel="stylesheet" href="{% static 'register_teacher.css' %}">
+
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-33Y8RZDE69"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-33Y8RZDE69');
+</script>
+<body>
+    <div class="mentor-profile screen">
+        <div class="frame-6">
+            <div class="logo-container2">
+                <a href="{% url 'home' %}">
+                    <img src="{% static 'earlyon_color_logo.png' %}" alt="Logo" class="logo2"/>
+                </a>
+            </div>
+        </div>
+        <div class="student_meetings">
+            <header>
+                <h1>Meeting Failure Report</h1>
+            </header>
+                
+            <div class="review-section">
+                <header class="review-header">
+                    <h1>Why did the meeting fail?</h1>
+                    <hr class="divider" />
+                </header>
+            
+                <article class="mentor-info">
+                    <h2 class="mentor-name">{{ my_meeting.receiver_profile.user.get_full_name }}</h2>
+                    <p class="st-name-2">@{{ my_meeting.receiver_profile.user.username }}</p>
+                    <!-- Display the selected date and time -->
+                    <p class="date-time">{{ my_meeting.datetime }} ~ {{ my_meeting.endtime|date:"f a" }} on {{ my_meeting.timezone }}</p>
+                </article>
+                <form action="{% url 'my_submitted_reason' user.id my_meeting.id %}" method="GET" class="submit_reason">
+                    <label for="feedback-input" class="feedback-label">Please select a reason why the meeting was unsuccessful:</label>
+                    <div class="failure_checkbox_div">
+                        <div class="failure_checkbox_items">
+                            <input type="checkbox" id="failure_checkbox" name="failure_checkbox" value="mentee_not_attend">
+                            <label for="failure_checkbox">The Mentee didn't attend.</label>
+                        </div>
+                        <div class="failure_checkbox_items">
+                            <input type="checkbox" id="failure_checkbox2" name="failure_checkbox2" value="mentee_no_time">
+                            <label for="failure_checkbox2">The Mentee didn't have enough time.</label>
+                        </div>
+                        <div class="failure_checkbox_items">
+                            <input type="checkbox" id="failure_checkbox5" name="failure_checkbox5" value="mentor_not_attend">
+                            <label for="failure_checkbox5">I wasn't able to attend.</label>
+                        </div>
+                        <div class="failure_checkbox_items">
+                            <input type="checkbox" id="failure_checkbox6" name="failure_checkbox6" value="mentor_no_time">
+                            <label for="failure_checkbox6">I didn't have enough time.</label>
+                        </div>
+                        <div class="failure_checkbox_items">
+                            <input type="checkbox" id="failure_checkbox7" name="failure_checkbox7" value="other">
+                            <label for="failure_checkbox7">Other</label>
+                        </div>
+                    </div>
+                    <div class="reasoning-section">
+                        <label for="reasoning-input" class="reasoning-label">Please provide specific details of how the meeting was unsuccessful:</label>
+                        <textarea id="reasoning-input" name="reasoning-input" class="reasoning-input" placeholder="Type your reason here"></textarea>
+                    </div>
+            
+                    <button type="submit" class="submit-btn">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

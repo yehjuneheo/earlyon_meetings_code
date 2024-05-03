@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+{% load static %}
+
+
+<head>
+    <link rel="stylesheet" href="{% static 'styleguide.css' %}">
+    <link rel="stylesheet" href="{% static 'my_meetings.css' %}">
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const input = document.getElementById('university-search');
+            const dropdownList = document.getElementById('university-list');
+        
+            input.addEventListener('input', function() {
+                fetch(`/university-autocomplete/?term=${encodeURIComponent(this.value)}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        dropdownList.innerHTML = ''; // Clear existing items
+                        if(data.length) {
+                            dropdownList.style.display = 'block'; // Show dropdown
+                        } else {
+                            dropdownList.style.display = 'none'; // Hide dropdown
+                        }
+                        data.forEach(name => {
+                            let item = document.createElement('div');
+                            item.classList.add('dropdown-item');
+                            item.textContent = capitalizeWords(name); // Use the capitalize function
+                            item.onclick = function() {
+                                input.value = this.textContent; // Set input value
+                                dropdownList.style.display = 'none'; // Hide dropdown
+                            };
+                            dropdownList.appendChild(item);
+                        });
+                    });
+            });
+        
+            // Hide dropdown when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!input.contains(e.target) && !dropdownList.contains(e.target)) {
+                    dropdownList.style.display = 'none';
+                }
+            });
+            function capitalizeWords(str) {
+                return str.toLowerCase().replace(/\b(\w)/g, s => s.toUpperCase());
+            }
+        });
+        document.addEventListener("DOMContentLoaded", function() {
+            const input = document.getElementById('major-search');
+            const dropdownList = document.getElementById('major-list');
+
+            input.addEventListener('input', function() {
+                fetch(`/major-autocomplete/?term=${encodeURIComponent(this.value)}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        dropdownList.innerHTML = ''; // Clear existing items
+                        if(data.length) {
+                            dropdownList.style.display = 'block'; // Show dropdown
+                        } else {
+                            dropdownList.style.display = 'none'; // Hide dropdown
+                        }
+                        data.forEach(name => {
+                            let item = document.createElement('div');
+                            item.classList.add('dropdown-item');
+                            item.textContent = capitalizeWords(name);
+                            item.onclick = function() {
+                                input.value = this.textContent; // Set input value
+                                dropdownList.style.display = 'none'; // Hide dropdown
+                            };
+                            dropdownList.appendChild(item);
+                        });
+                    });
+                });
+        
+                // Hide dropdown when clicking outside
+                document.addEventListener('click', function(e) {
+                    if (!input.contains(e.target) && !dropdownList.contains(e.target)) {
+                        dropdownList.style.display = 'none';
+                    }
+                });
+                function capitalizeWords(str) {
+                    return str.toLowerCase().replace(/\b(\w)/g, s => s.toUpperCase());
+                }
+        });
+        </script>
+</head>
+
+<body>
+    <div class="header-frame">
+    <div class="header-frame-2">
+        <div class="header-logo-frame">
+            <a href="{% url 'home' %}">
+                <img src="{% static 'earlyon_color_logo.png' %}" alt="Logo" class="header-logo"/>
+            </a>
+        </div>
+        <form action="{% url 'search' %}" class="header-search-frame" method="get">
+            <div class="header-search-frame-2">
+                <div class="header-university-search">
+                    <img class="header-univeristy-icon" src="{% static 'science-university-icon.png' %}" alt="Science-University-icon 1" />
+                    <input name="university" class="header-input_box" type="text" id="university-search" list="university-list" 
+                           value="{{ query_university|default:''|title }}" placeholder="Search Universities" autocomplete="off">
+                    <div id="university-list" class="dropdown-list"></div>
+                </div>
+                <div class="header-major-search">
+                    <img class="header-major-icon" src="{% static '565830-200.png' %}" alt="565830-200 1" />
+                    <input name="major" class="header-input_box" type="text" id="major-search" list="major-list" 
+                           value="{{ query_major|default:''|title }}" placeholder="Search Majors" autocomplete="off">
+                    <datalist id="major-list" class="dropdown-list"></datalist>
+                </div>
+            </div>
+            <input type="submit" value="Search" class="header-search-button"/>
+        </form>
+        {% if user.is_authenticated and user.is_mentor %}
+        <div class="profile-frame">
+            <button class="header-profile" onclick="location.href='{% url 'my_profile' user.id %}'">
+                <img src="{% static 'user_white.png' %}" alt="Profile image" class="profile-image">
+                {{ user.username }}
+            </button>
+        </div>
+        {% elif user.is_authenticated and not user.is_mentor %}
+        <div class="frame-7">
+            <button class="header-profile" onclick="location.href='{% url 'student_profile' user.id %}'">
+                <img src="{% static 'user_white.png' %}" alt="Profile image" class="profile-image">
+                {{ user.username }}
+            </button>
+        </div>
+        {% else %}
+        <input type="submit" class="header-login-button" value="Login" onclick="location.href='{% url 'login' %}'"/>
+        {% endif %}
+    </div>
+</div>
+</body>

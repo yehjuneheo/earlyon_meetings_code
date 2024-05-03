@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content=
+        "width=device-width, initial-scale=1.0">
+    
+    
+    <title>
+        My Meetings - EarlyOn Meetings
+    </title>
+    <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
+
+
+    <link rel="stylesheet" href="{% static 'styleguide.css' %}">
+    <link rel="stylesheet" href="{% static 'my_meetings.css' %}">
+    <link rel="stylesheet" href="{% static 'register_teacher.css' %}">
+
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-33Y8RZDE69"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-33Y8RZDE69');
+</script>
+<body>
+    <div class="mentor-profile screen">
+        <div class="frame-6">
+            <div class="logo-container2">
+                <a href="{% url 'home' %}">
+                    <img src="{% static 'earlyon_color_logo.png' %}" alt="Logo" class="logo2"/>
+                </a>
+            </div>
+        </div>
+        <div class="student_meetings">
+            <header>
+                <h1>My Meetings</h1>
+            </header>
+        
+            {% for meeting in my_meetings %}
+            <div class="meeting-item"> <!-- Updated class name for clarity -->
+                <div class="meeting-card {% if meeting.is_completed or meeting.is_cancelled or meeting.is_rejected %}completed-meeting{% endif %}" >
+                    <div class="meeting-header">
+                        <div class="giver-info">
+                            <h2>{{ meeting.receiver_profile.user.first_name }} {{ meeting.receiver_profile.user.last_name }}</h2>
+                            <p class="username">@{{ meeting.receiver_profile.user.username }}</p>
+                        </div>
+                    </div>
+                    <div class="meeting-info">
+                        {% if meeting.is_completed %}
+                            <span class="meeting-datetime">Met on {{ meeting.datetime }} ~ {{ meeting.endtime|date:"f a" }} on {{ meeting.timezone }}</span>
+                        {% else %}
+                            <span class="meeting-datetime">Meeting on {{ meeting.datetime }} ~ {{ meeting.endtime|date:"f a" }} on {{ meeting.timezone }}</span>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="meeting-details">
+                    <div class="details-left">
+                        {% if meeting.is_successful %}
+                        <div class="meeting-status status-completed"> <!-- Dynamic class for styling based on status -->
+                            Successful <!-- Simplified status display logic -->
+                        </div>
+                        {% elif meeting.is_failed %}
+                        <div class="meeting-status status-rejected"> <!-- Dynamic class for styling based on status -->
+                            Failed <!-- Simplified status display logic -->
+                        </div>
+                        {% elif meeting.is_failed_by_giver %}
+                        <div class="meeting-status status-rejected"> <!-- Dynamic class for styling based on status -->
+                            Failure Requested <!-- Simplified status display logic -->
+                        </div>
+                        {% elif meeting.is_completed %}
+                        <div class="meeting-status status-completed"> <!-- Dynamic class for styling based on status -->
+                            Completed <!-- Simplified status display logic -->
+                        </div>
+                        {% elif meeting.is_confirmed %}
+                        <div class="meeting-status status-confirmed"> <!-- Dynamic class for styling based on status -->
+                            Confirmed <!-- Simplified status display logic -->
+                        </div>
+                            {% if meeting.zoom_link %}
+                                <div class="zoom-link" ><a href="{{ meeting.zoom_start_url }}" target="_blank">Zoom Link</a></div>
+                            {% endif %}
+                        {% elif meeting.is_rejected %}
+                        <div class="meeting-status status-rejected"> <!-- Dynamic class for styling based on status -->
+                            Rejected <!-- Simplified status display logic -->
+                        </div>
+                        {% elif meeting.is_cancelled %}
+                        <div class="meeting-status status-cancelled"> <!-- Dynamic class for styling based on status -->
+                            Cancelled <!-- Simplified status display logic -->
+                        </div>
+                        {% else %}
+                        <div class="meeting-status status-request-sent"> <!-- Dynamic class for styling based on status -->
+                            Need Confirmation
+                        </div>
+                        {% endif %}
+                    </div>
+                    <div class="details-right">
+                        {% if not meeting.is_confirmed and not meeting.is_rejected and not meeting.is_completed and not meeting.is_cancelled %}
+                            <button type="button" class="btn rating-btn" onclick="location.href='{% url 'confirmation_successful' user.id meeting.id %}'">Confirm Meeting</button>
+                            <button type="button" class="btn cancel-btn" onclick="location.href='{% url 'reject_reservation' user.id meeting.id %}'">Reject Meeting</button>
+                        {% elif meeting.is_confirmed and not meeting.is_completed and not meeting.is_cancelled %}
+                            <button type="button" class="btn cancel-btn" onclick="location.href='{% url 'my_cancel_reservation' user.id meeting.id %}'">Cancel Meeting</button>
+                        {% elif meeting.is_completed and not meeting.is_successful and not meeting.is_failed and not meeting.is_failed_by_giver %}
+                        <button type="button" class="btn cancel-btn" onclick="location.href='{% url 'my_meeting_failed' user.id meeting.id %}'">Meeting Failed</button>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            <div class="back-button-container">
+                <button type="button" class="btn back-btn" onclick="location.href='{% url 'my_profile' user.id %}'">Go Back</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,181 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600italic,700,600,800,700italic,400italic,800italic");
+*,
+*:before,
+*:after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    background-image: url("background2.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, .5);
+}
+
+.register-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background for better readability */
+    border-radius: 10px; /* Optional: adds rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Soft shadow for depth */
+    width: auto; /* Adjust based on content */
+    max-width: 600px; /* Maximum width to contain the layout */
+}
+
+.hidden,
+.hidden * {
+    pointer-events: none;
+    visibility: hidden;
+}
+
+.frame-36 {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+    gap: 40px; /* Reduced gap for a tighter layout */
+}
+
+.frame-3 {
+    width: 100%; /* Full width for alignment */
+    display: flex;
+    justify-content: center; /* Center the contents */
+    flex-direction: column;
+    align-items: center;
+    gap: 10px; /* Add gap for internal spacing */
+    position: relative;
+}
+
+.frame-35 {
+    display: flex;
+    justify-content: center; /* Center the contents horizontally */
+    align-items: center; /* Center the contents vertically */
+    gap: 10px; /* Add gap between text and button */
+    width: 100%; /* Full width for better alignment */
+}
+
+.flex-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px; /* Adjust gap for spacing */
+    width: 100%; /* Take full width for better responsiveness */
+}
+
+.become-a-mentor {
+    letter-spacing: 0.6px;
+    line-height: normal;
+    margin-right: 2px;
+    min-height: 27px;
+    text-align: center;
+}
+
+.line {
+    height: 2px;
+    margin-top: 15px;
+    width: 80%;
+}
+
+
+.already-have-an-account, .login-now {
+    color: var(--black);
+    font-family: var(--font-family-open_sans);
+    font-size: var(--font-size-l2);
+    font-weight: 600;
+    letter-spacing: 0.51px;
+    line-height: normal;
+    text-align: center;
+    cursor: pointer; /* Only for login-now */
+}
+
+.login-now {
+    color: #1511e7;
+    text-decoration: underline;
+    background-color: transparent;
+    border: none;
+}
+.looking-for-mentor {
+    letter-spacing: 0.6px;
+    line-height: normal;
+    margin-left: 3px;
+    min-height: 27px;
+    text-align: center;
+}
+
+.frame-31 {
+    align-items: flex-start;
+    background-color: var(--cinnabar);
+    border-radius: 30px;
+    border-width: 0px;
+    box-shadow: 4px 4px 8px #00000080;
+    display: flex;
+    height: 59px;
+    justify-content: flex-end;
+    margin-left: 1px;
+    margin-top: 22px;
+    padding: 10px 23px;
+    cursor: pointer;
+    letter-spacing: 1.1px;
+    text-align: center;
+}
+
+.frame-31:hover {
+    background-color: var(--cinnabar2);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .register-main {
+        padding: 5px;
+        max-width: 90%; /* More flexible width on smaller screens */
+    }
+
+    .frame-31 {
+        padding: 8px 20px; /* Smaller buttons on smaller screens */
+    }
+
+    .frame-36 {
+        gap: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .flex-col p {
+        font-size: 16px; /* Smaller text on very small screens */
+    }
+
+    .frame-31 {
+        font-size: 16px; /* Adjust button text size for consistency */
+        justify-content: center;
+        height: 45px;
+        min-width: 150px;
+        margin-top: 5px;
+    }
+
+    .already-have-an-account {
+        font-size: 13px;
+    }
+
+    .login-now {
+        font-size: 14px;
+    }
+
+    .frame-35 {
+        margin-top: 15px;
+    }
+}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+  <title>Meeting Confirmation Email from EarlyOn Meetings</title>
+  <style>
+    body { font-family: Helvetica, Arial, sans-serif; color:black; }
+    .header, .footer { background-color: #F8F8F8; padding: 20px; text-align: center; }
+    .button { padding: 8px 12px; border-radius: 2px; font-size: 15px; font-weight: bold; text-decoration: none; display: inline-block; }
+    .confirm { background-color: #00a651; color: #ffffff; }
+    .reject { background-color: #ED2939; color: #ffffff; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <img src="https://i.imgur.com/cJoW808.png" alt="EarlyOn Logo" style="max-width: 150px;"><br>
+    <h2 style="color:black;">Meeting Confirmation Email from EarlyOn Meetings</h2>
+  </div>
+  <table width="100%" cellspacing="2" cellpadding="2">
+    <tr>
+        <td align="center">
+            <h1 class="request-sent" style="font-weight: bold; font-size:25px; padding-bottom:10px; color:black;">Your meeting request has been confirmed!</h1>
+            <h2 style="font-weight: bold; font-size:17px; color:black;">Your Meeting with {{giver.user.get_full_name}} is on:</h2>
+            <h2 style="font-weight: bold; font-size:17px; color:black;">{{meeting_start}} ~ {{meeting_end}} on {{student.timezone}}</h2>
+            <div style="margin-top: 20px; margin-bottom: 20px;">
+                <a href="{{meeting.zoom_link}}" target="_blank" style="font-size: 14px;">
+                    <img src="https://imgur.com/GxVmeJD.png" alt="Zoom" style="vertical-align: middle; margin-right: 5px; object-fit: cover; height: 40px; width: 40px;">
+                    Join Zoom Meeting
+                </a>
+            </div>
+            <table cellspacing="5" cellpadding="5">
+                <tr>
+                  <td style="border-radius: 2px;" bgcolor="#00a651">
+                    <a href="{{domain}}{% url 'student_meetings' student.user.id %}" class="button confirm" style="color:white;">
+                        My Meetings             
+                    </a>
+                  </td>
+                </tr>
+              </table>
+        </td>
+    </tr>
+</table>
+
+  <div class="footer">
+    <p style="color:black;">EarlyOn Meetings Inc.<br>
+      3911 Concord Pike #8030 • Wilmington, DE, 19803<br>
+    <a href="https://earlyonmeetings.com">www.earlyonmeetings.com</a> | <a href="mailto:info@earlyonmeetings.com">info@earlyonmeetings.com</a><br>
+    © 2024 EarlyOn Meetings Inc. All rights reserved.</p>
+  </div>
+</body>
+</html>
+

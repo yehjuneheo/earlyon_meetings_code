@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Meeting Request From EarlyOn Meetings!</title>
+  <style>
+    body { font-family: Helvetica, Arial, sans-serif; color:black; }
+    .header, .footer { background-color: #F8F8F8; padding: 20px; text-align: center; }
+    .button { padding: 8px 12px; border-radius: 2px; font-size: 15px; font-weight: bold; text-decoration: none; display: inline-block; }
+    .confirm { background-color: #00a651; color: #ffffff; }
+    .reject { background-color: #ED2939; color: #ffffff; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <img src="https://i.imgur.com/cJoW808.png" alt="EarlyOn Logo" style="max-width: 150px;"><br>
+    <h2 style="color:black;">Meeting Request From EarlyOn Meetings!</h2>
+  </div>
+
+  <table width="100%" cellspacing="0" cellpadding="0">
+    <tr>
+      <td align="center">
+        <h2 style="font-weight: bold; font-size:17px; padding-bottom:10px; color:black;">A Meeting Request has been sent to you by:</h2>
+        <h1 style="font-weight: bold; font-size:24px; color:black;">{{student.user.get_full_name}}</h1>
+        <h1 style="font-weight: bold; font-size:22px; color:black; margin-bottom: 30px;">{{meeting_start}} ~ {{meeting_end}} on {{giver.timezone}}</h1>
+        <h1 style="font-weight: bold; font-size:18px; color:red; margin-bottom: 15px;">Confirm 12 hours before the meeting starts!</h1>
+        <table cellspacing="5" cellpadding="5">
+          <tr>
+            <td style="border-radius: 2px;" bgcolor="#00a651">
+              <a href="https://{{domain}}{% url 'confirm_meeting' uidb64=uid token=token %}" class="button confirm" style="color:white;">
+                  Confirm Meeting             
+              </a>
+            </td>
+          </tr>
+        </table>
+        <table cellspacing="5" cellpadding="5" style="margin-top: 10px;">
+          <tr>
+            <td style="border-radius: 2px;" bgcolor="#ED2939">
+              <a href="{{domain}}{% url 'reject_meeting' uidb64=uid token=token %}" class="button reject" style="color:white;">
+                  Reject Request             
+              </a>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+
+  <div class="footer">
+    <p style="color:black;">EarlyOn Meetings Inc.<br>
+      3911 Concord Pike #8030 • Wilmington, DE, 19803<br>
+      <a href="https://earlyonmeetings.com">www.earlyonmeetings.com</a> | <a href="mailto:info@earlyonmeetings.com">info@earlyonmeetings.com</a><br>
+    © 2024 EarlyOn Meetings Inc. All rights reserved.</p>
+  </div>
+</body>
+</html>

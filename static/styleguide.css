@@ -1,0 +1,1399 @@
+/* Styleguide */
+
+:root {
+    --black-2: rgba(0, 0, 0, 0.5);
+    --black-3: rbga(0, 0, 0, 0.698);
+    --black: rgba(0, 0, 0, 1);
+    --green-haze: rgba(0, 166, 81, 1);
+    --green-haze2: rgba(0, 120, 81, 1);
+    --black-32: rgba(2, 2, 2, 1);
+    --unmellow-yellow: rgba(21, 17, 231, 1);
+    --storm-dust: rgba(98, 98, 98, 1);
+    --pink-swan: rgba(182, 182, 182, 0.8);
+    --alto: rgba(217, 217, 217, 1);
+    --cinnabar: rgba(229, 67, 67, 0.9);
+    --cinnabar2: rgba(180, 67, 90, 0.9);
+    --red: rgba(255, 0, 0, 1);
+    --white: rgba(255, 255, 255, 1);
+    --font-size-s: 13px;
+    --font-size-m2: 15px;
+    --font-size-l2: 17px;
+    --font-size-xl2: 20px;
+    --font-size-xxl2: 22px;
+    --font-size-xxxl2: 25px;
+    --font-size-xxxxl2: 30px;
+    --font-family-open_sans: "Open Sans";
+    --font-family-open_sans-italic: "Open Sans-Italic";
+    --font-family-open_sans-semibolditalic: "Open Sans-SemiBoldItalic";
+
+    --lift-blue: rgba(0, 129, 254, 1);
+    --dark: rgba(10, 20, 47, 1);
+}
+
+.opensans-semi-bold-unmellow-yellow-17px {
+    color: var(--unmellow-yellow);
+    font-family: var(--font-family-open_sans);
+    font-size: var(--font-size-l2);
+    font-weight: 600;
+    font-style: normal;
+}
+
+.opensans-semi-bold-white-22px {
+    color: var(--white);
+    font-family: var(--font-family-open_sans);
+    font-size: var(--font-size-xxl2);
+    font-weight: 600;
+    font-style: normal;
+}
+
+.opensans-bold-black-25px {
+    color: var(--black);
+    font-family: var(--font-family-open_sans);
+    font-size: var(--font-size-xxl2);
+    font-weight: 700;
+    font-style: normal;
+}
+
+.opensans-semi-bold-black-38px {
+    color: var(--black);
+    font-family: var(--font-family-open_sans);
+    font-size: 38px;
+    font-weight: 600;
+    font-style: italic;
+}
+
+.opensans-semi-bold-black-16px {
+    color: var(--black);
+    font-family: var(--font-family-open_sans);
+    font-size: 16px;
+    font-weight: 600;
+    font-style: normal;
+}
+
+.opensans-bold-white-40px {
+    color: var(--white);
+    font-family: var(--font-family-open_sans);
+    font-size: 40px;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.opensans-extra-bold-black-15px {
+    color: var(--black);
+    font-family: var(--font-family-open_sans);
+    font-size: var(--font-size-m2);
+    font-weight: 800;
+    font-style: normal;
+}
+
+.opensans-semi-bold-white-15px {
+    color: var(--white);
+    font-family: var(--font-family-open_sans);
+    font-size: var(--font-size-m2);
+    font-weight: 600;
+    font-style: normal;
+}
+
+.opensans-normal-white-20px {
+    color: var(--white);
+    font-family: var(--font-family-open_sans);
+    font-size: var(--font-size-xl2);
+    font-weight: 400;
+    font-style: normal;
+}
+
+.opensans-extra-bold-black-20px {
+    color: var(--black);
+    font-family: var(--font-family-open_sans);
+    font-size: var(--font-size-xl2);
+    font-weight: 800;
+    font-style: normal;
+}
+
+.opensans-normal-storm-dust-20px {
+    color: var(--storm-dust);
+    font-family: var(--font-family-open_sans);
+    font-size: var(--font-size-xl2);
+    font-weight: 400;
+    font-style: normal;
+}
+
+.opensans-extra-bold-black-28px {
+    color: var(--black);
+    font-family: var(--font-family-open_sans);
+    font-size: 28px;
+    font-weight: 800;
+    font-style: normal;
+}
+
+.opensans-normal-black-13px {
+    color: var(--black);
+    font-family: var(--font-family-open_sans);
+    font-size: var(--font-size-s);
+    font-weight: 400;
+    font-style: normal;
+}
+
+.opensans-semi-bold-white-25px {
+    color: var(--white);
+    font-family: var(--font-family-open_sans);
+    font-size: var(--font-size-xxxl2);
+    font-weight: 600;
+    font-style: normal;
+}
+
+.opensans-semi-bold-black-20px {
+    color: var(--black);
+    font-family: var(--font-family-open_sans);
+    font-size: var(--font-size-xl2);
+    font-weight: 600;
+    font-style: italic;
+}
+
+.opensans-semi-bold-black-17px {
+    color: var(--black);
+    font-family: var(--font-family-open_sans);
+    font-size: var(--font-size-l2);
+    font-weight: 600;
+    font-style: normal;
+}
+
+.opensans-normal-black-30px {
+    color: var(--black);
+    font-family: var(--font-family-open_sans);
+    font-size: var(--font-size-xxxxl2);
+    font-weight: 400;
+    font-style: normal;
+}
+
+.opensans-semi-bold-black-20px-2 {
+    color: var(--black);
+    font-family: var(--font-family-open_sans);
+    font-size: var(--font-size-xl2);
+    font-weight: 600;
+    font-style: normal;
+}
+
+.opensans-bold-black-35px {
+    color: var(--black);
+    font-family: var(--font-family-open_sans);
+    font-size: 35px;
+    font-weight: 600;
+    font-style: normal;
+}
+
+.opensans-bold-black-22px {
+    color: var(--black);
+    font-family: var(--font-family-open_sans);
+    font-size: var(--font-size-xxl2);
+    font-weight: 700;
+    font-style: normal;
+}
+
+.opensans-semibolditalic-semi-bold-black-20px {
+    color: var(--black);
+    font-family: var(--font-family-open_sans-semibolditalic);
+    font-size: var(--font-size-xl2);
+    font-weight: 600;
+    font-style: italic;
+}
+
+.opensans-normal-black-17px {
+    color: var(--black);
+    font-family: var(--font-family-open_sans);
+    font-size: var(--font-size-l2);
+    font-weight: 400;
+    font-style: italic;
+}
+
+.opensans-semi-bold-unmellow-yellow-14px {
+    color: var(--unmellow-yellow);
+    font-family: var(--font-family-open_sans);
+    font-size: 14px;
+    font-weight: 600;
+    font-style: normal;
+}
+
+.opensans-extra-bold-black-65px {
+    color: var(--black);
+    font-family: var(--font-family-open_sans);
+    font-size: 65px;
+    font-weight: 800;
+    font-style: normal;
+}
+
+.opensans-bold-black-45px {
+    color: var(--black);
+    font-family: var(--font-family-open_sans);
+    font-size: 45px;
+    font-weight: 700;
+    font-style: italic;
+}
+
+.opensans-semi-bold-black-35px {
+    color: var(--black);
+    font-family: var(--font-family-open_sans);
+    font-size: 35px;
+    font-weight: 600;
+    font-style: normal;
+}
+
+.opensans-extra-bold-white-25px {
+    color: var(--white);
+    font-family: var(--font-family-open_sans);
+    font-size: var(--font-size-xxxl2);
+    font-weight: 800;
+    font-style: normal;
+}
+
+.opensans-extra-bold-white-30px {
+    color: var(--black);
+    font-family: var(--font-family-open_sans);
+    font-size: var(--font-size-xxxxl2);
+    font-weight: 800;
+    font-style: normal;
+}
+
+.opensans-bold-white-25px {
+    color: var(--white);
+    font-family: var(--font-family-open_sans);
+    font-size: var(--font-size-xxxl2);
+    font-weight: 700;
+    font-style: normal;
+}
+
+.opensans-semi-bold-red-17px {
+    color: var(--red);
+    font-family: var(--font-family-open_sans);
+    font-size: 18px;
+    font-weight: 600;
+    font-style: normal;
+}
+
+.opensans-semi-bold-white-18px {
+    color: var(--white);
+    font-family: var(--font-family-open_sans);
+    font-size: 18px;
+    font-weight: 600;
+    font-style: normal;
+}
+
+.opensans-normal-black-20px {
+    color: var(--black);
+    font-family: var(--font-family-open_sans);
+    font-size: var(--font-size-xl2);
+    font-weight: 400;
+    font-style: normal;
+}
+
+.opensans-semi-bold-black-22px {
+    color: var(--black);
+    font-family: var(--font-family-open_sans);
+    font-size: var(--font-size-xxl2);
+    font-weight: 600;
+    font-style: normal;
+}
+
+.opensans-semi-bold-white-17px {
+    color: var(--white);
+    font-family: var(--font-family-open_sans);
+    font-size: var(--font-size-l2);
+    font-weight: 600;
+    font-style: normal;
+}
+
+.opensans-semi-bold-white-13px {
+    color: var(--white);
+    font-family: var(--font-family-open_sans);
+    font-size: var(--font-size-s);
+    font-weight: 600;
+    font-style: normal;
+}
+
+.opensans-semi-bold-black-18px {
+    color: var(--black-32);
+    font-family: var(--font-family-open_sans);
+    font-size: 18px;
+    font-weight: 600;
+    font-style: normal;
+}
+
+.opensans-semi-bold-white-28px {
+    color: var(--white);
+    font-family: var(--font-family-open_sans);
+    font-size: var(--font-size-xl2);
+    font-weight: 600;
+    font-style: normal;
+}
+
+.opensans-semi-bold-white-20px {
+    color: var(--white);
+    font-family: var(--font-family-open_sans);
+    font-size: var(--font-size-xl2);
+    font-weight: 600;
+    font-style: normal;
+}
+
+.opensans-italic-normal-black-17px {
+    color: var(--black);
+    font-family: var(--font-family-open_sans);
+    font-size: var(--font-size-l2);
+    font-weight: 400;
+    font-style: italic;
+}
+
+.opensans-semi-bold-black-25px {
+    color: var(--black);
+    font-family: var(--font-family-open_sans);
+    font-size: 25px;
+    font-weight: 600;
+    font-style: normal;
+}
+
+body {
+    margin: 0;
+}
+
+
+.logo-container {
+    position: fixed;
+    top: 1vw; /* Use viewport width for relative sizing */
+    left: 1vw;
+    z-index: 1000;
+}
+
+.logo {
+    width: 8vw; /* Start with a width that adjusts with viewport width */
+    height: auto; /* Maintain aspect ratio */
+    transition: opacity 0.3s ease;
+    max-width: 150px; /* Set a max-width to prevent the logo from becoming too large */
+    min-width: 50px; /* Set a min-width to ensure the logo is visible on small screens */
+}
+
+.logo-container a {
+    display: inline-block; /* Ensures the area around the logo is clickable */
+}
+
+.logo-container a:hover .logo {
+    opacity: 0.8; /* Slight transparency on hover for visual feedback */
+}
+
+.header-university-search,
+.header-major-search {
+    background-color: var(--white);
+    border-radius: 90px;
+    height: 40px;
+    width: calc(200%); /* Adjusts width on smaller screens */
+    max-width: 200%; /* Ensures maximum width does not exceed 655px */
+    position: relative;
+    box-shadow: 4px 4px 4px #00000080;
+    display: flex;
+    align-items: center;
+    padding: 0 15px 0 15px; /* Padding inside the container */
+    border: 2px solid var(--white); /* Adds a border on hover */
+    transition: border 0.3s ease;
+}
+
+.header-university-search:hover {
+    border: 2px solid var(--storm-dust); /* Adds a border on hover */
+}
+
+.header-major-search:hover {
+    border: 2px solid var(--storm-dust); /* Adds a border on hover */
+}
+
+
+.header-input_box {
+    background-color: var(--white);
+    border: none; /* Removes border */
+    outline: none; /* Removes outline on focus */
+    width: 18vw; /* Makes input take available space */
+    margin-left: 5px; /* Adds space between icon and input */
+    min-width: auto; /* Removes minimum width constraint */
+    height: 28px;
+    font-size: 16px;
+}
+
+.header-univeristy-icon {
+    height: 20px;
+    left: 12px;
+    top: 6px;
+    width: 20px;
+    opacity: 0.5;
+}
+
+.header-major-icon {
+    height: 30px;
+    left: 8px;
+    top: 2px;
+    width: 30px;
+    opacity: 0.5;
+}
+
+
+.header-frame {
+    align-items: center;
+    background-color: #00000080; /* Semi-transparent black */
+    background-image: url("background.jpg"); /* Ensure you use Django template tag for static files */
+    background-position: center; /* Center the background image */
+    background-size: cover; /* Cover the entire area of the header */
+    display: flex;
+    justify-content: center; /* Distribute space between items */
+    padding: 20px 0;
+    width: 100%; /* Full width */
+}
+
+.header-frame-2 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px; /* Limit maximum width */
+    width: 100%;
+    padding: 0 20px;
+  }
+
+.logo-frame {
+    display: flex;
+    align-items: center; /* Center items vertically */
+    background-color: transparent; /* Consider making the logo background transparent */
+    gap: 10px; /* Adjust gap */
+}
+
+.header-search-frame {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.header-search-frame-2 {
+    display: flex;
+    gap: 20px;
+}
+
+.dropdown-list {
+    display: none; /* Initially hidden */
+    position: absolute; /* Position it below the input field */
+    background-color: #fff; /* Match the input field background */
+    width: calc(100% - 30px); /* Match input field width minus padding */
+    max-height: 200px; /* Limit height of dropdown */
+    overflow-y: auto; /* Enable scroll if too many items */
+    border-radius: 8px; /* Rounded corners for the dropdown */
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1); /* Subtle shadow for depth */
+    z-index: 1000; /* Ensure it's above other content */
+    top: 45px; /* Adjust based on input field size */
+    left: 15px; /* Align with input field's left edge */
+    font-family: var(--font-family-open_sans);
+    text-transform: capitalize; /* Capitalize each item */
+}
+
+.dropdown-list .dropdown-item {
+    padding: 10px 20px; /* Adequate padding for touch targets */
+    cursor: pointer; /* Indicate an item can be selected */
+    text-transform: capitalize; /* Capitalize each item */
+}
+
+.dropdown-list .dropdown-item:hover {
+    background-color: #f0f0f0; /* Highlight on hover */
+}
+
+
+.header-logo-frame {
+    display: flex;
+    align-items: center;
+}
+
+
+.header-logo {
+    height: auto; /* Maintains aspect ratio */
+    width: 1vw;
+    max-width: 150px; /* Adjusts the logo size; change as needed */
+    min-width: 100px; /* Adjusts the logo size; change as needed */
+    transition: transform 0.3s ease;
+}
+
+.header-logo:hover {
+    transform: scale(1.05); /* Scales up the logo by 10% on hover */
+}
+
+.header-search-button {
+    align-items: flex-start;
+    background-color: var(--green-haze);
+    border-radius: 20px;
+    box-shadow: 4px 4px 4px #00000080;
+    cursor: pointer;
+    display: flex;
+    gap: 10px;
+    padding: 6px 14px;
+    width: fit-content;
+    color: var(--white);
+    font-family: var(--font-family-open_sans);
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    line-height: normal;
+    text-align: center;
+    border-width: 0px;
+    transition: background-color 0.3s ease;
+}
+
+.header-search-button:hover {
+    background-color: var(--green-haze2);
+}
+
+
+.header-login-button {
+    color: white;
+    cursor: pointer;
+    font-family: var(--font-family-open_sans);
+    font-size: var(--font-size-l);
+    font-weight: 600;
+    left: 0;
+    letter-spacing: 0.9px;
+    line-height: normal;
+    text-align: center;
+    top: 7px;
+    align-items: flex-start;
+    background-color: var(--cinnabar);
+    border-radius: 20px;
+    box-shadow: 4px 4px 4px #00000080;
+    display: flex;
+    gap: 10px;
+    padding: 8px 28px;
+    width: fit-content;
+    border-width: 0px;
+    transition: background-color 0.3s ease;
+}
+
+.header-login-button:hover {
+    background-color: var(--cinnabar2);
+}
+
+.header-profile {
+    color: white;
+    cursor: pointer;
+    font-family: var(--font-family-open_sans);
+    font-size: var(--font-size-l);
+    font-weight: 600;
+    left: 0;
+    letter-spacing: 0.9px;
+    line-height: normal;
+    text-align: center;
+    top: 7px;
+    text-decoration: underline;
+    background-color: transparent;
+    border: none;
+    overflow: hidden;
+}
+
+.header-frame .header-profile{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.header-frame .profile-image {
+  width: 30px; /* Adjust size as needed */
+  height: 30px; /* Adjust size as needed */
+  border-radius: 50%; /* Makes the image circular */
+  margin-right: 5px; /* Adjust spacing between image and username as needed */
+  object-fit: cover; /* Ensures the image covers the area without losing aspect ratio */
+  border: 2px solid var(--white);
+}
+
+.footer-dark {
+    display: flex; /* Use 'flex' instead of 'inline-flex' for the parent container */
+    flex-direction: column;
+    align-items: center; /* Align children in the center horizontally */
+    gap: 10px;
+    position: relative;
+    background-color: var(--dark);
+    padding: 30px 20px; /* Adjusted padding for top/bottom and added left/right */
+    width: 100%;
+    box-sizing: border-box; /* Ensures padding is included in the width */
+}
+
+  .footer-dark .footer-UI {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    position: relative;
+    flex: 0 0 auto;
+  }
+  
+  .footer-dark .footer-frame {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center children horizontally within each frame */
+    gap: 30px;
+    position: relative;
+    flex: 0 0 auto;
+  }
+  
+  .footer-dark .footer-div {
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    display: flex;
+    position: relative;
+    flex: 0 0 auto;
+  }
+  
+  .footer-dark .footer-rectangle {
+    height: 4px;
+    opacity: 0.3;
+    position: relative;
+    width: 750px;
+    background-color: var(--white);
+  }
+  
+  .footer-dark .footer-frame-2 {
+    align-items: center;
+    gap: 20vw;
+    background-color: var(--dark);
+    display: flex;
+    position: relative;
+    flex: 0 0 auto;
+  }
+  
+  .footer-dark .logo-LIFT {
+    position: relative;
+    width: 180px;
+    height: auto;
+  }
+  
+  .footer-dark .information {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 28px;
+    position: relative;
+    flex: 0 0 auto;
+    width: 50%;
+  }
+  
+  .footer-dark .div-2 {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    position: relative;
+    flex: 0 0 auto;
+  }
+  
+  .footer-dark .div-3 {
+    position: relative;
+    width: 24px;
+    height: 24px;
+  }
+  
+  .footer-dark .path {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+  }
+  
+  .footer-dark .shape {
+    position: absolute;
+    width: 14px;
+    height: 19px;
+    top: 2px;
+    left: 5px;
+  }
+  
+  .footer-dark .text-wrapper {
+    position: relative;
+    width: fit-content;
+    font-family: "Assistant", Helvetica;
+    font-weight: 400;
+    color: var(--white);
+    font-size: 14px;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .footer-dark .footer-frame-3 {
+    align-items: flex-start;
+    gap: 10vw;
+    display: flex;
+    position: relative;
+    flex: 0 0 auto;
+  }
+  
+  .footer-dark .img {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+  }
+  
+  .footer-dark .shape-2 {
+    position: absolute;
+    width: 20px;
+    height: 18px;
+    top: 3px;
+    left: 2px;
+  }
+  
+  .footer-dark .social {
+    display: inline-flex;
+    align-items: center;
+    gap: 26px;
+    position: relative;
+    flex: 0 0 auto;
+  }
+  
+  .footer-dark .text-wrapper-2 {
+    position: relative;
+    width: fit-content;
+    opacity: 0.7;
+    font-family: "Assistant", Helvetica;
+    font-weight: 400;
+    color: var(--white);
+    font-size: 14px;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .footer-dark .footer-frame-4 {
+    display: flex;
+    flex-direction: row; /* Assuming you want its items to be in a row */
+    justify-content: center; /* Center the items horizontally */
+    align-items: center; /* Align the items vertically */
+    gap: 10px; /* Adjust the gap between items */
+    width: 100%;
+  }
+  
+  .footer-dark .img-2 {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    top: 3px;
+    left: 3px;
+  }
+  
+  .footer-dark .twitter {
+    position: absolute;
+    width: 18px;
+    height: 15px;
+    top: 5px;
+    left: 3px;
+  }
+  
+  .footer-dark .linked-in {
+    position: absolute;
+    width: 18px;
+    height: 16px;
+    top: 4px;
+    left: 3px;
+  }
+  
+  .footer-dark .youtube {
+    position: absolute;
+    width: 18px;
+    height: 13px;
+    top: 6px;
+    left: 3px;
+  }
+  
+  .footer-dark .google-plus {
+    position: absolute;
+    width: 18px;
+    height: 11px;
+    top: 7px;
+    left: 3px;
+  }
+  
+  .footer-dark {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    background-color: var(--dark);
+    padding: 30px 20px; /* Padding on all sides */
+    width: 100%;
+    box-sizing: border-box; /* Ensures padding is included in the width */
+  }
+  
+  .footer-dark .footer-rectangle-2 {
+    height: 3px;
+    opacity: 0.2;
+    width: 100%; /* Adjusts width to fit the container */
+    max-width: 750px; /* Maximum width */
+    background-color: var(--white);
+    margin: 0 auto; /* Centers the rectangle */
+  }
+  
+  
+  .footer-dark .footer-frame-6 {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    background-color: var(--dark);
+    position: relative;
+    flex: 0 0 auto;
+    gap: 50px;
+  }
+
+  .footer-dark .footer-frame-7 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%; /* Adjusts width to fit the container */
+    gap: 20px; /* Adjusts gap for better spacing */
+    padding: 0 20px; /* Padding on the sides */
+  }
+  
+  .footer-dark .text-wrapper-3 {
+    font-family: "Assistant", Helvetica;
+    font-weight: 400;
+    color: var(--white);
+    font-size: 12px;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .footer-dark .copyright-m {
+    font-family: "Assistant", Helvetica;
+    font-weight: 400;
+    color: var(--white);
+    font-size: 12px;
+    letter-spacing: 0;
+    line-height: normal;
+    text-align: center; /* Centers the text */
+  }
+
+
+
+
+  .profile_frame {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 31px 37px;
+    position: relative;
+    background-color: #ffffff;
+    border-radius: 60px;
+    overflow: hidden;
+    border: 1px solid;
+    border-color: #707070;
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  .profile_frame:hover {
+    background-color: #f9f9f9; /* Lighter shade on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
+    transform: translateY(-5px); /* Slight lift */
+}
+  
+  .profile_frame .profile_div {
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    display: inline-flex;
+    position: relative;
+    flex: 0 0 auto;
+  }
+  
+  .profile_frame .profile_div-2 {
+    align-items: center;
+    gap: 24px;
+    display: inline-flex;
+    position: relative;
+    flex: 0 0 auto;
+  }
+
+  .profile_frame .profile_div-9 {
+    align-items: center;
+    gap: 15px;
+    display: inline-flex;
+    position: relative;
+    flex: 0 0 auto;
+  }
+  
+  .profile_frame .profile_ellipse {
+    position: relative;
+    width: 140px;
+    height: 140px;
+    border-radius: 90px;
+    object-fit: cover; /* Ensures image covers the area without squishing */
+  }
+  
+  .profile_frame .profile_div-3 {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+    display: inline-flex;
+    position: relative;
+    flex: 0 0 auto;
+  }
+
+  .profile_frame .header-profile {
+    display: flex;
+    align-items: center;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    padding: 0;
+    font-size: 1em; /* Adjust to match your design */
+}
+  
+  .profile_frame .profile_div-4 {
+    display: flex;
+    justify-content: space-between; /* Aligns children at each end */
+    align-items: center;
+    width: 40rem; /* Adjust the width as needed */
+    position: relative;
+    flex: 0 0 auto;
+  }
+  
+  .profile_frame .profile_text-wrapper {
+    position: relative;
+    width: fit-content;
+    margin-top: -1px;
+    font-family: "Inter", Helvetica;
+    font-weight: 400;
+    color: #000000;
+    font-size: 23px;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .profile_frame .profile_div-5 {
+    align-items: flex-start;
+    gap: 9px;
+    display: inline-flex;
+    position: relative;
+    flex: 0 0 auto;
+  }
+  
+  .profile_frame .profile_text-wrapper-2 {
+    position: relative;
+    width: fit-content;
+    margin-top: -1px;
+    font-family: "Inter", Helvetica;
+    font-weight: 400;
+    color: #555555;
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .profile_frame .profile_div-wrapper {
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px 20px;
+    background-color: #ffffff;
+    border-radius: 90px;
+    overflow: hidden;
+    border: 1px solid;
+    border-color: #008805;
+    display: inline-flex;
+    position: relative;
+    flex: 0 0 auto;
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
+  }
+  
+  .profile_frame .profile_text-wrapper-3 {
+    position: relative;
+    width: fit-content;
+    margin-top: -1px;
+    font-family: "Inter", Helvetica;
+    font-weight: 400;
+    color: #008805;
+    font-size: 17px;
+    letter-spacing: 0;
+    line-height: normal;
+    transition: color 0.3s ease; /* Smooth transition for text color */
+  }
+
+  .profile_frame .profile_div-wrapper:hover {
+    background-color: #008805; /* New background color on hover */
+  }
+  
+  .profile_frame .profile_div-wrapper:hover .profile_text-wrapper-3 {
+    color: #ffffff; /* Text color changes to white on hover */
+  }
+  
+  .profile_frame .profile_div-6 {
+    align-items: center;
+    gap: 15px;
+    display: inline-flex;
+    position: relative;
+    flex: 0 0 auto;
+  }
+  
+  .profile_frame .profile_element-university-of {
+    position: relative;
+    width: auto;
+    height: 60px;
+    object-fit: cover;
+  }
+  
+  .profile_frame .profile_div-7 {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+    display: inline-flex;
+    position: relative;
+    flex: 0 0 auto;
+  }
+  
+  .profile_frame .profile_p {
+    position: relative;
+    width: fit-content;
+    max-width: 540px;
+    margin-top: -1px;
+    margin-bottom: -1px;
+    font-family: "Inter", Helvetica;
+    font-weight: 600;
+    color: #000000;
+    font-size: 24px;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .profile_frame .profile_text-wrapper-4 {
+    position: relative;
+    width: fit-content;
+    max-width: 450px; /* Example fixed maximum width */
+    font-family: "Inter", Helvetica;
+    font-weight: 400;
+    font-style: italic;
+    color: #000000;
+    font-size: 20px;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .profile_frame .profile_div-8 {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+    display: inline-flex;
+    position: relative;
+    flex: 0 0 auto;
+  }
+  
+.profile_frame .profile_text-wrapper-5 {
+    position: relative;
+    width: 50rem; /* Adjust based on the desired width, or use max-width */
+    max-width: 1000px; /* Example fixed maximum width */
+    height: auto;
+    margin-top: -1px;
+    font-family: "Inter", Helvetica;
+    font-weight: 400;
+    color: #000000;
+    font-size: 16px;
+    letter-spacing: 0.66px;
+    line-height: 130%;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+}
+  
+  .profile_frame .profile_jinjun-oh-is-fluent {
+    position: relative;
+    width: fit-content; 
+    height: auto;
+    font-family: "Inter", Helvetica;
+    font-weight: 400;
+    color: #000000;
+    font-size: 16px;
+    font-style: italic;
+    letter-spacing: 0.66px;
+    line-height: normal;
+    margin-top: -1px;
+    margin-bottom: -1px;
+  }
+  
+  .profile_frame .profile_span {
+    letter-spacing: 0.15px;
+  }
+  
+  .profile_frame .profile_text-wrapper-6 {
+    font-weight: 700;
+    letter-spacing: 0.15px;
+  }
+
+  
+
+html::-webkit-scrollbar {
+  width: 4px; /* The width of the scrollbar - make this smaller for a thinner scrollbar */
+}
+
+html::-webkit-scrollbar-track {
+  background-color: transparent; /* Optional: Change to any color you want for the track */
+  border-radius: 10px; /* Ensures that the track also has rounded ends */
+}
+
+/* This styles the scrollbar handle */
+html::-webkit-scrollbar-thumb {
+  background-color: #2e2e2e; /* A darker color for the scrollbar itself */
+  border-radius: 10px; /* Round ends */
+  border: 0; /* Remove border to make it thinner */
+}
+
+
+/* To remove the scrollbar buttons */
+html::-webkit-scrollbar-button {
+  display: none; /* This will remove the buttons from the scrollbar */
+}
+
+
+  
+
+
+  @media (max-width: 1000px) {
+    .profile_frame .profile_div-4 {
+        width: 34rem;
+      }
+
+  }
+
+  @media (max-width: 908px) {
+    .profile_frame {
+        padding: 25px 25px;
+      }
+
+    .profile_frame .profile_text-wrapper-5 {
+        width: 44rem;
+    }
+
+  }
+
+  @media (max-width: 768px) {
+    
+    .header-search-frame-2 {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .header-frame-2 {
+      padding: 0 5px;
+    }
+
+    .header-university-search,
+    .header-major-search {
+        height: 35px;
+        width: 34vw; /* Ensure search fields take full width */
+        max-width: none; /* Remove max width restriction */
+    }
+
+    .header-input_box {
+        margin-left: 5px; /* Adds space between icon and input */
+        width: 100%; /* Ensure search fields take full width */
+        height: 30px;
+        font-size: 14px;
+    }
+
+    .header-logo {
+        height: auto; /* Maintains aspect ratio */
+        width:0.6vw;
+        max-width: 180px; /* Adjusts the logo size; change as needed */
+        min-width: 80px; /* Adjusts the logo size; change as needed */
+    }
+
+    .header-search-button {
+        border-radius: 15px;
+        box-shadow: 2px 2px 4px #00000080;
+        gap: 8px; /* Reduced gap for a tighter layout */
+        padding: 4px 10px; /* Reduced padding for a more compact size */
+        font-size: 14px; /* Smaller font size */
+        letter-spacing: 0.8px;
+    }
+
+    .header-univeristy-icon {
+        height: 15px;
+        width: 15px;
+    }
+    
+    .header-major-icon {
+        height: 22px;
+        width: 22px;
+    }
+
+    .footer-dark .logo-LIFT {
+        position: relative;
+        width: 140px;
+        height: auto;
+      }
+
+
+    
+      .footer-dark {
+        padding: 20px 10px; /* Reduce padding for smaller screens */
+    }
+
+    .footer-dark .footer-rectangle {
+        width: 480px; /* Allow the rectangle to fill the available width */
+        max-width: 100%; /* Allow the rectangle to fill the available width */
+    }
+
+    
+    .footer-dark .footer-rectangle-2 {
+        width: 480px; /* Allow the rectangle to fill the available width */
+    }
+
+    /* Adjust text size, spacing, or any other properties as needed */
+    .footer-dark .about-us,
+    .footer-dark .privacy-policy,
+    .footer-dark .disclaimer,
+    .footer-dark .contact-us,
+    .footer-dark .help,
+    .footer-dark .copyright-m,
+    .footer-dark .text-wrapper,
+    .footer-dark .text-wrapper-2 {
+        font-size: 12px; /* Smaller font size for footer text */
+    }
+
+    .footer-dark .information {
+        align-items: center; /* Centers the content horizontally */
+    }
+
+    /* Adjust the layout or spacing of social icons and other elements as needed */
+    .footer-dark .footer-frame-2 {
+        gap: 10vw; /* Adjust gap between elements */
+    }
+
+    
+    .footer-dark .footer-frame-4 .item-to-move{/* Stack the items vertically on smaller screens */
+        margin-top: 10px; /* You might want less space on smaller screens */
+    }
+
+    
+  .footer-dark .footer-frame-6,
+  .footer-dark .footer-frame-7 {
+    flex-direction: column;
+    align-items: center;
+    padding: 0; /* Removes side padding for smaller screens */
+  }
+
+  .footer-dark .footer-frame-7 {
+    margin-top: 20px;
+  }
+
+  .footer-dark .footer-rectangle-2 {
+    max-width: 90%; /* Adjusts maximum width for smaller screens */
+  }
+
+  .item-to-move {
+    order: 1; /* Moves these items down */
+  }
+
+  
+  .profile_frame {
+    flex-direction: column;
+    padding: 20px 15px;
+    border-radius: 30px;
+}
+
+.profile_frame .profile_div-2,
+.profile_frame .profile_div-3,
+.profile_frame .profile_div-6{
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.profile_frame .profile_div-7{
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile_frame .profile_ellipse {
+    width: 100px;
+    height: 100px;
+}
+
+.profile_frame .profile_div-4 {
+    flex-direction: column;
+    width: 20rem;
+}
+
+.profile_frame .profile_text-wrapper,
+.profile_frame .profile_text-wrapper-2,
+.profile_frame .profile_text-wrapper-3,
+.profile_frame .profile_text-wrapper-4,
+.profile_frame .profile_p {
+    text-align: center;
+}
+
+.profile_frame .profile_text-wrapper {
+    font-size: 20px;
+}
+
+.profile_frame .profile_text-wrapper-2 {
+    font-size: 14px;
+}
+
+.profile_frame .profile_text-wrapper-3,
+.profile_frame .profile_text-wrapper-4 {
+    font-size: 15px;
+    max-width: 400px;
+}
+
+.profile_frame .profile_p {
+    font-size: 20px;
+}
+
+.profile_frame .profile_text-wrapper-5 {
+    width: 25rem;
+    font-size: 14px;
+}
+
+.profile_frame .profile_jinjun-oh-is-fluent {
+    font-size: 14px;
+    max-width: 400px;
+}
+
+
+.profile_frame .profile_div-8 {
+    gap: 10px;
+}
+
+}
+
+@media (max-width: 500px) {
+    .footer-dark .footer-rectangle {
+        width: 200px; /* Allow the rectangle to fill the available width */
+    }
+    
+    .footer-dark .footer-rectangle-2 {
+        width: 200px; /* Allow the rectangle to fill the available width */
+    }
+
+    
+  .footer-dark .footer-frame-2 {
+    flex-direction: column; /* Stacks items vertically */
+    gap: 10px; /* Optional: Adjust gap for vertical alignment */
+  }
+  
+  .profile_frame .profile_jinjun-oh-is-fluent {
+    max-width: 320px;
+  }
+
+}
+
+
+@media (max-width: 480px) {
+  .profile_frame .profile_text-wrapper-5 {
+    width: 20rem;
+  }
+
+  .header-logo {
+    min-width: 60px;
+  }
+
+  .header-login-button {
+    font-size: 12px;
+    padding: 8px 15px;
+  }
+  
+}

@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+{% load static %}
+{% load timezone_filters %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content=
+        "width=device-width, initial-scale=1.0">
+    
+    <title>
+        Help - EarlyOn Meetings
+    </title>
+    <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
+
+
+    <link rel="stylesheet" href="{% static 'styleguide.css' %}">
+    <link rel="stylesheet" href="{% static 'my_meetings.css' %}">
+    <style>
+        body {
+            font-family: Open Sans;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+                
+        .faq-container {
+            /* Container styles */
+        }
+
+        .faq-intro {
+            /* Intro paragraph styles */
+        }
+
+        .faq-category {
+            margin-bottom: 15px;
+        }
+
+        .faq-category-title {
+            background-color: #34C759;
+            color: white;
+            padding: 15px 15px;
+            border: none;
+            width: 100%;
+            text-align: left;
+            outline: none;
+            cursor: pointer;
+            font-size: 20px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .faq-category-title::after {
+            content: '\002B';
+            float: right;
+            font-size: 25px;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-category-title.active::after {
+            transform: rotate(45deg);
+        }
+
+        .faq-category-content {
+            background-color: #f7f7f7;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            max-height: 0;
+            max-width: 700px;
+        }
+
+        .faq-question {
+            background-color: #fff;
+            color: #34C759;
+            padding: 20px 15px;
+            border: none;
+            width: 100%;
+            text-align: left;
+            outline: none;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            border-top: 1px solid #ddd;
+        }
+
+        .faq-question::after {
+            content: '\002B';
+            float: right;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-question.active::after {
+            transform: rotate(45deg);
+        }
+
+
+        .faq-question.active .faq-answer {
+            padding: 10px;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-in-out;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        .faq-answer p {
+            margin: 0;
+            padding: 10px 0;
+            font-size: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .faq-category-content {
+                max-width: 500px;
+            }
+        }
+
+    </style>
+
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-33Y8RZDE69"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-33Y8RZDE69');
+</script>
+<body>
+    <div class="my-meetings screen">
+        {% include 'header.html' %}
+        <div class="faq-container">
+            <h1>Frequently Asked Questions</h1>
+            <p class="faq-intro">Didn't find your answer in the FAQ? Contact our sales team.</p>
+        
+            <div class="faq-category">
+                <button class="faq-category-title">General Questions</button>
+                <div class="faq-category-content">
+                    <button class="faq-question">What is EarlyOn Meetings Inc.?</button>
+                    <div class="faq-answer">
+                        <p>EarlyOn Meetings Inc. is an online platform designed to connect prospective university students with current students for personalized mentorship, helping them navigate the university admissions process.</p>
+                    </div>
+                    <button class="faq-question">How do I sign up for EarlyOn Meetings Inc.?</button>
+                    <div class="faq-answer">
+                        <p>Users can sign up through our website by providing basic personal information and specifying their mentorship needs.</p>
+                    </div>
+                    <button class="faq-question">How can I become a mentor on EarlyOn Meetings Inc.?</button>
+                    <div class="faq-answer">
+                        <p>Simply click on the register button from home, and click the on register as mentor button.</p>
+                    </div>
+                    <button class="faq-question">What are the requirements to become a mentor?</button>
+                    <div class="faq-answer">
+                        <p>Mentors must be currently enrolled in or recent graduates of a university, and have a genuine desire to help prospective students.</p>
+                    </div>
+                    <button class="faq-question">Can I still be a mentor if I recently graduated?</button>
+                    <div class="faq-answer">
+                        <p>Yes, recent graduates can offer valuable insights into the admissions process and university life. We welcome applications from individuals who have graduated within the last two years.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-category">
+                <button class="faq-category-title">Pricing and Payments</button>
+                <div class="faq-category-content">
+                    <button class="faq-question">What are the costs associated with using EarlyOn Meetings Inc.?</button>
+                    <div class="faq-answer">
+                        <p>Currently, mentorship sessions are a fixed price of $30/hour but price might vary between $25 to $40 per hour, based on the mentor’s university and location.</p>
+                    </div>
+                    <button class="faq-question">What payment methods are accepted?</button>
+                    <div class="faq-answer">
+                        <p>We accept major credit cards, PayPal, and other online payment methods.</p>
+                    </div>
+                    <button class="faq-question">How do I connect my payout account using Stripe?</button>
+                    <div class="faq-answer">
+                        <p>Once registered as a mentor, you can connect your payout account by navigating to your dashboard and selecting ‘Stripe Account’. Follow the on-screen instructions to link your Stripe account.</p>
+                    </div>
+                    <button class="faq-question">What if I don’t have a Stripe account?</button>
+                    <div class="faq-answer">
+                        <p>Creating a Stripe account is easy and free. You can sign up directly through the EarlyOn Meetings Inc. platform during the payout account setup process.</p>
+                    </div>
+                    <button class="faq-question">How often will I receive payouts for my sessions?</button>
+                    <div class="faq-answer">
+                        <p>Payouts are processed weekly. You’ll receive payment for all completed sessions within the past week directly into your linked Stripe account.</p>
+                    </div>
+                    <button class="faq-question">What are the payment rates for mentors?</button>
+                    <div class="faq-answer">
+                        <p>Payment rates are currently fixed for $30 per hour, but might change in the future to range from $30 to $50 per hour, based on factors such as your university, area of expertise, and location.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="faq-category">
+                <button class="faq-category-title">Mentorship Sessions</button>
+                <div class="faq-category-content">
+                    <button class="faq-question">How do I schedule mentorship sessions?</button>
+                    <div class="faq-answer">
+                        <p>Mentors can set their availability in their dashboard. When a mentee books a session matching your availability, you’ll receive a notification to confirm the session.</p>
+                    </div>
+                    <button class="faq-question">What should I expect from a mentorship session?</button>
+                    <div class="faq-answer">
+                        <p>Expect to receive personalized advice, insights into the university admissions process, and answers to any specific questions you have.</p>
+                    </div>
+                    <button class="faq-question">Can I record my mentorship session?</button>
+                    <div class="faq-answer">
+                        <p>You cannot manually record any mentorship sessions.</p>
+                    </div>
+                    <button class="faq-question">What happens if I need to cancel a session?</button>
+                    <div class="faq-answer">
+                        <p>If you must cancel, please do so at least 24 hours in advance through the platform. This allows the mentee to reschedule or find another mentor.</p>
+                    </div>
+                    <button class="faq-question">Does rejecting a session have a negative effect on my mentor account?</button>
+                    <div class="faq-answer">
+                        <p>Rejecting due to schedule conflicts has no negative effects on your account. However, frequent rejections might subject the account to be paused.</p>
+                    </div>
+                    <button class="faq-question">Does cancelling a session have a negative effect on my mentor account?</button>
+                    <div class="faq-answer">
+                        <p>Cancelling due to schedule conflicts has no negative effects on your account. However, frequent cancellations might subject the account to be paused.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="faq-category">
+                <button class="faq-category-title">Privacy and Security</button>
+                <div class="faq-category-content">
+                    <button class="faq-question">How does EarlyOn Meetings Inc. protect my personal information?</button>
+                    <div class="faq-answer">
+                        <p>We adhere to strict data protection policies, ensuring your information is securely stored and only used for service improvement and personalized experience on our platform.</p>
+                    </div>
+                    <button class="faq-question">Who can see my profile?</button>
+                    <div class="faq-answer">
+                        <p>If you register as a mentor, you agree to publicly share all the information you submitted. </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="faq-category">
+                <button class="faq-category-title">Troubleshooting</button>
+                <div class="faq-category-content">
+                    <button class="faq-question">What should I do if I encounter technical difficulties during a session?</button>
+                    <div class="faq-answer">
+                        <p>Please contact our customer support immediately for assistance. We’re here to ensure a smooth experience.</p>
+                    </div>
+                    <button class="faq-question">I had an unsatisfactory session. What are my options?</button>
+                    <div class="faq-answer">
+                        <p>We prioritize customer satisfaction. If your session was unsatisfactory, please reach out for a resolution, which may include a refund or a session with a different mentor.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="faq-category">
+                <button class="faq-category-title">Future Developments</button>
+                <div class="faq-category-content">
+                    <button class="faq-question">Will EarlyOn Meetings Inc. expand to other fields beyond university admissions?</button>
+                    <div class="faq-answer">
+                        <p>Yes, we plan to broaden our mentorship offerings to cover more stages of education and various fields of study in the future.</p>
+                    </div>
+                </div>
+            </div>
+        
+        
+        </div>
+        {% include 'footer.html' %}
+    </div>
+
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var categoryTitles = document.querySelectorAll('.faq-category-title');
+            
+            categoryTitles.forEach(function(title) {
+                title.addEventListener('click', function() {
+                    this.classList.toggle('active');
+                    var content = this.nextElementSibling;
+                    if (content.style.maxHeight && content.style.maxHeight !== '0px') {
+                        content.style.maxHeight = '0px';
+                    } else {
+                        content.style.maxHeight = content.scrollHeight + 'px';
+                    }
+                });
+            });
+    
+            var questions = document.querySelectorAll('.faq-question');
+            
+            questions.forEach(function(question) {
+                question.addEventListener('click', function() {
+                    this.classList.toggle('active');
+                    var answer = this.nextElementSibling;
+                    if (answer.style.maxHeight && answer.style.maxHeight !== '0px') {
+                        answer.style.maxHeight = '0px';
+                    } else {
+                        answer.style.maxHeight = answer.scrollHeight + 'px';
+                        // Adjust the max-height of the parent container
+                        var parentCategoryContent = this.parentElement;
+                        if (parentCategoryContent.classList.contains('faq-category-content')) {
+                            parentCategoryContent.style.maxHeight = 'none';
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+    
+    
+</body>
+</html>

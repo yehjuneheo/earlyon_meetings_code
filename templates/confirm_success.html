@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content=
+        "width=device-width, initial-scale=1.0">
+    
+    <title>
+        Confirm Success - EarlyOn Meetings
+    </title>
+    <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
+
+
+    <link rel="stylesheet" href="{% static 'styleguide.css' %}">
+    <link rel="stylesheet" href="{% static 'my_meetings.css' %}">
+    
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-33Y8RZDE69"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-33Y8RZDE69');
+</script>
+<body>
+    <div class="my-meetings screen">
+        {% include 'header.html' %}
+        <div class="profiles-frame">
+            <h1 class="title">Meeting Confirmed</h1>
+            <img class="line-4" src="{% static 'line.png' %}" alt="Line 4" />
+            <img class="success-icon" src="{% static 'success.png' %}" alt="Sucess" />
+            <h1 class="send-request">Successfully Meeting Confirmed With:</h1>
+            <div class="frame-139">
+                <p class="st-name opensans-semi-bold-black-38px">{{my_meeting.receiver_profile.user.get_full_name}}</p>
+            </div>
+            <p class="date-time">{{ my_meeting.datetime }} ~ {{ my_meeting.endtime|date:"f a" }} on {{ my_meeting.timezone }}</p>
+            <input type="submit" action="confirmed" class="frame-140" value = "My Meetings" onclick="location.href='{% url 'my_meetings' user.id %}'" />
+        </div>
+        {% include 'footer.html' %}
+    </div>
+</body>
+</html>
